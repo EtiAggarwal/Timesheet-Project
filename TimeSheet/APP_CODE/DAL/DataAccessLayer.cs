@@ -11,7 +11,7 @@ using System.Linq;
 using System.Web;
 
 /// <summary>
-/// Summary description for DataAccessLayetr
+/// Summary description for DataAccessLayers
 /// </summary>
 public class DataAccessLayer
 {
