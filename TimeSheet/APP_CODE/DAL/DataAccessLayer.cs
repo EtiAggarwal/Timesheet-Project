@@ -13,38 +13,42 @@ using System.Web;
 /// <summary>
 /// Summary description for DataAccessLayers
 /// </summary>
-public class DataAccessLayer
+
+namespace TimeSheet.APP_CODE.DAL
 {
-    SqlConnection con;
-    String conString;
-
-    public DataAccessLayer()
+    public class DataAccessLayer
     {
-        conString = ConfigurationManager.ConnectionStrings["SqlServerConString"].ToString();
-        con = new SqlConnection(conString);
-    }
+        SqlConnection con;
+        String conString;
 
-    public DataTable getAllTimeLog()
-    {
-        SqlDataAdapter da = new SqlDataAdapter("select ProjectId,TaskId,StartTime,EndTime from Time_Log", con);
-        DataTable dt = new DataTable();
-        da.Fill(dt);
+        public DataAccessLayer()
+        {
+            conString = ConfigurationManager.ConnectionStrings["SqlServerConString"].ToString();
+            con = new SqlConnection(conString);
+        }
 
-        return dt;
-    }
+        public DataTable getAllTimeLog()
+        {
+            SqlDataAdapter da = new SqlDataAdapter("select ProjectId,TaskId,StartTime,EndTime from Time_Log", con);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
 
-    public void addTimeLog(String projectID, String taskId, String startTime, String endTime)
-    {
-        SqlCommand comm = new SqlCommand("INSERT INTO TIME_LOG VALUES(@P,@T,getdate(),@S,@E)", con);
-        comm.Parameters.AddWithValue("@P", projectID);
-        comm.Parameters.AddWithValue("@T", taskId);
+            return dt;
+        }
 
-        comm.Parameters.AddWithValue("@S", startTime);
-        comm.Parameters.AddWithValue("@E", endTime);
-        con.Open();
-        comm.ExecuteNonQuery();
-        con.Close();
+        public void addTimeLog(String projectID, String taskId, String startTime, String endTime)
+        {
+            SqlCommand comm = new SqlCommand("INSERT INTO TIME_LOG VALUES(@P,@T,getdate(),@S,@E)", con);
+            comm.Parameters.AddWithValue("@P", projectID);
+            comm.Parameters.AddWithValue("@T", taskId);
+
+            comm.Parameters.AddWithValue("@S", startTime);
+            comm.Parameters.AddWithValue("@E", endTime);
+            con.Open();
+            comm.ExecuteNonQuery();
+            con.Close();
 
 
+        }
     }
 }

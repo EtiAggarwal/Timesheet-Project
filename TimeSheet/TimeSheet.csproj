@@ -40,6 +40,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -83,6 +87,19 @@
     <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="APP_CODE\DAL\JiraAccessLayer.cs" />
+    <Compile Include="APP_CODE\Entities\BaseEntity.cs" />
+    <Compile Include="APP_CODE\Entities\Issues\Assignee.cs" />
+    <Compile Include="APP_CODE\Entities\Issues\Fields.cs" />
+    <Compile Include="APP_CODE\Entities\Issues\Issue.cs" />
+    <Compile Include="APP_CODE\Entities\Issues\IssueKey.cs" />
+    <Compile Include="APP_CODE\Entities\Issues\Status.cs" />
+    <Compile Include="APP_CODE\Entities\Misc\AvatarUrls.cs" />
+    <Compile Include="APP_CODE\Entities\Projects\ProjectDescription.cs" />
+    <Compile Include="APP_CODE\Entities\Searching\SearchRequest.cs" />
+    <Compile Include="APP_CODE\Entities\Searching\SearchResponse.cs" />
+    <Compile Include="APP_CODE\JIRA\JiraManager.cs" />
+    <Compile Include="APP_CODE\JIRA\JiraResource.cs" />
     <Compile Include="Site.Master.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Site.Master</DependentUpon>
@@ -100,7 +117,7 @@
     <Content Include="APP_CODE\BO\Timelog.cs" />
     <Content Include="APP_CODE\BO\Employee.cs" />
     <Compile Include="APP_CODE\DAL\DataAccessLayer.cs" />
-    <Content Include="APP_CODE\DAL\SQL_STRINGS.cs" />
+    <Compile Include="APP_CODE\DAL\SQL_STRINGS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
