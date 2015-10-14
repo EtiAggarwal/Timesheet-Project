@@ -1,4 +1,4 @@
-#setwd("/Users/stephenkinser/jiraGraph")
+setwd("/Users/stephenkinser/Timesheet-Project/suggestedGraphTypes")
 #library(gdata) 
 library(ggplot2)
 
@@ -34,3 +34,9 @@ ggplot(data=subset(mydata, as.character(Assignee)!= "Unassigned" ) ,
        aes(x=""))+
   geom_bar(width=1,aes(y=length(..count..)/sum(..count..),fill=Assignee))+coord_polar() +facet_wrap(~Project)
 
+#table(subset(mydata, as.character(Assignee)!= "Unassigned" ), )
+
+#with(subset(mydata, as.character(Assignee)!= "Unassigned"),table(Updated))
+mytable=with(subset(mydata, as.character(Assignee)!= "Unassigned"),table(Updated,Assignee,Project))
+finalcsv =subset(as.data.frame(mytable),Freq !=0)
+write.csv(finalcsv, file= "freq.csv")
