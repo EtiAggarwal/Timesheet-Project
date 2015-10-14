@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using TimeSheet.APP_CODE.DAL;
+using TimeSheet.APP_CODE.Entities.Projects;
+using TimeSheet.APP_CODE.JIRA;
+
 
 namespace TimeSheet
 {
@@ -11,7 +11,7 @@ namespace TimeSheet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+           
         }
 
         protected void btAddNewEntry_Click(object sender, EventArgs e)
@@ -23,6 +23,15 @@ namespace TimeSheet
             odsTimeEntriesForDay.InsertParameters[3].DefaultValue = tbEnd.Text;
             odsTimeEntriesForDay.Insert();
             grvTimeEntriesForDay.DataBind();
+        }
+
+        protected void ddlProject_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            JiraAccessLayer jal = new JiraAccessLayer();
+            ddlTask.DataSource = jal.GetIssuesForProject(ddlProject.SelectedItem.Value);
+            ddlTask.DataTextField = "ProxyKey";
+            ddlTask.DataValueField = "ProxyKey";
+            ddlTask.DataBind();
         }
     }
 }

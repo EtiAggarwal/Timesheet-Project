@@ -11,7 +11,7 @@ using System.Web;
 /// <summary>
 /// const class to store all the sql queries at one place
 /// </summary>
-namespace TimeSheet.APP_CODE
+namespace TimeSheet.APP_CODE.DAL
 {
     public class SQL_STRINGS
     {
