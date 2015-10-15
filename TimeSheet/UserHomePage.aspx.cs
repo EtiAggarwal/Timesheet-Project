@@ -11,17 +11,14 @@ namespace TimeSheet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            Session["EmployeeId"] = "101";
+            
         }
 
         protected void btAddNewEntry_Click(object sender, EventArgs e)
         {
-
-            odsTimeEntriesForDay.InsertParameters[0].DefaultValue = ddlProject.SelectedItem.Value;
-            odsTimeEntriesForDay.InsertParameters[1].DefaultValue = ddlTask.SelectedItem.Value;
-            odsTimeEntriesForDay.InsertParameters[2].DefaultValue = tbStart.Text;
-            odsTimeEntriesForDay.InsertParameters[3].DefaultValue = tbEnd.Text;
-            odsTimeEntriesForDay.Insert();
+            DataAccessLayer dal = new DataAccessLayer();
+            dal.addTimeSheet(Convert.ToInt32(ddlProject.SelectedItem.Value), ddlProject.SelectedItem.Text, ddlTask.SelectedItem.Value,float.Parse(tbHours.Text), tbComments.Text);
             grvTimeEntriesForDay.DataBind();
         }
 

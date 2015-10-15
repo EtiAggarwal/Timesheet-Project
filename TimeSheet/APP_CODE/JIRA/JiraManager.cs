@@ -82,7 +82,7 @@ namespace TimeSheet.APP_CODE.JIRA
             string jql, 
             List<string> fields = null,
             int startAt = 0, 
-            int maxResult = 50)
+            int maxResult = 3000)
         {
             fields = fields ?? new List<string>{"summary", "status", "assignee"};
 

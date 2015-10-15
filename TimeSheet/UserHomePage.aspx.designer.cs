@@ -49,15 +49,6 @@ namespace TimeSheet {
         protected global::System.Web.UI.WebControls.DropDownList ddlProject;
         
         /// <summary>
-        /// odsGetAllProjectsFromJira control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource odsGetAllProjectsFromJira;
-        
-        /// <summary>
         /// ddlTask control.
         /// </summary>
         /// <remarks>
@@ -67,22 +58,22 @@ namespace TimeSheet {
         protected global::System.Web.UI.WebControls.DropDownList ddlTask;
         
         /// <summary>
-        /// tbStart control.
+        /// tbHours control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbStart;
+        protected global::System.Web.UI.WebControls.TextBox tbHours;
         
         /// <summary>
-        /// tbEnd control.
+        /// tbComments control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbEnd;
+        protected global::System.Web.UI.WebControls.TextBox tbComments;
         
         /// <summary>
         /// btAddNewEntry control.
@@ -101,6 +92,15 @@ namespace TimeSheet {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grvTimeEntriesForDay;
+        
+        /// <summary>
+        /// odsGetAllProjectsFromJira control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource odsGetAllProjectsFromJira;
         
         /// <summary>
         /// odsTimeEntriesForDay control.

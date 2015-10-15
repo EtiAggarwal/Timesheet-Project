@@ -47,21 +47,21 @@
 
                 <table class="table table-striped table-condensed">
                     <tr>
-                        <th>Project</th>
-                        <th>Task</th>
-                        <th>Start Time</th>
-                        <th>End Time</th>
+                        <th>Project*</th>
+                        <th>Task*</th>
+                        <th>Hours*</th>
+                        <th>Comments</th>
 
                     </tr>
                     <tr>
                         <td>
-                            <asp:DropDownList ID="ddlProject" runat="server" CssClass="form-control input-sm" AutoPostBack="True" DataSourceID="odsGetAllProjectsFromJira" DataTextField="Name" DataValueField="Key" OnSelectedIndexChanged="ddlProject_SelectedIndexChanged">
-                             
-                            </asp:DropDownList><asp:ObjectDataSource ID="odsGetAllProjectsFromJira" runat="server" SelectMethod="GetProjects" TypeName="TimeSheet.APP_CODE.DAL.JiraAccessLayer"></asp:ObjectDataSource>
+                            <asp:DropDownList ID="ddlProject" runat="server" CssClass="form-control input-sm" AutoPostBack="True" DataSourceID="odsGetAllProjectsFromJira" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="ddlProject_SelectedIndexChanged" />
+
+
                         </td>
                         <td>
 
-                            <div class="span4 proj-div" data-toggle="modal" data-target="#GSCCModal">
+                            <%--<div class="span4 proj-div" data-toggle="modal" data-target="#GSCCModal">
                                 <span aria-hidden="true" class="glyphicon glyphicon-chevron-left" />
                             </div>
 
@@ -76,23 +76,21 @@
                                         <div class="modal-body">
                                             <p></p>
                                         </div>
-                                       
+
                                     </div>
                                 </div>
 
-                            </div>
+                            </div>--%>
 
 
                             <asp:DropDownList ID="ddlTask" runat="server" CssClass="form-control input-sm">
-                                <asp:ListItem Value="T1">T1</asp:ListItem>
-                                <asp:ListItem Value="T2">T2</asp:ListItem>
                             </asp:DropDownList>
                         </td>
                         <td>
-                            <asp:TextBox ID="tbStart" runat="server" CssClass="form-control input-sm" Width="53px"></asp:TextBox>
+                            <asp:TextBox ID="tbHours" runat="server" CssClass="form-control input-sm" Width="40px"></asp:TextBox>
                         </td>
                         <td>
-                            <asp:TextBox ID="tbEnd" runat="server" CssClass="form-control input-sm" Width="53px"></asp:TextBox>
+                            <asp:TextBox ID="tbComments" runat="server" CssClass="form-control input-sm" TextMode="MultiLine"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -113,25 +111,23 @@
                 <asp:GridView ID="grvTimeEntriesForDay" runat="server" AutoGenerateColumns="False"
                     CssClass="table table-striped table-hover table-condensed" DataSourceID="odsTimeEntriesForDay" AllowPaging="True" PageSize="5">
                     <Columns>
-                        <asp:BoundField HeaderText="Project" DataField="ProjectId" />
-                        <asp:BoundField HeaderText="Task" DataField="TaskId" />
-                        <asp:BoundField HeaderText="Start Time" DataField="StartTime" />
-                        <asp:BoundField HeaderText="End Time" DataField="EndTime" />
+                        <asp:BoundField HeaderText="Project" DataField="PROJECT_NAME" />
+                        <asp:BoundField HeaderText="Task" DataField="TASK_JIRA_ISSUE_PROXY_KEY" />
+                        <asp:BoundField HeaderText="Hours" DataField="HOURS_PER_DAY" />
                         <asp:CommandField ShowEditButton="True" ButtonType="Link" EditText="<i aria-hidden='true' class='glyphicon glyphicon-pencil'></i>"
                             CancelText="<i aria-hidden='true' class='glyphicon glyphicon-remove-circle'></i>" UpdateText="<i aria-hidden='true' class='glyphicon glyphicon-ok'></i>" />
                         <asp:CommandField ShowDeleteButton="True" ButtonType="Link" DeleteText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>" />
+                        <asp:BoundField DataField="PROJECT_ID" HeaderText="Project_Id" Visible="False" />
                     </Columns>
                 </asp:GridView>
             </div>
         </div>
     </div>
-    <asp:ObjectDataSource ID="odsTimeEntriesForDay" runat="server" InsertMethod="addTimeLog" SelectMethod="getAllTimeLog" TypeName="TimeSheet.APP_CODE.DAL.DataAccessLayer">
-        <InsertParameters>
-            <asp:Parameter Name="projectID" Type="String" />
-            <asp:Parameter Name="taskId" Type="String" />
-            <asp:Parameter Name="startTime" Type="String" />
-            <asp:Parameter Name="endTime" Type="String" />
-        </InsertParameters>
+    <asp:ObjectDataSource ID="odsGetAllProjectsFromJira" runat="server" SelectMethod="GetProjects" TypeName="TimeSheet.APP_CODE.DAL.JiraAccessLayer"></asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="odsTimeEntriesForDay" runat="server" SelectMethod="GetTimeSheetForEmp" TypeName="TimeSheet.APP_CODE.DAL.DataAccessLayer">
+        <SelectParameters>
+            <asp:SessionParameter Name="empId" SessionField="EmployeeId" Type="String" />
+        </SelectParameters>
     </asp:ObjectDataSource>
 </asp:Content>
 

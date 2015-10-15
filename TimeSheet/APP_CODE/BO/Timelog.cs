@@ -19,12 +19,21 @@ namespace TimeSheet.APP_CODE.BO
             set { projectId = value; }
         }
 
-        private String taskId;
+        private String projectName;
 
-        public String TaskId
+        public String ProjectName
         {
-            get { return taskId; }
-            set { taskId = value; }
+            get { return projectName; }
+            set { projectName = value; }
+        }
+
+
+        private String taskJiraKey;
+
+        public String TaskJiraKey
+        {
+            get { return taskJiraKey; }
+            set { taskJiraKey = value; }
         }
 
         private float hours;

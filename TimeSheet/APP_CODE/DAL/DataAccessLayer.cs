@@ -25,28 +25,22 @@ namespace TimeSheet.APP_CODE.DAL
         {
             conString = ConfigurationManager.ConnectionStrings["SqlServerConString"].ToString();
             con = new SqlConnection(conString);
+          
         }
 
-        public DataTable getAllTimeLog()
+        public DataTable GetTimeSheetForEmp(String empId)
         {
-            SqlDataAdapter da = new SqlDataAdapter("select ProjectId,TaskId,StartTime,EndTime from Time_Log", con);
+            SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SQL_GET_TIMESHEET_FOR_EMP, con);
+            selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", empId);
+            SqlDataAdapter sqlAdapter = new SqlDataAdapter(selectCommand);
             DataTable dt = new DataTable();
-            da.Fill(dt);
-
+            sqlAdapter.Fill(dt);
             return dt;
         }
 
-        public void addTimeLog(String projectID, String taskId, String startTime, String endTime)
+        public void addTimeSheet(int projectId, String projectName, String task_jira_proxy_key, float hrsPerDay, String comments)
         {
-            SqlCommand comm = new SqlCommand("INSERT INTO TIME_LOG VALUES(@P,@T,getdate(),@S,@E)", con);
-            comm.Parameters.AddWithValue("@P", projectID);
-            comm.Parameters.AddWithValue("@T", taskId);
-
-            comm.Parameters.AddWithValue("@S", startTime);
-            comm.Parameters.AddWithValue("@E", endTime);
-            con.Open();
-            comm.ExecuteNonQuery();
-            con.Close();
+           
 
 
         }
