@@ -11,24 +11,34 @@ namespace TimeSheet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["EmployeeId"] = "101";
-            
+            if (!Page.IsPostBack)
+            {
+                Session["EmployeeId"] = "101";
+                calMonthView.SelectedDate = DateTime.Now;
+            }
         }
 
         protected void btAddNewEntry_Click(object sender, EventArgs e)
         {
             DataAccessLayer dal = new DataAccessLayer();
-            dal.addTimeSheet(Convert.ToInt32(ddlProject.SelectedItem.Value), ddlProject.SelectedItem.Text, ddlTask.SelectedItem.Value,float.Parse(tbHours.Text), tbComments.Text);
+            int? ret = dal.addTimeSheet(Session["EmployeeId"].ToString(),Convert.ToInt32(ddlProject.SelectedItem.Value), ddlProject.SelectedItem.Text, ddlTask.SelectedItem.Value,calMonthView.SelectedDate.ToString("MM/dd/yyyy"),float.Parse(tbHours.Text), tbComments.Text);
             grvTimeEntriesForDay.DataBind();
         }
 
         protected void ddlProject_SelectedIndexChanged(object sender, EventArgs e)
         {
-            JiraAccessLayer jal = new JiraAccessLayer();
-            ddlTask.DataSource = jal.GetIssuesForProject(ddlProject.SelectedItem.Value);
-            ddlTask.DataTextField = "ProxyKey";
-            ddlTask.DataValueField = "ProxyKey";
-            ddlTask.DataBind();
+            try
+            {
+                JiraAccessLayer jal = new JiraAccessLayer();
+                ddlTask.DataSource = jal.GetIssuesForProject(ddlProject.SelectedItem.Value);
+                ddlTask.DataTextField = "ProxyKey";
+                ddlTask.DataValueField = "ProxyKey";
+                ddlTask.DataBind();
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

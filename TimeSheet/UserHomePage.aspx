@@ -111,9 +111,10 @@
                 <asp:GridView ID="grvTimeEntriesForDay" runat="server" AutoGenerateColumns="False"
                     CssClass="table table-striped table-hover table-condensed" DataSourceID="odsTimeEntriesForDay" AllowPaging="True" PageSize="5">
                     <Columns>
-                        <asp:BoundField HeaderText="Project" DataField="PROJECT_NAME" />
-                        <asp:BoundField HeaderText="Task" DataField="TASK_JIRA_ISSUE_PROXY_KEY" />
-                        <asp:BoundField HeaderText="Hours" DataField="HOURS_PER_DAY" />
+                        <asp:BoundField HeaderText="Project" DataField="PROJECT_NAME" InsertVisible="false" ReadOnly="true"/>
+                        <asp:BoundField HeaderText="Task" DataField="TASK_JIRA_ISSUE_PROXY_KEY"  InsertVisible="false" ReadOnly="true"/>
+                        <asp:BoundField HeaderText="Hours" DataField="HOURS_PER_DAY"  />
+                        <asp:BoundField DataField="COMMENTS" HeaderText="Comments" />
                         <asp:CommandField ShowEditButton="True" ButtonType="Link" EditText="<i aria-hidden='true' class='glyphicon glyphicon-pencil'></i>"
                             CancelText="<i aria-hidden='true' class='glyphicon glyphicon-remove-circle'></i>" UpdateText="<i aria-hidden='true' class='glyphicon glyphicon-ok'></i>" />
                         <asp:CommandField ShowDeleteButton="True" ButtonType="Link" DeleteText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>" />

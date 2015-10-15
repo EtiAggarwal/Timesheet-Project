@@ -30,18 +30,55 @@ namespace TimeSheet.APP_CODE.DAL
 
         public DataTable GetTimeSheetForEmp(String empId)
         {
-            SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SQL_GET_TIMESHEET_FOR_EMP, con);
-            selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", empId);
-            SqlDataAdapter sqlAdapter = new SqlDataAdapter(selectCommand);
-            DataTable dt = new DataTable();
-            sqlAdapter.Fill(dt);
-            return dt;
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SQL_GET_TIMESHEET_FOR_EMP, con);
+                selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", empId);
+                SqlDataAdapter sqlAdapter = new SqlDataAdapter(selectCommand);
+                DataTable dt = new DataTable();
+                sqlAdapter.Fill(dt);
+                return dt;
+            }
+            catch
+            {
+                throw;
+            }
         }
 
-        public void addTimeSheet(int projectId, String projectName, String task_jira_proxy_key, float hrsPerDay, String comments)
+        public int? addTimeSheet(String empId,int projectId, String projectName, String task_jira_proxy_key,String timesheetDate, float hrsPerDay, String comments)
         {
-           
+            int? ret = null;
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SP_INSERT_TIMESHEET_ENTRY, con);
+                selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", empId);
+                selectCommand.Parameters.AddWithValue("@PROJECT_ID", projectId);
+                selectCommand.Parameters.AddWithValue("@PROJECT_NAME", projectName);
+                selectCommand.Parameters.AddWithValue("@TASK_JIRA_ISSUE_PROXY_KEY", task_jira_proxy_key);
+                selectCommand.Parameters.AddWithValue("@TIMESHEET_DATE", timesheetDate);
+                selectCommand.Parameters.AddWithValue("@HOURS_PER_DAY", hrsPerDay);
+                selectCommand.Parameters.AddWithValue("@COMMENTS", comments);
+                SqlParameter retParam = new SqlParameter();
+                retParam.ParameterName = "@RetVal";
+                retParam.Direction = ParameterDirection.ReturnValue;
+                retParam.SqlDbType = SqlDbType.Int;
+                selectCommand.Parameters.Add(retParam);
+                selectCommand.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                selectCommand.ExecuteNonQuery();
+                con.Close();
+                ret = (int)retParam.Value;
+                return ret;
 
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
 
         }
     }
