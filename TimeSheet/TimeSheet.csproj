@@ -67,6 +67,10 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\metisMenu.min.css" />
+    <Content Include="Content\morris.css" />
+    <Content Include="Content\sb-admin-2.css" />
+    <Content Include="Content\timeline.css" />
     <Content Include="HtmlPage1.html" />
     <Content Include="Content\ref.css" />
     <Content Include="Content\source-sans-pro.css" />
@@ -79,7 +83,16 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Admin.sitemap" />
+    <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\highstock.json" />
+    <Content Include="Content\mixins.less" />
+    <Content Include="Content\sb-admin-2.less" />
+    <Content Include="Content\variables.less" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="Scripts\metisMenu.js" />
+    <Content Include="Scripts\readremotecsv.js" />
+    <Content Include="Scripts\sb-admin-2.js" />
+    <Content Include="adminTest.aspx" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -123,6 +136,13 @@
     </Compile>
     <Compile Include="UserHomePage.aspx.designer.cs">
       <DependentUpon>UserHomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="adminTest.aspx.cs">
+      <DependentUpon>adminTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="adminTest.aspx.designer.cs">
+      <DependentUpon>adminTest.aspx</DependentUpon>
     </Compile>
     <Content Include="APP_CODE\BO\Timelog.cs" />
     <Content Include="APP_CODE\BO\Employee.cs" />
