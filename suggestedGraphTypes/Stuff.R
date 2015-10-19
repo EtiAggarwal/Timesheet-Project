@@ -50,7 +50,8 @@ mytable=with(subset(mydata, as.character(Assignee)!= "Unassigned"),table(days,As
 View(mytable)
 finalcsv =subset(as.data.frame(mytable),Freq !=0)
 write.csv(finalcsv, file= "freq.csv")
-melt(mytable)
+#write.table(mytable, file ="table.csv", sep = ",")
+write.csv(as.data.frame.matrix(mytable),file="table.csv")
 #write (apply(finalcsv,1, function(x){toJSON(x)}), "freq.json")
 htmlhead <- 
   '<!DOCTYPE html>
@@ -75,3 +76,5 @@ panzoomScript <-
 '
 sink("panzoom_ggplot2.html")
 cat(htmlhead,saveXML(mysvg$svg),panzoomScript)
+thing=read.csv("table.csv")
+View(thing)
