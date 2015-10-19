@@ -1,325 +1,142 @@
-"","Updated","Assignee","Project","Freq"
-"178","2/13/13 9:01","Bibin Kumar","ALDOT",2
-"179","2/13/13 9:02","Bibin Kumar","ALDOT",1
-"180","2/13/13 9:03","Bibin Kumar","ALDOT",1
-"615","2/26/13 9:04","Brian Conley","ALDOT",1
-"837","1/22/15 8:59","Caleb Goff","ALDOT",1
-"938","11/12/14 14:51","Caleb Goff","ALDOT",1
-"952","11/18/14 10:32","Caleb Goff","ALDOT",1
-"967","11/21/14 14:00","Caleb Goff","ALDOT",1
-"976","12/1/14 9:23","Caleb Goff","ALDOT",1
-"1265","10/11/12 12:07","Corey Arnold","ALDOT",1
-"2122","10/17/12 11:45","Eric Green","ALDOT",1
-"2123","10/18/12 14:05","Eric Green","ALDOT",1
-"2124","10/19/12 14:08","Eric Green","ALDOT",2
-"2125","10/19/12 14:24","Eric Green","ALDOT",1
-"2137","10/26/12 9:44","Eric Green","ALDOT",1
-"2149","10/31/12 14:53","Eric Green","ALDOT",1
-"2165","11/1/12 15:20","Eric Green","ALDOT",1
-"2185","11/19/12 14:35","Eric Green","ALDOT",1
-"2188","11/20/12 7:32","Eric Green","ALDOT",1
-"2189","11/20/12 9:27","Eric Green","ALDOT",1
-"2199","11/27/12 8:08","Eric Green","ALDOT",1
-"2253","2/25/13 16:01","Eric Green","ALDOT",1
-"2254","2/26/13 10:55","Eric Green","ALDOT",1
-"2288","6/12/13 16:15","Eric Green","ALDOT",1
-"2289","6/18/13 9:09","Eric Green","ALDOT",1
-"2429","9/25/12 14:19","Eric Green","ALDOT",1
-"2431","9/26/12 15:38","Eric Green","ALDOT",1
-"2719","7/13/15 9:59","George Darling","ALDOT",1
-"2784","8/31/15 11:47","George Darling","ALDOT",1
-"2796","9/15/15 12:56","George Darling","ALDOT",1
-"2843","9/28/15 10:47","George Darling","ALDOT",2
-"3384","10/5/15 16:07","Kevin Kieliszek","ALDOT",1
-"3596","8/26/15 14:49","Kevin Kieliszek","ALDOT",1
-"3597","8/26/15 14:50","Kevin Kieliszek","ALDOT",3
-"3599","8/28/15 13:23","Kevin Kieliszek","ALDOT",1
-"3605","8/31/15 14:34","Kevin Kieliszek","ALDOT",1
-"3607","9/1/15 10:08","Kevin Kieliszek","ALDOT",1
-"3613","9/14/15 11:58","Kevin Kieliszek","ALDOT",1
-"3617","9/15/15 13:55","Kevin Kieliszek","ALDOT",1
-"3689","9/9/15 15:31","Kevin Kieliszek","ALDOT",1
-"3714","1/27/15 14:57","Lee Jones","ALDOT",1
-"3844","11/7/14 8:33","Lee Jones","ALDOT",1
-"4086","9/4/14 12:56","Lee Jones","ALDOT",1
-"4087","9/4/14 13:07","Lee Jones","ALDOT",1
-"4088","9/4/14 13:19","Lee Jones","ALDOT",1
-"4089","9/4/14 13:22","Lee Jones","ALDOT",1
-"4184","10/25/12 15:04","Mani Radhaji","ALDOT",1
-"4185","10/25/12 15:05","Mani Radhaji","ALDOT",1
-"4186","10/26/12 9:43","Mani Radhaji","ALDOT",2
-"4188","10/3/12 16:42","Mani Radhaji","ALDOT",1
-"4224","11/15/12 10:59","Mani Radhaji","ALDOT",1
-"4233","11/19/12 11:51","Mani Radhaji","ALDOT",1
-"4234","11/19/12 13:22","Mani Radhaji","ALDOT",1
-"4237","11/20/12 10:55","Mani Radhaji","ALDOT",1
-"4240","11/20/12 9:31","Mani Radhaji","ALDOT",1
-"4277","2/12/13 11:42","Mani Radhaji","ALDOT",1
-"4281","2/13/13 9:18","Mani Radhaji","ALDOT",1
-"4282","2/13/13 9:19","Mani Radhaji","ALDOT",2
-"4283","2/13/13 9:35","Mani Radhaji","ALDOT",1
-"4284","2/13/13 9:37","Mani Radhaji","ALDOT",1
-"4310","2/3/15 15:38","Mani Radhaji","ALDOT",2
-"4319","3/11/13 14:50","Mani Radhaji","ALDOT",1
-"4320","3/12/13 13:11","Mani Radhaji","ALDOT",1
-"4321","3/12/13 14:03","Mani Radhaji","ALDOT",1
-"4330","4/6/14 16:54","Mani Radhaji","ALDOT",1
-"4338","6/12/13 16:15","Mani Radhaji","ALDOT",4
-"4341","6/7/12 9:25","Mani Radhaji","ALDOT",1
-"4438","9/17/12 10:25","Mani Radhaji","ALDOT",1
-"4928","1/21/15 15:33","Testing Team","ALDOT",1
-"4929","1/21/15 15:34","Testing Team","ALDOT",1
-"4930","1/21/15 15:35","Testing Team","ALDOT",1
-"4931","1/21/15 19:31","Testing Team","ALDOT",1
-"4932","1/21/15 19:32","Testing Team","ALDOT",1
-"4933","1/21/15 19:34","Testing Team","ALDOT",1
-"4934","1/21/15 19:35","Testing Team","ALDOT",1
-"4935","1/21/15 19:36","Testing Team","ALDOT",2
-"4936","1/21/15 19:37","Testing Team","ALDOT",2
-"4956","10/13/14 11:04","Testing Team","ALDOT",1
-"4957","10/13/14 11:07","Testing Team","ALDOT",1
-"4958","10/13/14 11:09","Testing Team","ALDOT",2
-"4959","10/13/14 11:14","Testing Team","ALDOT",1
-"4960","10/13/14 11:15","Testing Team","ALDOT",1
-"4961","10/13/14 11:17","Testing Team","ALDOT",1
-"4962","10/13/14 11:19","Testing Team","ALDOT",1
-"4963","10/13/14 11:32","Testing Team","ALDOT",1
-"4964","10/13/14 11:40","Testing Team","ALDOT",1
-"4965","10/13/14 11:42","Testing Team","ALDOT",1
-"4966","10/13/14 11:46","Testing Team","ALDOT",1
-"4967","10/13/14 11:52","Testing Team","ALDOT",1
-"4968","10/13/14 12:35","Testing Team","ALDOT",1
-"4969","10/13/14 12:36","Testing Team","ALDOT",1
-"4970","10/13/14 12:42","Testing Team","ALDOT",1
-"4971","10/13/14 12:47","Testing Team","ALDOT",1
-"4972","10/13/14 12:48","Testing Team","ALDOT",1
-"4973","10/13/14 12:52","Testing Team","ALDOT",2
-"4974","10/13/14 12:53","Testing Team","ALDOT",1
-"4975","10/13/14 12:54","Testing Team","ALDOT",1
-"4976","10/13/14 12:55","Testing Team","ALDOT",1
-"4977","10/13/14 12:57","Testing Team","ALDOT",2
-"4978","10/13/14 13:00","Testing Team","ALDOT",1
-"4979","10/13/14 13:01","Testing Team","ALDOT",1
-"4980","10/13/14 13:15","Testing Team","ALDOT",1
-"4981","10/13/14 14:13","Testing Team","ALDOT",1
-"4982","10/13/14 14:14","Testing Team","ALDOT",1
-"4983","10/13/14 15:33","Testing Team","ALDOT",1
-"4984","10/14/14 10:22","Testing Team","ALDOT",1
-"4985","10/15/14 9:10","Testing Team","ALDOT",1
-"4986","10/16/14 10:43","Testing Team","ALDOT",1
-"4987","10/16/14 10:44","Testing Team","ALDOT",2
-"4988","10/16/14 11:40","Testing Team","ALDOT",1
-"4989","10/16/14 9:16","Testing Team","ALDOT",1
-"4990","10/16/14 9:18","Testing Team","ALDOT",1
-"4991","10/16/14 9:24","Testing Team","ALDOT",1
-"4997","10/20/14 7:45","Testing Team","ALDOT",1
-"4998","10/23/14 10:00","Testing Team","ALDOT",1
-"4999","10/23/14 10:01","Testing Team","ALDOT",1
-"5000","10/23/14 10:11","Testing Team","ALDOT",1
-"5001","10/23/14 10:15","Testing Team","ALDOT",1
-"5002","10/23/14 10:16","Testing Team","ALDOT",1
-"5003","10/23/14 9:31","Testing Team","ALDOT",1
-"5009","10/30/14 11:02","Testing Team","ALDOT",1
-"5010","10/30/14 11:04","Testing Team","ALDOT",2
-"5011","10/30/14 11:05","Testing Team","ALDOT",1
-"5012","10/30/14 11:09","Testing Team","ALDOT",2
-"5013","10/30/14 11:18","Testing Team","ALDOT",1
-"5014","10/30/14 11:19","Testing Team","ALDOT",1
-"5015","10/30/14 11:22","Testing Team","ALDOT",3
-"5016","10/30/14 11:25","Testing Team","ALDOT",1
-"5017","10/30/14 11:27","Testing Team","ALDOT",1
-"5018","10/30/14 11:30","Testing Team","ALDOT",1
-"5039","11/13/14 11:19","Testing Team","ALDOT",1
-"5040","11/13/14 11:36","Testing Team","ALDOT",1
-"5041","11/13/14 11:37","Testing Team","ALDOT",1
-"5042","11/13/14 11:38","Testing Team","ALDOT",1
-"5043","11/13/14 11:39","Testing Team","ALDOT",2
-"5045","11/18/14 10:02","Testing Team","ALDOT",1
-"5046","11/18/14 10:04","Testing Team","ALDOT",1
-"5047","11/18/14 10:06","Testing Team","ALDOT",1
-"5048","11/18/14 10:07","Testing Team","ALDOT",2
-"5049","11/18/14 10:08","Testing Team","ALDOT",2
-"5050","11/18/14 10:11","Testing Team","ALDOT",1
-"5051","11/18/14 10:16","Testing Team","ALDOT",1
-"5056","11/19/14 10:57","Testing Team","ALDOT",1
-"5063","11/21/14 13:50","Testing Team","ALDOT",1
-"5064","11/21/14 13:51","Testing Team","ALDOT",2
-"5065","11/21/14 13:53","Testing Team","ALDOT",1
-"5066","11/21/14 13:56","Testing Team","ALDOT",1
-"5068","11/24/14 14:09","Testing Team","ALDOT",1
-"5070","11/4/14 10:03","Testing Team","ALDOT",1
-"5071","11/4/14 9:56","Testing Team","ALDOT",1
-"5072","11/4/14 9:57","Testing Team","ALDOT",2
-"5073","11/4/14 9:58","Testing Team","ALDOT",1
-"5075","12/1/14 9:22","Testing Team","ALDOT",2
-"5077","12/1/14 9:25","Testing Team","ALDOT",1
-"5083","12/17/14 14:21","Testing Team","ALDOT",1
-"5084","12/17/14 9:19","Testing Team","ALDOT",1
-"5085","12/17/14 9:23","Testing Team","ALDOT",1
-"5086","12/17/14 9:25","Testing Team","ALDOT",1
-"5087","12/17/14 9:26","Testing Team","ALDOT",1
-"5088","12/17/14 9:35","Testing Team","ALDOT",1
-"5089","12/18/14 9:14","Testing Team","ALDOT",1
-"5090","12/18/14 9:58","Testing Team","ALDOT",1
-"5130","2/3/15 15:38","Testing Team","ALDOT",51
-"5133","2/3/15 15:41","Testing Team","ALDOT",5
-"5178","7/13/15 9:42","Testing Team","ALDOT",1
-"5212","8/15/12 14:28","Testing Team","ALDOT",1
-"5261","9/2/14 10:01","Testing Team","ALDOT",1
-"5262","9/2/14 10:06","Testing Team","ALDOT",1
-"5263","9/2/14 10:17","Testing Team","ALDOT",2
-"5264","9/2/14 10:20","Testing Team","ALDOT",1
-"5265","9/2/14 10:24","Testing Team","ALDOT",1
-"5266","9/2/14 10:25","Testing Team","ALDOT",1
-"5267","9/2/14 10:30","Testing Team","ALDOT",1
-"5268","9/2/14 10:31","Testing Team","ALDOT",1
-"5269","9/2/14 10:33","Testing Team","ALDOT",1
-"5270","9/2/14 10:34","Testing Team","ALDOT",1
-"5271","9/2/14 10:35","Testing Team","ALDOT",2
-"5272","9/2/14 10:36","Testing Team","ALDOT",1
-"5273","9/2/14 10:40","Testing Team","ALDOT",1
-"5274","9/2/14 10:47","Testing Team","ALDOT",1
-"5275","9/2/14 10:49","Testing Team","ALDOT",2
-"5276","9/2/14 10:50","Testing Team","ALDOT",1
-"5277","9/2/14 10:52","Testing Team","ALDOT",1
-"5278","9/2/14 10:53","Testing Team","ALDOT",1
-"5279","9/2/14 10:54","Testing Team","ALDOT",1
-"5280","9/2/14 11:11","Testing Team","ALDOT",1
-"5281","9/2/14 11:28","Testing Team","ALDOT",1
-"5282","9/2/14 11:49","Testing Team","ALDOT",1
-"5283","9/2/14 11:53","Testing Team","ALDOT",1
-"5284","9/2/14 15:06","Testing Team","ALDOT",1
-"5285","9/2/14 9:36","Testing Team","ALDOT",1
-"5286","9/2/14 9:37","Testing Team","ALDOT",1
-"5287","9/2/14 9:38","Testing Team","ALDOT",1
-"5288","9/2/14 9:40","Testing Team","ALDOT",1
-"5289","9/2/14 9:42","Testing Team","ALDOT",1
-"5290","9/2/14 9:44","Testing Team","ALDOT",3
-"5291","9/2/14 9:46","Testing Team","ALDOT",1
-"5292","9/2/14 9:48","Testing Team","ALDOT",1
-"5293","9/2/14 9:52","Testing Team","ALDOT",1
-"5294","9/2/14 9:53","Testing Team","ALDOT",1
-"5295","9/2/14 9:54","Testing Team","ALDOT",1
-"5296","9/2/14 9:59","Testing Team","ALDOT",1
-"5304","9/3/14 10:34","Testing Team","ALDOT",1
-"5305","9/3/14 10:47","Testing Team","ALDOT",1
-"5306","9/3/14 12:21","Testing Team","ALDOT",1
-"5307","9/3/14 12:25","Testing Team","ALDOT",1
-"5308","9/3/14 12:27","Testing Team","ALDOT",1
-"5309","9/3/14 12:28","Testing Team","ALDOT",1
-"5310","9/3/14 12:31","Testing Team","ALDOT",1
-"5311","9/3/14 13:00","Testing Team","ALDOT",1
-"5312","9/3/14 13:03","Testing Team","ALDOT",1
-"5313","9/3/14 13:09","Testing Team","ALDOT",1
-"5314","9/3/14 13:19","Testing Team","ALDOT",1
-"5315","9/3/14 15:26","Testing Team","ALDOT",1
-"5320","9/8/14 13:49","Testing Team","ALDOT",1
-"5321","9/8/14 13:52","Testing Team","ALDOT",1
-"5322","9/8/14 16:09","Testing Team","ALDOT",1
-"5323","9/8/14 7:56","Testing Team","ALDOT",1
-"5324","9/8/14 8:23","Testing Team","ALDOT",1
-"5325","9/8/14 8:57","Testing Team","ALDOT",1
-"5326","9/8/14 8:59","Testing Team","ALDOT",1
-"5327","9/9/14 7:49","Testing Team","ALDOT",1
-"5328","9/9/14 8:00","Testing Team","ALDOT",1
-"8495","8/18/15 9:18","George Darling","DOT Next",1
-"8497","8/24/15 10:12","George Darling","DOT Next",1
-"13913","9/28/15 10:47","Eric Green","DREAMaps Online",2
-"14279","9/18/15 14:20","George Darling","DREAMaps Online",1
-"16505","10/5/15 16:55","Testing Team","DREAMaps Online",1
-"17633","1/10/12 16:59","Brian Conley","NDOT - IRWIN",1
-"17635","1/14/13 8:27","Brian Conley","NDOT - IRWIN",1
-"17650","1/24/13 15:39","Brian Conley","NDOT - IRWIN",1
-"17652","1/24/13 15:41","Brian Conley","NDOT - IRWIN",1
-"17656","1/29/14 10:57","Brian Conley","NDOT - IRWIN",1
-"17657","1/3/13 11:44","Brian Conley","NDOT - IRWIN",1
-"17658","1/3/13 13:28","Brian Conley","NDOT - IRWIN",1
-"17659","1/3/13 13:33","Brian Conley","NDOT - IRWIN",1
-"17662","1/9/12 15:32","Brian Conley","NDOT - IRWIN",1
-"17663","10/11/11 17:13","Brian Conley","NDOT - IRWIN",1
-"17664","10/11/11 18:59","Brian Conley","NDOT - IRWIN",1
-"17730","10/4/12 16:05","Brian Conley","NDOT - IRWIN",1
-"17731","10/5/12 10:18","Brian Conley","NDOT - IRWIN",1
-"17732","10/5/12 10:31","Brian Conley","NDOT - IRWIN",1
-"17733","10/5/12 9:43","Brian Conley","NDOT - IRWIN",1
-"17736","10/7/13 18:28","Brian Conley","NDOT - IRWIN",1
-"17738","10/7/13 18:31","Brian Conley","NDOT - IRWIN",1
-"17739","10/7/13 18:32","Brian Conley","NDOT - IRWIN",1
-"17740","10/7/13 18:33","Brian Conley","NDOT - IRWIN",1
-"17742","10/7/13 18:36","Brian Conley","NDOT - IRWIN",1
-"17743","10/7/13 18:37","Brian Conley","NDOT - IRWIN",1
-"17744","10/7/13 18:38","Brian Conley","NDOT - IRWIN",1
-"17746","11/11/11 11:28","Brian Conley","NDOT - IRWIN",1
-"17747","11/11/11 13:19","Brian Conley","NDOT - IRWIN",1
-"17802","12/7/11 14:55","Brian Conley","NDOT - IRWIN",1
-"17803","12/8/11 10:08","Brian Conley","NDOT - IRWIN",1
-"17804","12/8/11 10:35","Brian Conley","NDOT - IRWIN",1
-"17806","12/8/11 15:02","Brian Conley","NDOT - IRWIN",1
-"17815","2/15/13 15:48","Brian Conley","NDOT - IRWIN",1
-"17816","2/20/12 8:18","Brian Conley","NDOT - IRWIN",1
-"17817","2/20/12 8:19","Brian Conley","NDOT - IRWIN",1
-"17820","2/21/13 11:12","Brian Conley","NDOT - IRWIN",1
-"17821","2/21/13 11:14","Brian Conley","NDOT - IRWIN",1
-"17825","2/21/13 15:52","Brian Conley","NDOT - IRWIN",1
-"17826","2/21/13 16:15","Brian Conley","NDOT - IRWIN",1
-"17827","2/21/13 16:16","Brian Conley","NDOT - IRWIN",2
-"17828","2/21/13 16:18","Brian Conley","NDOT - IRWIN",1
-"17829","2/21/13 16:20","Brian Conley","NDOT - IRWIN",1
-"17837","2/3/15 15:33","Brian Conley","NDOT - IRWIN",4
-"17838","2/3/15 15:34","Brian Conley","NDOT - IRWIN",19
-"17852","3/19/12 12:46","Brian Conley","NDOT - IRWIN",1
-"17853","3/20/12 14:03","Brian Conley","NDOT - IRWIN",1
-"17854","3/4/14 9:21","Brian Conley","NDOT - IRWIN",1
-"17856","3/8/12 14:15","Brian Conley","NDOT - IRWIN",1
-"17857","4/13/12 16:01","Brian Conley","NDOT - IRWIN",1
-"17859","4/5/12 9:55","Brian Conley","NDOT - IRWIN",1
-"17866","5/27/11 15:57","Brian Conley","NDOT - IRWIN",1
-"17870","6/2/11 15:39","Brian Conley","NDOT - IRWIN",1
-"17873","7/12/13 10:08","Brian Conley","NDOT - IRWIN",1
-"17874","7/12/13 10:10","Brian Conley","NDOT - IRWIN",1
-"17876","7/13/11 13:43","Brian Conley","NDOT - IRWIN",1
-"17895","7/17/12 17:59","Brian Conley","NDOT - IRWIN",1
-"17896","7/25/11 17:22","Brian Conley","NDOT - IRWIN",1
-"17897","7/25/11 21:34","Brian Conley","NDOT - IRWIN",1
-"17899","7/27/11 15:43","Brian Conley","NDOT - IRWIN",1
-"17900","7/27/12 14:22","Brian Conley","NDOT - IRWIN",1
-"17901","7/30/13 16:58","Brian Conley","NDOT - IRWIN",1
-"17902","7/31/12 10:40","Brian Conley","NDOT - IRWIN",1
-"17903","7/31/12 10:43","Brian Conley","NDOT - IRWIN",1
-"17905","7/7/11 18:12","Brian Conley","NDOT - IRWIN",1
-"17914","8/12/13 10:42","Brian Conley","NDOT - IRWIN",1
-"17923","8/15/13 14:58","Brian Conley","NDOT - IRWIN",1
-"17926","8/2/11 20:40","Brian Conley","NDOT - IRWIN",1
-"17948","8/28/12 10:06","Brian Conley","NDOT - IRWIN",1
-"17951","8/30/12 11:04","Brian Conley","NDOT - IRWIN",1
-"17956","8/6/11 23:45","Brian Conley","NDOT - IRWIN",1
-"17958","9/10/13 16:44","Brian Conley","NDOT - IRWIN",1
-"17959","9/13/12 14:40","Brian Conley","NDOT - IRWIN",1
-"17960","9/13/12 15:25","Brian Conley","NDOT - IRWIN",1
-"18007","9/21/11 9:16","Brian Conley","NDOT - IRWIN",1
-"20096","1/19/15 14:26","James Perry","NDOT - IRWIN",1
-"20097","1/19/15 14:28","James Perry","NDOT - IRWIN",1
-"20121","1/7/15 8:18","James Perry","NDOT - IRWIN",1
-"20231","11/20/14 10:47","James Perry","NDOT - IRWIN",1
-"20249","12/16/14 10:01","James Perry","NDOT - IRWIN",1
-"20250","12/16/14 10:02","James Perry","NDOT - IRWIN",1
-"20251","12/16/14 10:04","James Perry","NDOT - IRWIN",1
-"20252","12/16/14 9:59","James Perry","NDOT - IRWIN",1
-"20261","12/5/14 9:45","James Perry","NDOT - IRWIN",1
-"20296","2/3/15 15:09","James Perry","NDOT - IRWIN",1
-"20298","2/3/15 15:34","James Perry","NDOT - IRWIN",1
-"20299","2/3/15 15:35","James Perry","NDOT - IRWIN",5
-"21521","2/23/12 16:26","Mani Radhaji","NDOT - IRWIN",1
-"21994","7/16/15 8:11","Paul Fuller","NDOT - IRWIN",1
-"22052","8/31/15 10:23","Paul Fuller","NDOT - IRWIN",2
-"22053","8/31/15 10:24","Paul Fuller","NDOT - IRWIN",1
-"22064","9/14/15 9:45","Paul Fuller","NDOT - IRWIN",1
-"22065","9/14/15 9:46","Paul Fuller","NDOT - IRWIN",1
-"22113","9/28/15 10:47","Paul Fuller","NDOT - IRWIN",1
-"22170","1/7/15 15:58","Testing Team","NDOT - IRWIN",1
-"22282","11/20/14 8:47","Testing Team","NDOT - IRWIN",1
-"22347","2/3/15 15:33","Testing Team","NDOT - IRWIN",8
-"22348","2/3/15 15:34","Testing Team","NDOT - IRWIN",42
-"22349","2/3/15 15:35","Testing Team","NDOT - IRWIN",7
-"24983","9/28/15 10:47","David McReynolds","SDS Projects",1
-"33549","9/18/15 14:20","Paul Fuller","WashDOT",1
+"","days","Assignee","Project","Freq"
+"14","02/13/13","Bibin Kumar","ALDOT",4
+"136","02/26/13","Brian Conley","ALDOT",1
+"240","01/22/15","Caleb Goff","ALDOT",1
+"331","11/12/14","Caleb Goff","ALDOT",1
+"334","11/18/14","Caleb Goff","ALDOT",1
+"339","11/21/14","Caleb Goff","ALDOT",1
+"342","12/01/14","Caleb Goff","ALDOT",1
+"429","10/11/12","Corey Arnold","ALDOT",1
+"599","02/25/13","Eric Green","ALDOT",1
+"600","02/26/13","Eric Green","ALDOT",1
+"613","06/12/13","Eric Green","ALDOT",1
+"614","06/18/13","Eric Green","ALDOT",1
+"652","09/25/12","Eric Green","ALDOT",1
+"653","09/26/12","Eric Green","ALDOT",1
+"666","10/17/12","Eric Green","ALDOT",1
+"667","10/18/12","Eric Green","ALDOT",1
+"668","10/19/12","Eric Green","ALDOT",3
+"672","10/26/12","Eric Green","ALDOT",1
+"674","10/31/12","Eric Green","ALDOT",1
+"675","11/01/12","Eric Green","ALDOT",1
+"683","11/19/12","Eric Green","ALDOT",1
+"685","11/20/12","Eric Green","ALDOT",2
+"689","11/27/12","Eric Green","ALDOT",1
+"734","07/13/15","George Darling","ALDOT",1
+"753","08/31/15","George Darling","ALDOT",1
+"764","09/15/15","George Darling","ALDOT",1
+"770","09/28/15","George Darling","ALDOT",2
+"981","08/26/15","Kevin Kieliszek","ALDOT",4
+"983","08/28/15","Kevin Kieliszek","ALDOT",1
+"985","08/31/15","Kevin Kieliszek","ALDOT",1
+"986","09/01/15","Kevin Kieliszek","ALDOT",1
+"992","09/09/15","Kevin Kieliszek","ALDOT",1
+"995","09/14/15","Kevin Kieliszek","ALDOT",1
+"996","09/15/15","Kevin Kieliszek","ALDOT",1
+"1006","10/05/15","Kevin Kieliszek","ALDOT",1
+"1054","01/27/15","Lee Jones","ALDOT",1
+"1105","09/04/14","Lee Jones","ALDOT",4
+"1141","11/07/14","Lee Jones","ALDOT",1
+"1172","02/03/15","Mani Radhaji","ALDOT",2
+"1173","02/12/13","Mani Radhaji","ALDOT",1
+"1174","02/13/13","Mani Radhaji","ALDOT",5
+"1183","03/11/13","Mani Radhaji","ALDOT",1
+"1184","03/12/13","Mani Radhaji","ALDOT",2
+"1188","04/06/14","Mani Radhaji","ALDOT",1
+"1192","06/07/12","Mani Radhaji","ALDOT",1
+"1193","06/12/13","Mani Radhaji","ALDOT",4
+"1229","09/17/12","Mani Radhaji","ALDOT",1
+"1235","10/03/12","Mani Radhaji","ALDOT",1
+"1251","10/25/12","Mani Radhaji","ALDOT",2
+"1252","10/26/12","Mani Radhaji","ALDOT",2
+"1261","11/15/12","Mani Radhaji","ALDOT",1
+"1263","11/19/12","Mani Radhaji","ALDOT",2
+"1265","11/20/12","Mani Radhaji","ALDOT",2
+"1399","01/21/15","Testing Team","ALDOT",11
+"1404","02/03/15","Testing Team","ALDOT",56
+"1430","07/13/15","Testing Team","ALDOT",1
+"1441","08/15/12","Testing Team","ALDOT",1
+"1451","09/02/14","Testing Team","ALDOT",41
+"1452","09/03/14","Testing Team","ALDOT",12
+"1454","09/08/14","Testing Team","ALDOT",7
+"1455","09/09/14","Testing Team","ALDOT",2
+"1474","10/13/14","Testing Team","ALDOT",31
+"1475","10/14/14","Testing Team","ALDOT",1
+"1476","10/15/14","Testing Team","ALDOT",1
+"1477","10/16/14","Testing Team","ALDOT",7
+"1481","10/20/14","Testing Team","ALDOT",1
+"1482","10/23/14","Testing Team","ALDOT",6
+"1485","10/30/14","Testing Team","ALDOT",14
+"1488","11/04/14","Testing Team","ALDOT",5
+"1492","11/13/14","Testing Team","ALDOT",6
+"1494","11/18/14","Testing Team","ALDOT",9
+"1496","11/19/14","Testing Team","ALDOT",1
+"1499","11/21/14","Testing Team","ALDOT",5
+"1500","11/24/14","Testing Team","ALDOT",1
+"1502","12/01/14","Testing Team","ALDOT",3
+"1507","12/17/14","Testing Team","ALDOT",6
+"1508","12/18/14","Testing Team","ALDOT",2
+"2371","08/18/15","George Darling","DOT Next",1
+"2372","08/24/15","George Darling","DOT Next",1
+"3902","09/28/15","Eric Green","DREAMaps Online",2
+"4014","09/18/15","George Darling","DREAMaps Online",1
+"4718","10/05/15","Testing Team","DREAMaps Online",1
+"4989","01/03/13","Brian Conley","NDOT - IRWIN",3
+"4991","01/09/12","Brian Conley","NDOT - IRWIN",1
+"4992","01/10/12","Brian Conley","NDOT - IRWIN",1
+"4993","01/14/13","Brian Conley","NDOT - IRWIN",1
+"4997","01/24/13","Brian Conley","NDOT - IRWIN",2
+"4999","01/29/14","Brian Conley","NDOT - IRWIN",1
+"5000","02/03/15","Brian Conley","NDOT - IRWIN",23
+"5003","02/15/13","Brian Conley","NDOT - IRWIN",1
+"5004","02/20/12","Brian Conley","NDOT - IRWIN",2
+"5005","02/21/13","Brian Conley","NDOT - IRWIN",8
+"5009","03/04/14","Brian Conley","NDOT - IRWIN",1
+"5010","03/08/12","Brian Conley","NDOT - IRWIN",1
+"5013","03/19/12","Brian Conley","NDOT - IRWIN",1
+"5014","03/20/12","Brian Conley","NDOT - IRWIN",1
+"5015","04/05/12","Brian Conley","NDOT - IRWIN",1
+"5017","04/13/12","Brian Conley","NDOT - IRWIN",1
+"5018","05/27/11","Brian Conley","NDOT - IRWIN",1
+"5019","06/02/11","Brian Conley","NDOT - IRWIN",1
+"5023","07/07/11","Brian Conley","NDOT - IRWIN",1
+"5024","07/12/13","Brian Conley","NDOT - IRWIN",2
+"5025","07/13/11","Brian Conley","NDOT - IRWIN",1
+"5028","07/17/12","Brian Conley","NDOT - IRWIN",1
+"5029","07/25/11","Brian Conley","NDOT - IRWIN",2
+"5030","07/27/11","Brian Conley","NDOT - IRWIN",1
+"5031","07/27/12","Brian Conley","NDOT - IRWIN",1
+"5032","07/30/13","Brian Conley","NDOT - IRWIN",1
+"5033","07/31/12","Brian Conley","NDOT - IRWIN",2
+"5034","08/02/11","Brian Conley","NDOT - IRWIN",1
+"5035","08/06/11","Brian Conley","NDOT - IRWIN",1
+"5036","08/12/13","Brian Conley","NDOT - IRWIN",1
+"5038","08/15/13","Brian Conley","NDOT - IRWIN",1
+"5042","08/28/12","Brian Conley","NDOT - IRWIN",1
+"5044","08/30/12","Brian Conley","NDOT - IRWIN",1
+"5053","09/10/13","Brian Conley","NDOT - IRWIN",1
+"5054","09/13/12","Brian Conley","NDOT - IRWIN",2
+"5059","09/21/11","Brian Conley","NDOT - IRWIN",1
+"5064","10/04/12","Brian Conley","NDOT - IRWIN",1
+"5065","10/05/12","Brian Conley","NDOT - IRWIN",3
+"5067","10/07/13","Brian Conley","NDOT - IRWIN",7
+"5068","10/11/11","Brian Conley","NDOT - IRWIN",2
+"5086","11/11/11","Brian Conley","NDOT - IRWIN",2
+"5100","12/07/11","Brian Conley","NDOT - IRWIN",1
+"5101","12/08/11","Brian Conley","NDOT - IRWIN",3
+"5686","01/07/15","James Perry","NDOT - IRWIN",1
+"5690","01/19/15","James Perry","NDOT - IRWIN",2
+"5696","02/03/15","James Perry","NDOT - IRWIN",7
+"5790","11/20/14","James Perry","NDOT - IRWIN",1
+"5795","12/05/14","James Perry","NDOT - IRWIN",1
+"5798","12/16/14","James Perry","NDOT - IRWIN",4
+"6050","02/23/12","Mani Radhaji","NDOT - IRWIN",1
+"6187","07/16/15","Paul Fuller","NDOT - IRWIN",1
+"6205","08/31/15","Paul Fuller","NDOT - IRWIN",3
+"6215","09/14/15","Paul Fuller","NDOT - IRWIN",2
+"6222","09/28/15","Paul Fuller","NDOT - IRWIN",1
+"6266","01/07/15","Testing Team","NDOT - IRWIN",1
+"6276","02/03/15","Testing Team","NDOT - IRWIN",57
+"6370","11/20/14","Testing Team","NDOT - IRWIN",1
+"7034","09/28/15","David McReynolds","SDS Projects",1
+"9466","09/18/15","Paul Fuller","WashDOT",1
