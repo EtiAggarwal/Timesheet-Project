@@ -51,7 +51,10 @@ View(mytable)
 finalcsv =subset(as.data.frame(mytable),Freq !=0)
 write.csv(finalcsv, file= "freq.csv")
 #write.table(mytable, file ="table.csv", sep = ",")
-write.csv(as.data.frame.matrix(mytable),file="table.csv")
+#write.csv(as.data.frame.matrix(mytable),file="table.csv")
+thing2=as.data.frame.matrix(mytable)
+thing2$Date=rownames(thing2 )
+write.csv(thing2,file="horribleTable.csv")
 #write (apply(finalcsv,1, function(x){toJSON(x)}), "freq.json")
 htmlhead <- 
   '<!DOCTYPE html>
