@@ -14,8 +14,12 @@ namespace TimeSheet
             if (!Page.IsPostBack)
             {
                 Session["EmployeeId"] = "101";
-                calMonthView.SelectedDate = DateTime.Now;
+                calMonthView.SelectedDate = DateTime.Now.Date;
+                lbAddFormDate.Text = calMonthView.SelectedDate.ToString("MM/dd/yyyy");
+                lbViewSummaryDate.Text = calMonthView.SelectedDate.ToString("MM/dd/yyyy");
+                ddlTask.Enabled = false;
             }
+           
         }
 
         protected void btAddNewEntry_Click(object sender, EventArgs e)
@@ -29,16 +33,32 @@ namespace TimeSheet
         {
             try
             {
-                JiraAccessLayer jal = new JiraAccessLayer();
-                ddlTask.DataSource = jal.GetIssuesForProject(ddlProject.SelectedItem.Value);
-                ddlTask.DataTextField = "ProxyKey";
-                ddlTask.DataValueField = "ProxyKey";
-                ddlTask.DataBind();
+                if (ddlProject.SelectedItem.Value != "--Select--")
+                {
+                    JiraAccessLayer jal = new JiraAccessLayer();
+                    ddlTask.DataSource = jal.GetIssuesForProject(ddlProject.SelectedItem.Value);
+                    ddlTask.DataTextField = "ProxyKey";
+                    ddlTask.DataValueField = "ProxyKey";
+                    ddlTask.DataBind();
+                    ddlTask.Enabled = true;
+                }
+                else
+                {
+                    ddlTask.Enabled = false;
+                    ddlTask.Items.Clear();
+                    ddlTask.DataSource = null;
+                    ddlTask.DataBind();
+                }
             }
             catch
             {
                 throw;
             }
+        }
+
+        protected void ddlProject_DataBound(object sender, EventArgs e)
+        {
+            ddlProject.Items.Insert(0, "--Select--");
         }
     }
 }

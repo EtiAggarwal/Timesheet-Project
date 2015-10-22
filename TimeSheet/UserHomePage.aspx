@@ -39,9 +39,16 @@
 
     </div>
     <div class="col-md-9">
+
+        <asp:RequiredFieldValidator ID="rfvProject" runat="server" ErrorMessage="*No Project Selected" ControlToValidate="ddlProject" InitialValue="--Select--" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="rfvTotalHours" runat="server" ErrorMessage="*No. of Hours Not Entered" ControlToValidate="tbHours" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="regValTotalHours" runat="server" ErrorMessage="*Invalid Number of Hours" ControlToValidate="tbHours" ForeColor="Red" Display="Dynamic" ValidationExpression="^\d*\.?\d*$"></asp:RegularExpressionValidator>
+        <asp:RangeValidator ID="rangeValTotalHours" runat="server" ErrorMessage="*Hours Should Be > 0 and < 24" ControlToValidate="tbHours" ForeColor="Red" MaximumValue="24" MinimumValue="0.0000001" Type="Double"></asp:RangeValidator>
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Add new Entries for &ltdate&gt</h3>
+                <h3 class="panel-title">Add new Entries for
+                    <asp:Label ID="lbAddFormDate" runat="server" Text="Label"></asp:Label>
+                </h3>
             </div>
             <div class="panel-body" style="padding-bottom: 5px">
 
@@ -55,7 +62,10 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:DropDownList ID="ddlProject" runat="server" CssClass="form-control input-sm" AutoPostBack="True" DataSourceID="odsGetAllProjectsFromJira" DataTextField="Name" DataValueField="Id" OnSelectedIndexChanged="ddlProject_SelectedIndexChanged" />
+                            <asp:DropDownList ID="ddlProject" runat="server" CssClass="form-control input-sm" AutoPostBack="True" DataSourceID="odsGetAllProjectsFromJira" DataTextField="Name"
+                                 DataValueField="Id" OnSelectedIndexChanged="ddlProject_SelectedIndexChanged" OnDataBound="ddlProject_DataBound" CausesValidation="false" >
+                            
+                            </asp:DropDownList>
 
 
                         </td>
@@ -105,7 +115,9 @@
         </div>
         <div class="panel panel-success">
             <div class="panel-heading">
-                <h3 class="panel-title">Time Sheet Entries for &ltdate&gt</h3>
+                <h3 class="panel-title">Time Sheet Entries for
+                    <asp:Label ID="lbViewSummaryDate" runat="server" Text="Label"></asp:Label>
+                </h3>
             </div>
             <div class="panel-body" style="padding-bottom: 5px">
                 <asp:GridView ID="grvTimeEntriesForDay" runat="server" AutoGenerateColumns="False"
@@ -113,7 +125,7 @@
                     <Columns>
                         <asp:BoundField HeaderText="Project" DataField="PROJECT_NAME" InsertVisible="false" ReadOnly="true"/>
                         <asp:BoundField HeaderText="Task" DataField="TASK_JIRA_ISSUE_PROXY_KEY"  InsertVisible="false" ReadOnly="true"/>
-                        <asp:BoundField HeaderText="Hours" DataField="HOURS_PER_DAY"  />
+                        <asp:BoundField HeaderText="Hours" DataField="HOURS_PER_DAY"  DataFormatString="{0:F2}" />
                         <asp:BoundField DataField="COMMENTS" HeaderText="Comments" />
                         <asp:CommandField ShowEditButton="True" ButtonType="Link" EditText="<i aria-hidden='true' class='glyphicon glyphicon-pencil'></i>"
                             CancelText="<i aria-hidden='true' class='glyphicon glyphicon-remove-circle'></i>" UpdateText="<i aria-hidden='true' class='glyphicon glyphicon-ok'></i>" />
@@ -125,9 +137,10 @@
         </div>
     </div>
     <asp:ObjectDataSource ID="odsGetAllProjectsFromJira" runat="server" SelectMethod="GetProjects" TypeName="TimeSheet.APP_CODE.DAL.JiraAccessLayer"></asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="odsTimeEntriesForDay" runat="server" SelectMethod="GetTimeSheetForEmp" TypeName="TimeSheet.APP_CODE.DAL.DataAccessLayer">
+    <asp:ObjectDataSource ID="odsTimeEntriesForDay" runat="server" SelectMethod="GetTimeSheetForEmpForDate" TypeName="TimeSheet.APP_CODE.DAL.DataAccessLayer">
         <SelectParameters>
             <asp:SessionParameter Name="empId" SessionField="EmployeeId" Type="String" />
+            <asp:ControlParameter ControlID="calMonthView" Name="date" PropertyName='SelectedDate' Type="DateTime" />
         </SelectParameters>
     </asp:ObjectDataSource>
 </asp:Content>

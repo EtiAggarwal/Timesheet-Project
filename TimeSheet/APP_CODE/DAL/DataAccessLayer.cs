@@ -45,6 +45,24 @@ namespace TimeSheet.APP_CODE.DAL
             }
         }
 
+        public DataTable GetTimeSheetForEmpForDate(String empId, DateTime date)
+        {
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SQL_GET_TIMESHEET_FOR_EMP_FOR_DATE, con);
+                selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", empId);
+                selectCommand.Parameters.AddWithValue("@TDATE", date.ToString("MM/dd/yyyy"));
+                SqlDataAdapter sqlAdapter = new SqlDataAdapter(selectCommand);
+                DataTable dt = new DataTable();
+                sqlAdapter.Fill(dt);
+                return dt;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
         public int? addTimeSheet(String empId,int projectId, String projectName, String task_jira_proxy_key,String timesheetDate, float hrsPerDay, String comments)
         {
             int? ret = null;

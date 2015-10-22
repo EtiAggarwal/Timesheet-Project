@@ -40,6 +40,51 @@ namespace TimeSheet {
         protected global::System.Web.UI.WebControls.Calendar calMonthView;
         
         /// <summary>
+        /// rfvProject control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvProject;
+        
+        /// <summary>
+        /// rfvTotalHours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTotalHours;
+        
+        /// <summary>
+        /// regValTotalHours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regValTotalHours;
+        
+        /// <summary>
+        /// rangeValTotalHours control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator rangeValTotalHours;
+        
+        /// <summary>
+        /// lbAddFormDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbAddFormDate;
+        
+        /// <summary>
         /// ddlProject control.
         /// </summary>
         /// <remarks>
@@ -83,6 +128,15 @@ namespace TimeSheet {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btAddNewEntry;
+        
+        /// <summary>
+        /// lbViewSummaryDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbViewSummaryDate;
         
         /// <summary>
         /// grvTimeEntriesForDay control.
