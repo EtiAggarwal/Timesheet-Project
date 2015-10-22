@@ -60,5 +60,31 @@ namespace TimeSheet
         {
             ddlProject.Items.Insert(0, "--Select--");
         }
+
+        protected void calMonthView_SelectionChanged(object sender, EventArgs e)
+        {
+            //on change of date on calendar clear the selected values in dropdowns
+            ddlProject.SelectedIndex = 0;
+            ddlTask.Items.Clear();
+            ddlTask.Enabled = false;
+        }
+
+        protected void lbtQuickPrevDay_Click(object sender, EventArgs e)
+        {
+            //on quick view prev day move to the prev day and clear selected values
+            calMonthView.SelectedDate = calMonthView.SelectedDate.Date.AddDays(-1);
+            ddlProject.SelectedIndex = 0;
+            ddlTask.Items.Clear();
+            ddlTask.Enabled = false;
+        }
+
+        protected void lbtQuickNextDay_Click(object sender, EventArgs e)
+        {
+            //on quick view next day move to the next day and clear selected values
+            calMonthView.SelectedDate = calMonthView.SelectedDate.Date.AddDays(1);
+            ddlProject.SelectedIndex = 0;
+            ddlTask.Items.Clear();
+            ddlTask.Enabled = false;
+        }
     }
 }

@@ -7,23 +7,23 @@
     <div class="col-md-3">
 
         <div class="well container-fluid">
-            <table align="center">
+            <table align="center" width="50%">
                 <tr>
-                    <td>
+                    <td align="center">
 
-                        <asp:LinkButton ID="lbtQuickPrevDay" runat="server" CssClass="btn btn-primary btn-xs">
-                  <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+                        <asp:LinkButton ID="lbtQuickPrevDay" runat="server" CssClass="btn btn-info btn-xs" CausesValidation="false" OnClick="lbtQuickPrevDay_Click">
+                  <span aria-hidden="true" class="glyphicon glyphicon-chevron-left" ></span>
                         </asp:LinkButton></td>
-                    <td>Qiuck View</td>
-                    <td>
-                        <asp:LinkButton ID="lbtQuickNextDay" runat="server" CssClass="btn btn-primary btn-xs">
+                    <td align="center"><b>Qiuck View</b></td>
+                    <td align="center">
+                        <asp:LinkButton ID="lbtQuickNextDay" runat="server" CssClass="btn btn-info btn-xs" CausesValidation="false" OnClick="lbtQuickNextDay_Click">
                   <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
                         </asp:LinkButton></td>
                 </tr>
             </table>
             <br />
             <asp:Calendar ID="calMonthView" runat="server" BackColor="White"
-                BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" Width="200px" Style="margin: auto">
+                BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" Width="200px" Style="margin: auto" OnSelectionChanged="calMonthView_SelectionChanged">
                 <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
                 <NextPrevStyle VerticalAlign="Bottom" />
                 <OtherMonthDayStyle ForeColor="#808080" />
@@ -39,11 +39,8 @@
 
     </div>
     <div class="col-md-9">
-
-        <asp:RequiredFieldValidator ID="rfvProject" runat="server" ErrorMessage="*No Project Selected" ControlToValidate="ddlProject" InitialValue="--Select--" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-        <asp:RequiredFieldValidator ID="rfvTotalHours" runat="server" ErrorMessage="*No. of Hours Not Entered" ControlToValidate="tbHours" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="regValTotalHours" runat="server" ErrorMessage="*Invalid Number of Hours" ControlToValidate="tbHours" ForeColor="Red" Display="Dynamic" ValidationExpression="^\d*\.?\d*$"></asp:RegularExpressionValidator>
-        <asp:RangeValidator ID="rangeValTotalHours" runat="server" ErrorMessage="*Hours Should Be > 0 and < 24" ControlToValidate="tbHours" ForeColor="Red" MaximumValue="24" MinimumValue="0.0000001" Type="Double"></asp:RangeValidator>
+        <asp:ValidationSummary ID="valSummary" ForeColor="Red" runat="server" />
+        
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">Add new Entries for
@@ -143,5 +140,9 @@
             <asp:ControlParameter ControlID="calMonthView" Name="date" PropertyName='SelectedDate' Type="DateTime" />
         </SelectParameters>
     </asp:ObjectDataSource>
+    <asp:RequiredFieldValidator ID="rfvProject" runat="server" ErrorMessage="No Project Selected" ControlToValidate="ddlProject" InitialValue="--Select--" ForeColor="Red" Display="None"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="rfvTotalHours" runat="server" ErrorMessage="No. of Hours Not Entered" ControlToValidate="tbHours" ForeColor="Red" Display="None"></asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="regValTotalHours" runat="server" ErrorMessage="Invalid Number of Hours" ControlToValidate="tbHours" ForeColor="Red" Display="None" ValidationExpression="^\d*\.?\d*$" ></asp:RegularExpressionValidator>
+        <asp:RangeValidator ID="rangeValTotalHours" runat="server" ErrorMessage="Hours Should Be > 0 and < 24" ControlToValidate="tbHours" ForeColor="Red" MaximumValue="24" MinimumValue="0.0000001" Type="Double" Display="None"></asp:RangeValidator>
 </asp:Content>
 

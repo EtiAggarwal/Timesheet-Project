@@ -37,7 +37,9 @@ namespace TimeSheet.APP_CODE.JIRA
             string data = null,
             string method = "GET")
         {
-            string url = string.Format("{0}{1}/", m_BaseUrl, resource.ToString());
+            try
+            {
+                string url = string.Format("{0}{1}/", m_BaseUrl, resource.ToString());
 
             if (argument != null)
             {
@@ -68,6 +70,11 @@ namespace TimeSheet.APP_CODE.JIRA
             }
 
             return result;
+            }
+            catch (WebException exp)
+            {
+                throw exp;
+            }
         }
 
         public List<ProjectDescription> GetProjects()
@@ -82,22 +89,35 @@ namespace TimeSheet.APP_CODE.JIRA
             string jql, 
             List<string> fields = null,
             int startAt = 0, 
-            int maxResult = 3000)
+            int maxResult = 1000)
         {
-            fields = fields ?? new List<string>{"summary", "status", "assignee"};
+            
+                fields = fields ?? new List<string> { "summary", "status", "assignee" };
+                int totalResult = 1;
+                int count = 0;
+                List<Issue> issues = new List<Issue>();
+                SearchRequest request = new SearchRequest();
+                List<Issue> tempList = new List<Issue>();
+                // to get all issues from JIRA (beyond initial 1000)
+                while (count < totalResult)
+                {
+                    request = new SearchRequest();
+                    request.Fields = fields;
+                    request.JQL = jql;
+                    request.MaxResults = maxResult;
+                    request.StartAt = count - 1;
 
-            SearchRequest request = new SearchRequest();
-            request.Fields = fields;
-            request.JQL = jql;
-            request.MaxResults = maxResult;
-            request.StartAt = startAt;
+                    string data = JsonConvert.SerializeObject(request);
+                    string result = RunQuery(JiraResource.search, data: data, method: "POST");
 
-            string data = JsonConvert.SerializeObject(request);
-            string result = RunQuery(JiraResource.search, data: data, method: "POST");
-
-            SearchResponse response = JsonConvert.DeserializeObject<SearchResponse>(result);
-
-            return response.IssueDescriptions;
+                    SearchResponse response = JsonConvert.DeserializeObject<SearchResponse>(result);
+                    totalResult = response.Total;
+                    tempList = response.IssueDescriptions;
+                    count += tempList.Count;
+                    issues.AddRange(tempList);
+                }
+                return issues;
+           
         }
 
         private string GetEncodedCredentials()

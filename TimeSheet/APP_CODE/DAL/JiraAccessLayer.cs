@@ -31,7 +31,7 @@ namespace TimeSheet.APP_CODE.DAL
             try
             {
                 JiraManager manager = new JiraManager("", "");
-                string jql = "project = " + projectKey;
+                string jql = "project = " + projectKey + " and ( status = 'Open' or status = 'In Progress' or status = 'Reopened' )";// or status = 'In Testing' or status = 'Additional Information Needed' or status = 'Testing Rejected' or status = 'In Progress – Paused' or status = 'To Do' or status = 'Code Complete' )";
                 List<Issue> issueDescriptions = manager.GetIssues(jql);
                 return issueDescriptions;
             }
