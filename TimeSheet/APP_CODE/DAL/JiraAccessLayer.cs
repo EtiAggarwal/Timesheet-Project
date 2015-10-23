@@ -26,7 +26,7 @@ namespace TimeSheet.APP_CODE.DAL
             }
         }
 
-        public IEnumerable GetIssuesForProject(String projectKey)
+        public List<Issue> GetIssuesForProject(String projectKey)
         {
             try
             {

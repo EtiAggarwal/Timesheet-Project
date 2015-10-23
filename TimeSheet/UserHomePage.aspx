@@ -39,8 +39,11 @@
 
     </div>
     <div class="col-md-9">
-        <asp:ValidationSummary ID="valSummary" ForeColor="Red" runat="server" />
-        
+        <asp:Panel  runat="server" id="messageDiv">
+ <asp:ValidationSummary ID="valSummary"  runat="server"  class = "alert alert-dismissible alert-danger" />
+            <asp:Label ID="lbMessage" runat="server" Text="" Visible="false"></asp:Label>
+     </asp:Panel>
+       
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">Add new Entries for
@@ -117,8 +120,8 @@
                 </h3>
             </div>
             <div class="panel-body" style="padding-bottom: 5px">
-                <asp:GridView ID="grvTimeEntriesForDay" runat="server" AutoGenerateColumns="False"
-                    CssClass="table table-striped table-hover table-condensed" DataSourceID="odsTimeEntriesForDay" AllowPaging="True" PageSize="5" DataKeyNames="ID">
+                <asp:GridView ID="grvTimeEntriesForDay" runat="server" AutoGenerateColumns="False" EmptyDataText="No Timesheet entries for the day"
+                    CssClass="table table-striped table-hover table-condensed" DataSourceID="odsTimeEntriesForDay"  DataKeyNames="ID">
                     <Columns>
                         <asp:BoundField HeaderText="Project" DataField="PROJECT_NAME" InsertVisible="false" ReadOnly="true"/>
                         <asp:BoundField HeaderText="Task" DataField="TASK_JIRA_ISSUE_PROXY_KEY"  InsertVisible="false" ReadOnly="true"/>
@@ -144,5 +147,6 @@
         <asp:RequiredFieldValidator ID="rfvTotalHours" runat="server" ErrorMessage="No. of Hours Not Entered" ControlToValidate="tbHours" ForeColor="Red" Display="None"></asp:RequiredFieldValidator>
         <asp:RegularExpressionValidator ID="regValTotalHours" runat="server" ErrorMessage="Invalid Number of Hours" ControlToValidate="tbHours" ForeColor="Red" Display="None" ValidationExpression="^\d*\.?\d*$" ></asp:RegularExpressionValidator>
         <asp:RangeValidator ID="rangeValTotalHours" runat="server" ErrorMessage="Hours Should Be > 0 and < 24" ControlToValidate="tbHours" ForeColor="Red" MaximumValue="24" MinimumValue="0.0000001" Type="Double" Display="None"></asp:RangeValidator>
+    <asp:RequiredFieldValidator ID="rfvTask" runat="server" ErrorMessage="No Task Selected" ControlToValidate="ddlTask" InitialValue="--Select--" Display="None"></asp:RequiredFieldValidator>
 </asp:Content>
 
