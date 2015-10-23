@@ -87,6 +87,7 @@ namespace TimeSheet
                         ddlTask.Items.Insert(0, "--Select--");
                         ddlTask.SelectedIndex = 0;
                         ddlTask.Enabled = true;
+                        
                     }
                     else
                     {
@@ -127,6 +128,8 @@ namespace TimeSheet
             lbMessage.Visible = false;
             lbAddFormDate.Text = calMonthView.SelectedDate.ToString("MM/dd/yyyy");
             lbViewSummaryDate.Text = calMonthView.SelectedDate.ToString("MM/dd/yyyy");
+            tbHours.Text = "";
+            tbComments.Text = "";
         }
 
         protected void lbtQuickPrevDay_Click(object sender, EventArgs e)
@@ -140,6 +143,8 @@ namespace TimeSheet
             lbMessage.Visible = false;
             lbAddFormDate.Text = calMonthView.SelectedDate.ToString("MM/dd/yyyy");
             lbViewSummaryDate.Text = calMonthView.SelectedDate.ToString("MM/dd/yyyy");
+            tbHours.Text = "";
+            tbComments.Text = "";
         }
 
         protected void lbtQuickNextDay_Click(object sender, EventArgs e)
@@ -153,6 +158,10 @@ namespace TimeSheet
             lbMessage.Visible = false;
             lbAddFormDate.Text = calMonthView.SelectedDate.ToString("MM/dd/yyyy");
             lbViewSummaryDate.Text = calMonthView.SelectedDate.ToString("MM/dd/yyyy");
+            tbHours.Text = "";
+            tbComments.Text = "";
         }
+
+       
     }
 }

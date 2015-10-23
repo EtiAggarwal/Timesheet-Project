@@ -99,5 +99,41 @@ namespace TimeSheet.APP_CODE.DAL
             }
 
         }
+
+        public int? updateTimeSheet(String ID, String empId,DateTime forDate,float HOURS_PER_DAY, String COMMENTS)
+        {
+            int? ret = null;
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SP_UPDATE_TIMESHEET_ENTRY, con);
+                selectCommand.Parameters.AddWithValue("@ID", ID);
+                selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", empId);
+                selectCommand.Parameters.AddWithValue("@TIMESHEET_DATE", forDate.Date.ToString("MM/dd/yyyy"));
+                selectCommand.Parameters.AddWithValue("@HOURS_PER_DAY",HOURS_PER_DAY);
+                selectCommand.Parameters.AddWithValue("@COMMENTS", COMMENTS);
+           
+                SqlParameter retParam = new SqlParameter();
+                retParam.ParameterName = "@RetVal";
+                retParam.Direction = ParameterDirection.ReturnValue;
+                retParam.SqlDbType = SqlDbType.Int;
+                selectCommand.Parameters.Add(retParam);
+                selectCommand.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                selectCommand.ExecuteNonQuery();
+                con.Close();
+                ret = (int)retParam.Value;
+                return ret;
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
     }
 }

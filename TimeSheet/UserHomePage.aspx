@@ -40,7 +40,7 @@
     </div>
     <div class="col-md-9">
         <asp:Panel  runat="server" id="messageDiv">
- <asp:ValidationSummary ID="valSummary"  runat="server"  class = "alert alert-dismissible alert-danger" />
+ <asp:ValidationSummary ID="valSummary"  runat="server"  class = "alert alert-dismissible alert-danger" ValidationGroup="addForm" />
             <asp:Label ID="lbMessage" runat="server" Text="" Visible="false"></asp:Label>
      </asp:Panel>
        
@@ -63,7 +63,7 @@
                     <tr>
                         <td>
                             <asp:DropDownList ID="ddlProject" runat="server" CssClass="form-control input-sm" AutoPostBack="True" DataSourceID="odsGetAllProjectsFromJira" DataTextField="Name"
-                                 DataValueField="Id" OnSelectedIndexChanged="ddlProject_SelectedIndexChanged" OnDataBound="ddlProject_DataBound" CausesValidation="false" >
+                                 DataValueField="Id" OnSelectedIndexChanged="ddlProject_SelectedIndexChanged" OnDataBound="ddlProject_DataBound" CausesValidation="false" ValidationGroup="addForm">
                             
                             </asp:DropDownList>
 
@@ -93,11 +93,11 @@
                             </div>--%>
 
 
-                            <asp:DropDownList ID="ddlTask" runat="server" CssClass="form-control input-sm">
+                            <asp:DropDownList ID="ddlTask" runat="server" CssClass="form-control input-sm" ValidationGroup="addForm">
                             </asp:DropDownList>
                         </td>
                         <td>
-                            <asp:TextBox ID="tbHours" runat="server" CssClass="form-control input-sm" Width="40px"></asp:TextBox>
+                            <asp:TextBox ID="tbHours" runat="server" CssClass="form-control input-sm" Width="40px" ValidationGroup="addForm"></asp:TextBox>
                         </td>
                         <td>
                             <asp:TextBox ID="tbComments" runat="server" CssClass="form-control input-sm" TextMode="MultiLine"></asp:TextBox>
@@ -105,7 +105,7 @@
                     </tr>
                     <tr>
                         <td colspan="4" align="center">
-                            <asp:Button ID="btAddNewEntry" runat="server" Text="Add Entry" class="btn btn-primary btn-sm" OnClick="btAddNewEntry_Click" />
+                            <asp:Button ID="btAddNewEntry" runat="server" Text="Add Entry" class="btn btn-primary btn-sm" ValidationGroup="addForm" OnClick="btAddNewEntry_Click" />
                         </td>
                     </tr>
 
@@ -121,32 +121,43 @@
             </div>
             <div class="panel-body" style="padding-bottom: 5px">
                 <asp:GridView ID="grvTimeEntriesForDay" runat="server" AutoGenerateColumns="False" EmptyDataText="No Timesheet entries for the day"
-                    CssClass="table table-striped table-hover table-condensed" DataSourceID="odsTimeEntriesForDay"  DataKeyNames="ID">
+                    CssClass="table table-striped table-hover table-condensed" DataSourceID="odsTimeEntriesForDay"  DataKeyNames="ID" >
                     <Columns>
                         <asp:BoundField HeaderText="Project" DataField="PROJECT_NAME" InsertVisible="false" ReadOnly="true"/>
                         <asp:BoundField HeaderText="Task" DataField="TASK_JIRA_ISSUE_PROXY_KEY"  InsertVisible="false" ReadOnly="true"/>
                         <asp:BoundField HeaderText="Hours" DataField="HOURS_PER_DAY"  DataFormatString="{0:F2}" />
-                        <asp:BoundField DataField="COMMENTS" HeaderText="Comments" />
-                        <asp:CommandField ShowEditButton="True" ButtonType="Link" EditText="<i aria-hidden='true' class='glyphicon glyphicon-pencil'></i>"
+                        <asp:BoundField HeaderText="Comments" DataField="COMMENTS" />
+                        <asp:CommandField ShowEditButton="True" ButtonType="Link"  EditText="<i aria-hidden='true' class='glyphicon glyphicon-pencil'></i>"
                             CancelText="<i aria-hidden='true' class='glyphicon glyphicon-remove-circle'></i>" UpdateText="<i aria-hidden='true' class='glyphicon glyphicon-ok'></i>" />
-                        <asp:CommandField ShowDeleteButton="True" ButtonType="Link" DeleteText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>" />
-                        <asp:BoundField DataField="ID" HeaderText="ID" Visible="False" />
+                        <asp:CommandField ShowDeleteButton="True" ButtonType="Link" CausesValidation="false" DeleteText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>" />
+                        <asp:BoundField  HeaderText="Id" DataField="ID" Visible="False" />
                     </Columns>
                 </asp:GridView>
             </div>
         </div>
     </div>
     <asp:ObjectDataSource ID="odsGetAllProjectsFromJira" runat="server" SelectMethod="GetProjects" TypeName="TimeSheet.APP_CODE.DAL.JiraAccessLayer"></asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="odsTimeEntriesForDay" runat="server" SelectMethod="GetTimeSheetForEmpForDate" TypeName="TimeSheet.APP_CODE.DAL.DataAccessLayer">
+    <asp:ObjectDataSource ID="odsTimeEntriesForDay" runat="server" SelectMethod="GetTimeSheetForEmpForDate" TypeName="TimeSheet.APP_CODE.DAL.DataAccessLayer" UpdateMethod="updateTimeSheet">
         <SelectParameters>
             <asp:SessionParameter Name="empId" SessionField="EmployeeId" Type="String" />
             <asp:ControlParameter ControlID="calMonthView" Name="date" PropertyName='SelectedDate' Type="DateTime" />
         </SelectParameters>
+       
+        
+        <UpdateParameters>
+            <asp:Parameter Name="ID" Type="String" />
+             <asp:SessionParameter Name="empId" SessionField="EmployeeId" Type="String" />
+           <asp:ControlParameter ControlID="calMonthView" Name="forDate" PropertyName='SelectedDate' Type="DateTime" />
+            <asp:Parameter Name="HOURS_PER_DAY" Type="Single" />
+            <asp:Parameter Name="COMMENTS" Type="String" />
+        </UpdateParameters>
+       
+        
     </asp:ObjectDataSource>
-    <asp:RequiredFieldValidator ID="rfvProject" runat="server" ErrorMessage="No Project Selected" ControlToValidate="ddlProject" InitialValue="--Select--" ForeColor="Red" Display="None"></asp:RequiredFieldValidator>
-        <asp:RequiredFieldValidator ID="rfvTotalHours" runat="server" ErrorMessage="No. of Hours Not Entered" ControlToValidate="tbHours" ForeColor="Red" Display="None"></asp:RequiredFieldValidator>
-        <asp:RegularExpressionValidator ID="regValTotalHours" runat="server" ErrorMessage="Invalid Number of Hours" ControlToValidate="tbHours" ForeColor="Red" Display="None" ValidationExpression="^\d*\.?\d*$" ></asp:RegularExpressionValidator>
-        <asp:RangeValidator ID="rangeValTotalHours" runat="server" ErrorMessage="Hours Should Be > 0 and < 24" ControlToValidate="tbHours" ForeColor="Red" MaximumValue="24" MinimumValue="0.0000001" Type="Double" Display="None"></asp:RangeValidator>
-    <asp:RequiredFieldValidator ID="rfvTask" runat="server" ErrorMessage="No Task Selected" ControlToValidate="ddlTask" InitialValue="--Select--" Display="None"></asp:RequiredFieldValidator>
+    <asp:RequiredFieldValidator ID="rfvProject" runat="server" ErrorMessage="No Project Selected" ControlToValidate="ddlProject" InitialValue="--Select--" ForeColor="Red" Display="None" ValidationGroup="addForm"></asp:RequiredFieldValidator>
+        <asp:RequiredFieldValidator ID="rfvTotalHours" runat="server" ErrorMessage="No. of Hours Not Entered" ControlToValidate="tbHours" ForeColor="Red" Display="None" ValidationGroup="addForm"></asp:RequiredFieldValidator>
+        <asp:RegularExpressionValidator ID="regValTotalHours" runat="server" ErrorMessage="Invalid Number of Hours" ControlToValidate="tbHours" ForeColor="Red" Display="None" ValidationExpression="^\d*\.?\d*$" ValidationGroup="addForm"></asp:RegularExpressionValidator>
+        <asp:RangeValidator ID="rangeValTotalHours" runat="server" ErrorMessage="Hours Should Be > 0 and < 24" ControlToValidate="tbHours" ForeColor="Red" MaximumValue="24" MinimumValue="0.0000001" Type="Double" Display="None" ValidationGroup="addForm"></asp:RangeValidator>
+    <asp:RequiredFieldValidator ID="rfvTask" runat="server" ErrorMessage="No Task Selected" ControlToValidate="ddlTask" InitialValue="--Select--" Display="None" ValidationGroup="addForm"></asp:RequiredFieldValidator>
 </asp:Content>
 
