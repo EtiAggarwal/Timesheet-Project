@@ -84,7 +84,7 @@
                             <table style="width: 90%">
                                 <tr>
                                     <td>
-                                        <asp:TextBox ID="tbHours" runat="server" CssClass="form-control input-sm" Width="50px" ValidationGroup="addForm" ClientIDMode="Static"></asp:TextBox>
+                                        <asp:TextBox ID="tbHours" runat="server" CssClass="form-control input-sm" Width="55px" ValidationGroup="addForm" ClientIDMode="Static"></asp:TextBox>
                                     </td>
                                     <td style="vertical-align: central">
 

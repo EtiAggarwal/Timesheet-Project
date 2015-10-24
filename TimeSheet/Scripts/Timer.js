@@ -53,7 +53,7 @@
         if (timeUpdate) clearInterval(timeUpdate);
         $('#GSCCModal').modal('toggle');
         setStopwatch(0, 0, 0);
-        $("#tbHours").val(hours + minutes / 60 + seconds / (60 * 60));
+        $("#tbHours").val((hours + minutes / 60 + seconds / (60 * 60)).toFixed(3));
        return false;
     });
 
