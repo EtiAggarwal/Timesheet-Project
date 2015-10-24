@@ -93,6 +93,7 @@
     <Content Include="Scripts\readremotecsv.js" />
     <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="adminTest.aspx" />
+    <Content Include="Scripts\Timer.js" />
     <Content Include="WebForm2.aspx" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
