@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UserHomePage.aspx.cs" Inherits="TimeSheet.UserHomePage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="UserHomePage.aspx.cs" Inherits="TimeSheet.UserHomePage"  %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Home Page</title>
@@ -69,7 +69,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <asp:DropDownList ID="ddlProject" runat="server" CssClass="form-control input-sm" AutoPostBack="True" DataSourceID="odsGetAllProjectsFromJira" DataTextField="Name"
+                            <asp:DropDownList ID="ddlProject" runat="server" CssClass="form-control input-sm" AutoPostBack="true" DataSourceID="odsGetAllProjectsFromJira" DataTextField="Name"
                                 DataValueField="Id" OnSelectedIndexChanged="ddlProject_SelectedIndexChanged" OnDataBound="ddlProject_DataBound" CausesValidation="false" ValidationGroup="addForm">
                             </asp:DropDownList>
 
@@ -107,7 +107,7 @@
                                         <div id="controls" align="center">
                                       <button id="pause_resume" class="btn btn-default">Pause</button>
                                         <button id="reset" class="btn btn-default">Reset</button>
-                                             <button id="submit" class="btn btn-default" type="button">Submit</button>
+                                             <button id="sub" class="btn btn-default" type="button">Submit</button>
                                          </div>
                                                     </div>
 

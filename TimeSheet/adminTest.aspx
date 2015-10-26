@@ -2,51 +2,22 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <link href="Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- MetisMenu CSS -->
-    <link href="Content/metisMenu.min.css" rel="stylesheet" type="text/css" />
+<html >
+<head>
 
-    <!-- Timeline CSS -->
-    <link href="Content/timeline.css" rel="stylesheet" type="text/css" />
+    <title>admin</title>
+  <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/jquery-ui.min.js"></script>
 
-    <!-- Custom CSS -->
-    <link href="Content/sb-admin-2.css" rel="stylesheet" type="text/css" />
-
-    <!-- Morris Charts CSS -->
-    <link href="Content/morris.css" rel="stylesheet" type="text/css" />
-
-    <!-- Custom Fonts -->
-    <link href="Content/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
-    <!-- in case we want to go the d3.js route-->
-    <script type="text/javascript" src="Scripts/d3.min.js" charset="utf-8"></script>
-    <title></title>
-     <style type="text/css">
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.x.axis path {
-  display: none;
-}
-
-.line {
-  fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
-}
-
-    </style>
+    <script>
+        $(function () {
+            
+            $("#date").datepicker();
+        });
+        </script>
     </head>
 <body>
-
-   
+   <p>Date: <input type="text" id="date"/></p>
     <form id="form1" runat="server">
     <div>
         <div id="wrapper">

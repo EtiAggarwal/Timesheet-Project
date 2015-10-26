@@ -94,7 +94,6 @@
     <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="adminTest.aspx" />
     <Content Include="Scripts\Timer.js" />
-    <Content Include="WebForm2.aspx" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -145,13 +144,6 @@
     </Compile>
     <Compile Include="adminTest.aspx.designer.cs">
       <DependentUpon>adminTest.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="WebForm2.aspx.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm2.aspx.designer.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
     <Content Include="APP_CODE\BO\Timelog.cs" />
     <Content Include="APP_CODE\BO\Employee.cs" />
