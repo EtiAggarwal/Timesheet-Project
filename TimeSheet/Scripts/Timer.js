@@ -49,7 +49,7 @@
     });
 
     // Submit button onClick
-    $("#sub").button().click(function () {
+    $("#saveTime").button().click(function () {
         if (timeUpdate) clearInterval(timeUpdate);
         $('#GSCCModal').modal('toggle');
         setStopwatch(0, 0, 0);

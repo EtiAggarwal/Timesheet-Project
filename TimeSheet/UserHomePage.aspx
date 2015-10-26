@@ -107,7 +107,7 @@
                                         <div id="controls" align="center">
                                       <button id="pause_resume" class="btn btn-default">Pause</button>
                                         <button id="reset" class="btn btn-default">Reset</button>
-                                             <button id="sub" class="btn btn-default" type="button">Submit</button>
+                                             <button id="saveTime" class="btn btn-default" type="button">Submit</button>
                                          </div>
                                                     </div>
 
