@@ -2,10 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
  
   <title>jQuery UI Datepicker - Default functionality</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/resources/demos/style.css"/>
+  <script src="Scripts/jquery-ui.min.js"></script>
   <script>
    
     $(function () {
@@ -13,7 +10,7 @@
         $("#project").selectmenu().selectmenu("menuWidget").addClass("overflow");;      
     });
     $(function () {
-        $("#from").datepicker({
+        $("#tbStartDate").datepicker({
             defaultDate: "+1w",
             changeMonth: true,
             numberOfMonths: 1,
@@ -35,12 +32,11 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
    
-        <p> 
-
+        <p>
             <label for="from">Start Date</label>
-            <input type="text" id="from" name="from"/>
+            <asp:TextBox ID="tbStartDate" runat="server" ClientIDMode="Static"></asp:TextBox>
             <label for="to">End Date</label>
-            <input type="text" id="to" name="to"/>
+            <asp:TextBox ID="TextBox1" runat="server" ClientIDMode="Static"></asp:TextBox>
             
             <label for="employee" class="col-lg-2 control-label"> Select an employee</label>
             <select name="employee" id="employee" class ="dropdown-menu">
