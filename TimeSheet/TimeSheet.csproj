@@ -62,7 +62,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Adminpage.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -112,9 +111,6 @@
     <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adminpage.aspx.designer.cs">
-      <DependentUpon>Adminpage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="APP_CODE\DAL\JiraAccessLayer.cs" />
     <Compile Include="APP_CODE\Entities\BaseEntity.cs" />
     <Compile Include="APP_CODE\Entities\Issues\Assignee.cs" />
