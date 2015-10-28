@@ -41,7 +41,7 @@
            <td> <label for="from">Start Date</label></td>
            <td><asp:TextBox ID="tbStartDate" runat="server" ClientIDMode="Static"></asp:TextBox></td>
            <td>  <label for="to">End Date</label></td>
-           <td>  <asp:TextBox ID="TextBox1" runat="server" ClientIDMode="Static"></asp:TextBox>
+           <td>  <asp:TextBox ID="tbEndDate" runat="server" ClientIDMode="Static"></asp:TextBox>
             </td>
        </tr>
    </table>
