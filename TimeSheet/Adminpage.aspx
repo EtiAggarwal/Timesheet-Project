@@ -31,13 +31,26 @@
   </script> 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
-   
+   <div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Search Timesheets</h3>
+  </div>
+  <div class="panel-body">
+   <table>
+       <tr>
+           <td> <label for="from">Start Date</label></td>
+           <td><asp:TextBox ID="tbStartDate" runat="server" ClientIDMode="Static"></asp:TextBox></td>
+           <td>  <label for="to">End Date</label></td>
+           <td>  <asp:TextBox ID="TextBox1" runat="server" ClientIDMode="Static"></asp:TextBox>
+            </td>
+       </tr>
+   </table>
+  </div>
+</div>
         <p>
-            <label for="from">Start Date</label>
-            <asp:TextBox ID="tbStartDate" runat="server" ClientIDMode="Static"></asp:TextBox>
-            <label for="to">End Date</label>
-            <asp:TextBox ID="TextBox1" runat="server" ClientIDMode="Static"></asp:TextBox>
+           
             
+          
             <label for="employee" class="col-lg-2 control-label"> Select an employee</label>
             <select name="employee" id="employee" class ="dropdown-menu">
                 <option>Slower</option>
