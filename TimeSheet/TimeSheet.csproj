@@ -112,9 +112,6 @@
     <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adminpage.aspx.cs">
-      <DependentUpon>Adminpage.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Adminpage.aspx.designer.cs">
       <DependentUpon>Adminpage.aspx</DependentUpon>
     </Compile>
