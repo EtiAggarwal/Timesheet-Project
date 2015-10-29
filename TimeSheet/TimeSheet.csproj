@@ -69,6 +69,9 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\datepicker.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\images\pattern_4.png" />
+    <Content Include="Content\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\images\ui-bg_glass_75_dadada_1x400.png" />
     <Content Include="Content\metisMenu.min.css" />
     <Content Include="Content\morris.css" />
     <Content Include="Content\sb-admin-2.css" />
@@ -97,6 +100,7 @@
     <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="adminTest.aspx" />
     <Content Include="Scripts\Timer.js" />
+    <Content Include="Content\images\Thumbs.db" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
