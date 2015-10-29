@@ -6,6 +6,13 @@
         .panel-success {
             height: calc(100vh - 145px);
         }
+        .panel-success .panel-body{
+           padding-bottom: 15px;
+          
+        }
+        .panel-success .panel-default{
+             margin-bottom:10px;
+        }
     </style>
     <link href="Content/datepicker.css" rel="stylesheet" />
     <script type="text/javascript" src="Scripts/bootstrap-datepicker.js"></script>
@@ -83,8 +90,9 @@
                                         </td>
                                     </tr>
                                 </table>
+                                
                             </div>
-                            <br />
+                            
                         </div>
                     </div>
 
@@ -108,7 +116,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <br />
+                                
                             </div>
                         </div>
                     </div>
@@ -132,11 +140,12 @@
                                         </td>
                                     </tr>
                                 </table>
+                                   
                             </div>
-                            <br />
+                         
                         </div>
                     </div>
-                    <br />
+                    
                     <div align="center">
                         <asp:Button ID="btSubmit" runat="server" Text="Search" OnClick="btSubmit_Click" class="btn btn-primary btn-sm" />
                     </div>
