@@ -7,6 +7,9 @@
     height: 400px;
     top: calc(50% - 200px) !important;
 }
+         .well {
+    height: calc(100vh - 145px);
+}
     </style>
  <script src="Scripts/Timer.js" type="text/javascript"></script>
 </asp:Content>
