@@ -13,6 +13,7 @@
 
 
     <style type="text/css">
+        
         .page-header {
             margin: auto;
             margin-top: -10px;
@@ -66,7 +67,7 @@
 
         <div class="container-fluid header">
             <div class="page-header">
-                <h1 id="navbar">Smart Data Strategies Timesheet</h1>
+                 <h1 id="navbar"><strong> Smart Data Strategies Timesheet</strong></h1>
             </div>
         </div>
         <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server" SiteMapProvider="UserSiteMap" />

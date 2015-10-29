@@ -80,6 +80,7 @@
     <Content Include="Content\ref.css" />
     <Content Include="Content\source-sans-pro.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Login.aspx" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -138,6 +139,13 @@
     <Compile Include="APP_CODE\Entities\Searching\SearchResponse.cs" />
     <Compile Include="APP_CODE\JIRA\JiraManager.cs" />
     <Compile Include="APP_CODE\JIRA\JiraResource.cs" />
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>Site.Master</DependentUpon>

@@ -2,6 +2,5 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
     <siteMapNode url="" title=""  description="">
       <siteMapNode title="Home" url="" description="User Home Page" />
-   
-    </siteMapNode>
+       </siteMapNode>
 </siteMap>
