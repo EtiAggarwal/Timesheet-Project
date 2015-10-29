@@ -67,6 +67,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\datepicker.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\metisMenu.min.css" />
     <Content Include="Content\morris.css" />
@@ -84,6 +85,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Admin.sitemap" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\highstock.json" />
     <Content Include="Content\mixins.less" />
