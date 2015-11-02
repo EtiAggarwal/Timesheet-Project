@@ -45,6 +45,27 @@ namespace TimeSheet.APP_CODE.DAL
             }
         }
 
+        public DataSet GetReportData(string startDate, string enddate, string project_name, string project_id, string employee)
+        {
+            throw new NotImplementedException();
+        }
+
+        public DataTable GetEmployee()
+        {
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SQL_GET_EMPLOYEE, con);
+                SqlDataAdapter sqlAdapter = new SqlDataAdapter(selectCommand);
+                DataTable dt = new DataTable();
+                sqlAdapter.Fill(dt);
+                return dt;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
         public DataTable GetTimeSheetForEmpForDate(String empId, DateTime date)
         {
             try
