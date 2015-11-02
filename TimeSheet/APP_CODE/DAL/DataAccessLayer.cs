@@ -135,5 +135,29 @@ namespace TimeSheet.APP_CODE.DAL
             }
 
         }
+
+        public int? DeleteTimeSheetRecord(String ID)
+        {
+            int? ret = null;
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SQL_DELETE_TIMESHEET_RECORD, con);
+                selectCommand.Parameters.AddWithValue("@ROW_ID", ID);
+                con.Open();
+                ret = selectCommand.ExecuteNonQuery();
+                con.Close();
+                return ret;
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
     }
 }
