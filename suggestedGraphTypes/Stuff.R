@@ -5,6 +5,7 @@ setwd("/Users/stephenkinser/Timesheet-Project/suggestedGraphTypes")
 #install.packages("rjson")
 #library("rjson")
 #install.packages("XML")
+
 library("XML")
 library(ggplot2)
 library(gridSVG)
@@ -54,6 +55,7 @@ write.csv(finalcsv, file= "freq.csv")
 #write.csv(as.data.frame.matrix(mytable),file="table.csv")
 thing2=as.data.frame.matrix(mytable)
 thing2$Date=rownames(thing2 )
+rownames(thing2)=NULL
 write.csv(thing2,file="horribleTable.csv")
 #write (apply(finalcsv,1, function(x){toJSON(x)}), "freq.json")
 htmlhead <- 

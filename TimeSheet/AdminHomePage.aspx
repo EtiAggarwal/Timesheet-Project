@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminHomePage.aspx.cs" Inherits="TimeSheet.AdminHomePage" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminHomePage.aspx.cs" Inherits="TimeSheet.AdminHomePage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Admin Home Page</title>
@@ -8,7 +8,7 @@
         }
         .panel-success .panel-body{
            padding-bottom: 15px;
-          
+
         }
         .panel-success .panel-default{
              margin-bottom:10px;
@@ -90,9 +90,9 @@
                                         </td>
                                     </tr>
                                 </table>
-                                
+
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -116,7 +116,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -140,12 +140,12 @@
                                         </td>
                                     </tr>
                                 </table>
-                                   
+
                             </div>
-                         
+
                         </div>
                     </div>
-                    
+
                     <div align="center">
                         <asp:Button ID="btSubmit" runat="server" Text="Search" OnClick="btSubmit_Click" class="btn btn-primary btn-sm" />
                     </div>
