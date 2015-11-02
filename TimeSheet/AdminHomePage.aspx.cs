@@ -16,7 +16,21 @@ namespace TimeSheet
 
         protected void btSubmit_Click(object sender, EventArgs e)
         {
+            String startDate = tbStartDate.Text;
+            String enddate = tbEndDate.Text;
+            //String.IsNullOrEmpty(startDate)
+            //{
+            
+            //}
+            //String.IsNullOrEmpty(endDate)
+            //{
 
+            //}
+        }
+
+        protected void ddlProjects_DataBound(object sender, EventArgs e)
+        {
+            ddlProjects.Items.Insert(0, "--Select--");
         }
     }
 }
