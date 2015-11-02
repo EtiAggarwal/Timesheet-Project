@@ -155,7 +155,7 @@
                         <asp:BoundField HeaderText="Comments" DataField="COMMENTS" />
                         <asp:CommandField ShowEditButton="True" ButtonType="Link" EditText="<i aria-hidden='true' class='glyphicon glyphicon-pencil'></i>"
                             CancelText="<i aria-hidden='true' class='glyphicon glyphicon-remove-circle'></i>" UpdateText="<i aria-hidden='true' class='glyphicon glyphicon-ok'></i>" />
-                        <asp:CommandField ShowDeleteButton="True" ButtonType="Link" CausesValidation="false" DeleteText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>" />
+                        <asp:CommandField ShowDeleteButton="True" ButtonType="Link" CausesValidation="false" DeleteText="<i aria-hidden='true' class='glyphicon glyphicon-remove'></i>"  />
                         <asp:BoundField HeaderText="Id" DataField="ID" Visible="False" />
                     </Columns>
                 </asp:GridView>
@@ -163,7 +163,10 @@
         </div>
     </div>
     <asp:ObjectDataSource ID="odsGetAllProjectsFromJira" runat="server" SelectMethod="GetProjects" TypeName="TimeSheet.APP_CODE.DAL.JiraAccessLayer"></asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="odsTimeEntriesForDay" runat="server" SelectMethod="GetTimeSheetForEmpForDate" TypeName="TimeSheet.APP_CODE.DAL.DataAccessLayer" UpdateMethod="updateTimeSheet">
+    <asp:ObjectDataSource ID="odsTimeEntriesForDay" runat="server" SelectMethod="GetTimeSheetForEmpForDate" TypeName="TimeSheet.APP_CODE.DAL.DataAccessLayer" UpdateMethod="updateTimeSheet" DeleteMethod="DeleteTimeSheetRecord">
+        <DeleteParameters>
+            <asp:Parameter Name="ID" Type="String" />
+        </DeleteParameters>
         <SelectParameters>
             <asp:SessionParameter Name="empId" SessionField="EmployeeId" Type="String" />
             <asp:ControlParameter ControlID="calMonthView" Name="date" PropertyName='SelectedDate' Type="DateTime" />

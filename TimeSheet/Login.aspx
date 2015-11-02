@@ -119,40 +119,45 @@
                             <div class="form-group">
                                 <label for="empid" class="col-md-3 control-label">Employee ID</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="email" placeholder="Employee ID">
+                                    <asp:TextBox ID="tbEmployeeId" runat="server" placeholder="Employee ID" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="firstname" class="col-md-3 control-label">First Name</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="firstname" placeholder="First Name">
+                                    <asp:TextBox ID="tbFirstName" runat="server" placeholder="First Name" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="lastname" class="col-md-3 control-label">Last Name</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="lastname" placeholder="Last Name">
+                                    <asp:TextBox ID="tbLastName" runat="server" placeholder="Last Name" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="col-md-3 control-label">Password</label>
                                 <div class="col-md-9">
-                                    <input type="password" class="form-control" name="passwd" placeholder="Password">
+                                    <asp:TextBox ID="tbPassword" runat="server" placeholder="Password" TextMode="Password" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
-
+                         <div class="form-group">
+                                <label for="confirmPassword" class="col-md-3 control-label">Confirm Password</label>
+                                <div class="col-md-9">
+                                    <asp:TextBox ID="tbConfPassword" runat="server" placeholder="Confirm Password" TextMode="Password" CssClass="form-control"></asp:TextBox>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label for="email" class="col-md-3 control-label">Email</label>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" name="email" placeholder="Email Address">
+                                    <asp:TextBox ID="tbEmailId" runat="server" placeholder="Email" CssClass="form-control"></asp:TextBox>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <!-- Button -->
                                 <div class="col-md-offset-3 col-md-9">
-                                    <button id="btn-signup" type="button" class="btn btn-primary"><i class="icon-hand-right"></i>&nbsp Sign Up</button>
+                                    <asp:Button ID="btSignUp" runat="server" Text="Sign Up" CssClass="btn btn-primary" />
                                 </div>
                             </div>
 
