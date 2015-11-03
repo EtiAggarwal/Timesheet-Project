@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Web;
 
-namespace TimeSheet.APP_CODE.Security
+
+namespace TimeSheet.APP_CODE.AppSec
 {
     public class AppSecurity
     {
