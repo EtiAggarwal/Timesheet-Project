@@ -7,8 +7,8 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using TimeSheet.APP_CODE.
+using TimeSheet.APP_CODE.AppSec;
+using TimeSheet.APP_CODE.BO;
 
 /// <summary>
 /// Summary description for DataAccessLayers
@@ -183,7 +183,7 @@ namespace TimeSheet.APP_CODE.DAL
         /// <summary>
         /// Add New User to Database
         /// </summary>
-       public int? AddNewUser(String empId, String firstName, String lastName, String email, String userName, String password)
+       public int? AddNewUser(String empId, String firstName, String lastName, String email, String password)
         {
             int? ret = null;
             try
@@ -193,26 +193,25 @@ namespace TimeSheet.APP_CODE.DAL
                 Guid userGuid = System.Guid.NewGuid();
 
                 // Hash the password together with our unique userGuid
-                //string hashedPassword = AppSecurity.HashSHA1(password + userGuid.ToString());
+                string hashedPassword = AppSecurity.HashSHA1(password + userGuid.ToString());
 
-                //SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SP_INSERT_TIMESHEET_ENTRY, con);
-                //selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", empId);
-                //selectCommand.Parameters.AddWithValue("@PROJECT_ID", projectId);
-                //selectCommand.Parameters.AddWithValue("@PROJECT_NAME", projectName);
-                //selectCommand.Parameters.AddWithValue("@TASK_JIRA_ISSUE_PROXY_KEY", task_jira_proxy_key);
-                //selectCommand.Parameters.AddWithValue("@TIMESHEET_DATE", timesheetDate);
-                //selectCommand.Parameters.AddWithValue("@HOURS_PER_DAY", hrsPerDay);
-                //selectCommand.Parameters.AddWithValue("@COMMENTS", comments);
-                //SqlParameter retParam = new SqlParameter();
-                //retParam.ParameterName = "@RetVal";
-                //retParam.Direction = ParameterDirection.ReturnValue;
-                //retParam.SqlDbType = SqlDbType.Int;
-                //selectCommand.Parameters.Add(retParam);
-                //selectCommand.CommandType = CommandType.StoredProcedure;
-                //con.Open();
-                //selectCommand.ExecuteNonQuery();
-                //con.Close();
-                //ret = (int)retParam.Value;
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SP_ADD_NEW_USER, con);
+                selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", empId);
+                selectCommand.Parameters.AddWithValue("@FIRST_NAME", firstName);
+                selectCommand.Parameters.AddWithValue("@LAST_NAME", lastName);
+                selectCommand.Parameters.AddWithValue("@EMAIL_ID", email);
+                selectCommand.Parameters.AddWithValue("@PASS", hashedPassword);
+                selectCommand.Parameters.AddWithValue("@USER_GUID", userGuid);
+                SqlParameter retParam = new SqlParameter();
+                retParam.ParameterName = "@RetVal";
+                retParam.Direction = ParameterDirection.ReturnValue;
+                retParam.SqlDbType = SqlDbType.Int;
+                selectCommand.Parameters.Add(retParam);
+                selectCommand.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                selectCommand.ExecuteNonQuery();
+                con.Close();
+                ret = (int)retParam.Value;
                 return ret;
 
             }
@@ -225,6 +224,58 @@ namespace TimeSheet.APP_CODE.DAL
                 con.Close();
             }
 
+        }
+
+
+        public  int ValidateUserLogin(string empId, string password , ref Employee employee)
+        {
+            // this is the value we will return
+            int ret = -1;
+
+            using (SqlCommand cmd = new SqlCommand(SQL_STRINGS.SQL_VALIDATE_LOGIN, con))
+            {
+                cmd.Parameters.AddWithValue("@EMPLOYEE_ID", empId);
+                con.Open();
+                SqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    // dr.Read() = we found user(s) with matching username!
+
+                    string dbEmpId = Convert.ToString(dr["EMPLOYEE_ID"]);
+                    string dbPassword = Convert.ToString(dr["PASS"]);
+                    string dbUserGuid = Convert.ToString(dr["USER_GUID"]);
+                    string dbFirstName = Convert.ToString(dr["FIRST_NAME"]);
+                    string dbLastName = Convert.ToString(dr["LAST_NAME"]);
+                    int isAdmin = Convert.ToInt16(dr["IS_ADMIN"]);
+                    // Now we hash the UserGuid from the database with the password we wan't to check
+                    // In the same way as when we saved it to the database in the first place. (see AddUser() function)
+                    string hashedPassword = AppSecurity.HashSHA1(password + dbUserGuid);
+
+                    // if its correct password the result of the hash is the same as in the database
+                    if (dbPassword == hashedPassword)
+                    {
+                        // The password is correct
+                        employee = new Employee();
+                        employee.EmployeeId = dbEmpId;
+                        employee.FirstName = dbFirstName;
+                        employee.LastName = dbLastName;
+                        if (isAdmin == 0)
+                        {
+                            employee.IsAdmin = false;
+                        }
+                        else if (isAdmin == 1)
+                        {
+                            employee.IsAdmin = true;
+                        }
+
+                        ret = 1;
+                    }
+                }
+                con.Close();
+            }
+
+            // Return the user id which is 0 if we did not found a user.
+            return ret;
         }
 
     }
