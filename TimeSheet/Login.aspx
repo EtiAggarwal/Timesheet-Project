@@ -68,8 +68,8 @@
                             <div class="input-group">
                                 <div class="checkbox">
                                     <label>
-                                        <input id="login-remember" type="checkbox" name="remember" value="1">
-                                        Remember me
+                                        <asp:CheckBox ID="chbRememberMe" runat="server" />
+                                         Remember me
                                     </label>
                                 </div>
                             </div>
@@ -79,9 +79,8 @@
                                 <!-- Button -->
 
                                 <div class="col-sm-12 controls">
-                                    <a id="btn-login" href="#" class="btn btn-primary">Login  </a>
-
-                                </div>
+                                    <asp:Button ID="btLogin" runat="server" Text="Login" CssClass="btn btn-primary btn-sm" />
+                                 </div>
                             </div>
 
 
@@ -157,7 +156,7 @@
                             <div class="form-group">
                                 <!-- Button -->
                                 <div class="col-md-offset-3 col-md-9">
-                                    <asp:Button ID="btSignUp" runat="server" Text="Sign Up" CssClass="btn btn-primary" />
+                                    <asp:Button ID="btSignUp" runat="server" Text="Sign Up" CssClass="btn btn-primary btn-sm" OnClick="btSignUp_Click" />
                                 </div>
                             </div>
 

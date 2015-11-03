@@ -40,6 +40,24 @@ namespace TimeSheet {
         protected global::System.Web.UI.WebControls.TextBox tbLoginPassword;
         
         /// <summary>
+        /// chbRememberMe control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chbRememberMe;
+        
+        /// <summary>
+        /// btLogin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btLogin;
+        
+        /// <summary>
         /// tbEmployeeId control.
         /// </summary>
         /// <remarks>

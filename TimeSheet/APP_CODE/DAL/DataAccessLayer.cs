@@ -8,7 +8,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Web;
+using TimeSheet.APP_CODE.
 
 /// <summary>
 /// Summary description for DataAccessLayers
@@ -180,5 +180,52 @@ namespace TimeSheet.APP_CODE.DAL
             }
 
         }
+        /// <summary>
+        /// Add New User to Database
+        /// </summary>
+       public int? AddNewUser(String empId, String firstName, String lastName, String email, String userName, String password)
+        {
+            int? ret = null;
+            try
+            {
+
+                // First create a new Guid for the user. This will be unique for each user
+                Guid userGuid = System.Guid.NewGuid();
+
+                // Hash the password together with our unique userGuid
+                //string hashedPassword = AppSecurity.HashSHA1(password + userGuid.ToString());
+
+                //SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SP_INSERT_TIMESHEET_ENTRY, con);
+                //selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", empId);
+                //selectCommand.Parameters.AddWithValue("@PROJECT_ID", projectId);
+                //selectCommand.Parameters.AddWithValue("@PROJECT_NAME", projectName);
+                //selectCommand.Parameters.AddWithValue("@TASK_JIRA_ISSUE_PROXY_KEY", task_jira_proxy_key);
+                //selectCommand.Parameters.AddWithValue("@TIMESHEET_DATE", timesheetDate);
+                //selectCommand.Parameters.AddWithValue("@HOURS_PER_DAY", hrsPerDay);
+                //selectCommand.Parameters.AddWithValue("@COMMENTS", comments);
+                //SqlParameter retParam = new SqlParameter();
+                //retParam.ParameterName = "@RetVal";
+                //retParam.Direction = ParameterDirection.ReturnValue;
+                //retParam.SqlDbType = SqlDbType.Int;
+                //selectCommand.Parameters.Add(retParam);
+                //selectCommand.CommandType = CommandType.StoredProcedure;
+                //con.Open();
+                //selectCommand.ExecuteNonQuery();
+                //con.Close();
+                //ret = (int)retParam.Value;
+                return ret;
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
     }
 }
