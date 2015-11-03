@@ -102,7 +102,10 @@
                     </asp:Menu>
                    
                      <ul class="nav navbar-nav navbar-right">
-                        <li>
+                        <li><a>
+                            Hi, <asp:Label ID="lbUserName" runat="server" Text=""></asp:Label>
+                           </a>  </li>
+                         <li>
                             <asp:LinkButton ID="lbLogout" runat="server">
                   <span aria-hidden="true" class="glyphicon glyphicon-user"></span>
                            logout </asp:LinkButton></li>

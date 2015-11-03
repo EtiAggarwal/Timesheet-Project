@@ -49,6 +49,15 @@ namespace TimeSheet {
         protected global::System.Web.UI.WebControls.Menu NavMenu;
         
         /// <summary>
+        /// lbUserName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbUserName;
+        
+        /// <summary>
         /// lbLogout control.
         /// </summary>
         /// <remarks>

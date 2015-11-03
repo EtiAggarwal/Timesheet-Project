@@ -12,9 +12,14 @@ namespace TimeSheet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["EmployeeId"] == null)
+            {
+                Response.Redirect("Login.aspx");
+
+            }
+           
             if (!Page.IsPostBack)
             {
-                Session["EmployeeId"] = "101";
                 calMonthView.SelectedDate = DateTime.Now.Date;
                 lbAddFormDate.Text = calMonthView.SelectedDate.ToString("MM/dd/yyyy");
                 lbViewSummaryDate.Text = calMonthView.SelectedDate.ToString("MM/dd/yyyy");

@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-
+using System.Web;
 
 namespace TimeSheet.APP_CODE.AppSec
 {
     public class AppSecurity
     {
+
         public static string HashSHA1(string value)
         {
             var sha1 = System.Security.Cryptography.SHA1.Create();
@@ -18,6 +21,7 @@ namespace TimeSheet.APP_CODE.AppSec
                 sb.Append(hash[i].ToString("X2"));
             }
             return sb.ToString();
+
         }
     }
 }
