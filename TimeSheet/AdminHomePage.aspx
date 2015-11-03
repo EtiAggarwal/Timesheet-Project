@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminHomePage.aspx.cs" Inherits="TimeSheet.AdminHomePage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminHomePage.aspx.cs" Inherits="TimeSheet.AdminHomePage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Admin Home Page</title>
@@ -111,7 +111,7 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <asp:DropDownList ID="ddlProjects" runat="server" CssClass="form-control input-sm"></asp:DropDownList>
+                                            <asp:DropDownList ID="ddlProjects" runat="server" CssClass="form-control input-sm" DataSourceID="obdsGetAllProjects" DataTextField="Name" DataValueField="Id" OnDataBound="ddlProjects_DataBound"></asp:DropDownList>
 
                                         </td>
                                     </tr>
@@ -147,10 +147,12 @@
                     </div>
 
                     <div align="center">
+                        
                         <asp:Button ID="btSubmit" runat="server" Text="Search" OnClick="btSubmit_Click" class="btn btn-primary btn-sm" />
                     </div>
                 </div>
-
+                <asp:ObjectDataSource ID="obdsGetAllEmployees" runat="server" SelectMethod ="GetEmployees"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="obdsGetAllProjects" runat="server" SelectMethod="GetProjects" TypeName="TimeSheet.APP_CODE.DAL.JiraAccessLayer"></asp:ObjectDataSource>
             </div>
         </div>
     </div>

@@ -20,7 +20,6 @@ namespace TimeSheet.APP_CODE.DAL
         public static String SP_INSERT_TIMESHEET_ENTRY = "SP_INSERT_TIMESHEET_ENTRY";
         public static String SP_UPDATE_TIMESHEET_ENTRY = "SP_UPDATE_TIMESHEET_ENTRY";
         public static String SQL_DELETE_TIMESHEET_RECORD = "DELETE FROM TIMESHEET WHERE ID = @ROW_ID";
-
-
+        public static String SQL_GET_EMPLOYEE = "SELECT (FIRST_NAME + ' ' + LAST_NAME) AS NAME, EMPLOYEE_ID FROM USER_LOGIN";
     }
 }
