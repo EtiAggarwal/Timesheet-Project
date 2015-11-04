@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TimeSheet.APP_CODE.DAL;
+using TimeSheet.APP_CODE.Entities.Projects;
 
 namespace TimeSheet
 {
@@ -45,19 +46,21 @@ namespace TimeSheet
         //    ddlProjects.Items.Insert(0, "--Select--");
         //}
 
-        protected void tbProjects_search_TextChanged(object sender, EventArgs e)
+        protected void tbProjects_search_OnTextChanged(object sender, EventArgs e)
         {
-            lbProjects.DataBind();
+           
             String searchproj = tbProjects_search.Text;
 
             if (!String.IsNullOrEmpty(searchproj))
             {
-                obdsGetAllProjects .FilterExpression = "Name LIKE '" + tbProjects_search.Text + "%'";
+                ListItem lstItem = lbProjects.Items.FindByText(searchproj);
+                if (lstItem != null)
+                {
+                    lstItem.Selected = true;
+                    
+                }
             }
-            else
-            {
-                obdsGetAllProjects.FilterExpression = null;
-            }
+           
         }
 
         //protected void ddlEmployees_DataBound(object sender, EventArgs e)

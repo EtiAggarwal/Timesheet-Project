@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Web;
 using TimeSheet.APP_CODE.Entities.Issues;
@@ -11,13 +13,14 @@ namespace TimeSheet.APP_CODE.DAL
 {
     public class JiraAccessLayer
     {
-        public IEnumerable GetProjects()
+        public List<ProjectDescription> GetProjects()
         {
             try {
 
                 JiraManager manager = new JiraManager("", "");
 
                 List<ProjectDescription> projects = manager.GetProjects();
+                // return ConvertToDataTable(projects);
                 return projects;
             }
             catch
@@ -39,6 +42,24 @@ namespace TimeSheet.APP_CODE.DAL
             {
                 throw;
             }
+        }
+
+        public DataTable ConvertToDataTable<T>(IList<T> data)
+        {
+            PropertyDescriptorCollection properties =
+               TypeDescriptor.GetProperties(typeof(T));
+            DataTable table = new DataTable();
+            foreach (PropertyDescriptor prop in properties)
+                table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
+            foreach (T item in data)
+            {
+                DataRow row = table.NewRow();
+                foreach (PropertyDescriptor prop in properties)
+                    row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;
+                table.Rows.Add(row);
+            }
+            return table;
+
         }
     }
 }
