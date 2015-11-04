@@ -44,7 +44,10 @@ namespace TimeSheet
         //{
         //    ddlProjects.Items.Insert(0, "--Select--");
         //}
-
+        //protected void ddlEmployees_DataBound(object sender, EventArgs e)
+        //{
+        //    ddlEmployees.Items.Insert(0, "--Select--");
+        //}
         protected void tbProjects_search_TextChanged(object sender, EventArgs e)
         {
             lbProjects.DataBind();
@@ -59,10 +62,20 @@ namespace TimeSheet
                 obdsGetAllProjects.FilterExpression = null;
             }
         }
-
-        //protected void ddlEmployees_DataBound(object sender, EventArgs e)
+        //protected void tbEmployees_search_TextChanged(object sender, EventArgs e)
         //{
-        //    ddlEmployees.Items.Insert(0, "--Select--");
+        //    lbEmployees.DataBind();
+        //    String searchemployee = tbEmployees_search.Text;
+
+        //    if (!String.IsNullOrEmpty(searchemployee))
+        //    {
+        //        obdsGetAllEmployees.FilterExpression = "Name LIKE '" + tbEmployees_search.Text + "%'";
+        //    }
+        //    else
+        //    {
+        //        obdsGetAllEmployees.FilterExpression = null;
+        //    }
         //}
+        
     }
 }
