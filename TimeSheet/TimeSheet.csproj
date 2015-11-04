@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AdminHomePage.aspx" />
+    <Content Include="AdminUserManagement.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -126,6 +127,14 @@
     <Compile Include="AdminHomePage.aspx.designer.cs">
       <DependentUpon>AdminHomePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AdminUserManagement.aspx.cs">
+      <DependentUpon>AdminUserManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminUserManagement.aspx.designer.cs">
+      <DependentUpon>AdminUserManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="APP_CODE\AppSec\AppSecurity.cs" />
     <Compile Include="APP_CODE\DAL\JiraAccessLayer.cs" />
     <Compile Include="APP_CODE\Entities\BaseEntity.cs" />
     <Compile Include="APP_CODE\Entities\Issues\Assignee.cs" />
@@ -167,8 +176,8 @@
     <Compile Include="adminTest.aspx.designer.cs">
       <DependentUpon>adminTest.aspx</DependentUpon>
     </Compile>
-    <Content Include="APP_CODE\BO\Timelog.cs" />
-    <Content Include="APP_CODE\BO\Employee.cs" />
+    <Compile Include="APP_CODE\BO\Timelog.cs" />
+    <Compile Include="APP_CODE\BO\Employee.cs" />
     <Compile Include="APP_CODE\DAL\DataAccessLayer.cs" />
     <Compile Include="APP_CODE\DAL\SQL_STRINGS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -186,6 +195,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

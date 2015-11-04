@@ -11,7 +11,10 @@ namespace TimeSheet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (Session["EmployeeName"] != null)
+            {
+                lbUserName.Text = Session["EmployeeName"].ToString();
+            }
             if (Session["isAdmin"] != null && (bool)Session["isAdmin"] == true)
             {
                 SiteMapDataSource.SiteMapProvider = "AdminSiteMap";
@@ -20,6 +23,13 @@ namespace TimeSheet
             {
                 SiteMapDataSource.SiteMapProvider = "UserSiteMap";
             }
+        }
+
+        protected void lbLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("Login.aspx");
         }
     }
 }
