@@ -39,5 +39,10 @@ namespace TimeSheet
         {
             ddlProjects.Items.Insert(0, "--Select--");
         }
+
+        //protected void ddlEmployees_DataBound(object sender, EventArgs e)
+        //{
+        //    ddlEmployees.Items.Insert(0, "--Select--");
+        //}
     }
 }
