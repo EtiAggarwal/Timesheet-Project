@@ -77,6 +77,7 @@
     <Content Include="Content\morris.css" />
     <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\timeline.css" />
+    <Content Include="EditAccountInfo.aspx" />
     <Content Include="HtmlPage1.html" />
     <Content Include="Content\ref.css" />
     <Content Include="Content\source-sans-pro.css" />
@@ -148,6 +149,13 @@
     <Compile Include="APP_CODE\Entities\Searching\SearchResponse.cs" />
     <Compile Include="APP_CODE\JIRA\JiraManager.cs" />
     <Compile Include="APP_CODE\JIRA\JiraResource.cs" />
+    <Compile Include="EditAccountInfo.aspx.cs">
+      <DependentUpon>EditAccountInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditAccountInfo.aspx.designer.cs">
+      <DependentUpon>EditAccountInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

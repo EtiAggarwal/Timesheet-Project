@@ -171,7 +171,9 @@
                                     <tr>
                                         <td>
                                             <asp:DropDownList ID="ddlEmployees" runat="server" CssClass="form-control input-sm"></asp:DropDownList>
-
+                                           <%-- <asp:TextBox ID="tbEmployees_search" runat="server" OnTextChanged="tbEmployees_search_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                            <asp:ListBox ID="lbEmployees" runat="server" CssClass="form-control input-sm" DataSourceID="obdsGetAllEmployees" DataTextField="Name" DataValueField="Id"></asp:ListBox>
+                                        --%>
                                         </td>
                                     </tr>
                                 </table>

@@ -46,26 +46,7 @@ namespace TimeSheet
         //    ddlProjects.Items.Insert(0, "--Select--");
         //}
 
-        protected void tbProjects_search_OnTextChanged(object sender, EventArgs e)
-        {
-           
-            String searchproj = tbProjects_search.Text;
-
-            if (!String.IsNullOrEmpty(searchproj))
-            {
-                ListItem lstItem = lbProjects.Items.FindByText(searchproj);
-                if (lstItem != null)
-                {
-                    lstItem.Selected = true;
-                    
-                }
-            }
-           
-        }
-
-        //protected void ddlEmployees_DataBound(object sender, EventArgs e)
-        //{
-        //    ddlEmployees.Items.Insert(0, "--Select--");
-        //}
+        
+        
     }
 }
