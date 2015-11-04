@@ -278,5 +278,25 @@ namespace TimeSheet.APP_CODE.DAL
             return ret;
         }
 
+
+        public DataTable GetAllUsers()
+        {
+             try
+            {
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SQL_GET_ALL_USERS, con);
+                SqlDataAdapter sqlAdapter = new SqlDataAdapter(selectCommand);
+                DataTable dt = new DataTable();
+                sqlAdapter.Fill(dt);
+                return dt;
+            }
+            catch
+            {
+                throw;
+            }
+        
+
+
     }
+
 }
+    }

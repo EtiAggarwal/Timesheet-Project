@@ -11,8 +11,10 @@ namespace TimeSheet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lbUserName.Text = Session["EmployeeName"].ToString();
-            
+            if (Session["EmployeeName"] != null)
+            {
+                lbUserName.Text = Session["EmployeeName"].ToString();
+            }
             if (Session["isAdmin"] != null && (bool)Session["isAdmin"] == true)
             {
                 SiteMapDataSource.SiteMapProvider = "AdminSiteMap";
