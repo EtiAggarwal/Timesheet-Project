@@ -22,5 +22,12 @@ namespace TimeSheet
                 SiteMapDataSource.SiteMapProvider = "UserSiteMap";
             }
         }
+
+        protected void lbLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Session.Abandon();
+            Response.Redirect("Login.aspx");
+        }
     }
 }

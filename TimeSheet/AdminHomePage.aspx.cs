@@ -13,6 +13,11 @@ namespace TimeSheet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["EmployeeId"] == null)
+            {
+                Response.Redirect("Login.aspx");
+
+            }
 
         }
         protected void btSubmit_Click(object sender, EventArgs e)

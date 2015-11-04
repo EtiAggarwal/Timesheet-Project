@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using TimeSheet.APP_CODE;
+using TimeSheet.APP_CODE.AppSec;
 using TimeSheet.APP_CODE.BO;
 using TimeSheet.APP_CODE.DAL;
 
@@ -14,8 +15,18 @@ namespace TimeSheet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //check for cookies to provide remember me functionality
+            if(Request.Cookies["UserName"]!=null && Request.Cookies["Password"]!=null)
+            {
+                string userName = AppSecurity.Base64Decode(Request.Cookies["UserName"].Value.ToString());
+                tbLoginUserName.Text = userName;
+                string password = AppSecurity.Base64Decode(Request.Cookies["Password"].Value.ToString());
+                tbLoginPassword.Attributes["value"] = password;
+            }
         }
+
+
+
         /// <summary>
         /// calls add new user in data access layer
         /// </summary>
@@ -82,6 +93,28 @@ namespace TimeSheet
                 if (ret == 1)
                 {
                     loginAlert.Style.Add("display", "none");
+                    if (chbRememberMe.Checked)
+                    {
+                        // Encode cookie for username
+                        HttpCookie cookieUserName = new HttpCookie("UserName");
+                        cookieUserName.Value = AppSecurity.Base64Encode(empId);
+                        cookieUserName.Expires = DateTime.Now.AddDays(7);
+
+                        //Encode cookie for password
+                        HttpCookie cookiePassword = new HttpCookie("Password");
+                        cookiePassword.Value = AppSecurity.Base64Encode(password);
+                        cookiePassword.Expires = DateTime.Now.AddDays(7);
+
+                        //Add cookies to response
+                        Response.Cookies.Add(cookieUserName);
+                        Response.Cookies.Add(cookiePassword);
+                    }
+                    else
+                    {
+                        Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(-1);
+                        Response.Cookies["Password"].Expires = DateTime.Now.AddDays(-1);
+                    }
+
                     if (emp != null)
                     {
                         Session["EmployeeId"] = empId;
