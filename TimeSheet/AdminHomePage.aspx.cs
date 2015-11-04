@@ -28,11 +28,11 @@ namespace TimeSheet
 
                 String startDate = tbStartDate.Text;
                 String enddate = tbEndDate.Text;
-                String project_name = ddlProjects.SelectedItem.Text;
-                String project_id = ddlProjects.SelectedItem.Value;
+                //String project_name = ddlProjects.SelectedItem.Text;
+                //String project_id = ddlProjects.SelectedItem.Value;
                 String employee = ddlEmployees.SelectedItem.Value;
 
-                DataSet ds = DAL.GetReportData(startDate, enddate, project_name, project_id, employee);
+                //DataSet ds = DAL.GetReportData(startDate, enddate, project_name, project_id, employee);
             }
             catch
             {
@@ -40,9 +40,24 @@ namespace TimeSheet
             }
         }
 
-        protected void ddlProjects_DataBound(object sender, EventArgs e)
+        //protected void ddlProjects_DataBound(object sender, EventArgs e)
+        //{
+        //    ddlProjects.Items.Insert(0, "--Select--");
+        //}
+
+        protected void tbProjects_search_TextChanged(object sender, EventArgs e)
         {
-            ddlProjects.Items.Insert(0, "--Select--");
+            lbProjects.DataBind();
+            String searchproj = tbProjects_search.Text;
+
+            if (!String.IsNullOrEmpty(searchproj))
+            {
+                obdsGetAllProjects .FilterExpression = "Name LIKE '" + tbProjects_search.Text + "%'";
+            }
+            else
+            {
+                obdsGetAllProjects.FilterExpression = null;
+            }
         }
 
         //protected void ddlEmployees_DataBound(object sender, EventArgs e)

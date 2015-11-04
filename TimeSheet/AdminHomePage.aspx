@@ -111,8 +111,10 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <asp:DropDownList ID="ddlProjects" runat="server" CssClass="form-control input-sm" DataSourceID="obdsGetAllProjects" DataTextField="Name" DataValueField="Id" OnDataBound="ddlProjects_DataBound"></asp:DropDownList>
-
+                                            <%--<asp:DropDownList ID="ddlProjects" runat="server" CssClass="form-control input-sm" DataSourceID="obdsGetAllProjects" DataTextField="Name" DataValueField="Id" OnDataBound="ddlProjects_DataBound"></asp:DropDownList>--%>
+                                            <asp:TextBox ID="tbProjects_search" runat="server" OnTextChanged="tbProjects_search_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                            <asp:ListBox ID="lbProjects" runat="server" CssClass="form-control input-sm" DataSourceID="obdsGetAllProjects" DataTextField="Name" DataValueField="Id"></asp:ListBox>
+                                        
                                         </td>
                                     </tr>
                                 </table>
