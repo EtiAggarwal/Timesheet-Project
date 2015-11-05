@@ -11,9 +11,9 @@ namespace TimeSheet
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["EmployeeName"] != null)
+            if (Session["FirstName"] != null)
             {
-                lbUserName.Text = Session["EmployeeName"].ToString();
+                lbUserName.Text = Session["FirstName"].ToString() +" " + Session["LastName"].ToString();
             }
             if (Session["isAdmin"] != null && (bool)Session["isAdmin"] == true)
             {

@@ -121,8 +121,7 @@ namespace TimeSheet
                         Session["FirstName"] = emp.FirstName;
                         Session["LastName"] = emp.LastName;
                         Session["EMAIL"] = emp.Email;
-                        Session["EmployeeName"] = emp.FirstName +" "+ emp.LastName;
-
+                        Session["USER_GUID"] = emp.GUID;
                         if (emp.IsAdmin)
                         {
                             Session["isAdmin"] = true;

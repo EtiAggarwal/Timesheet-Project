@@ -31,6 +31,15 @@ namespace TimeSheet {
         protected global::System.Web.UI.WebControls.TextBox tbFirstName;
         
         /// <summary>
+        /// rfvFirtName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvFirtName;
+        
+        /// <summary>
         /// tbLastName control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace TimeSheet {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbLastName;
+        
+        /// <summary>
+        /// rfvLastName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvLastName;
         
         /// <summary>
         /// tbEmailId control.
@@ -49,6 +67,24 @@ namespace TimeSheet {
         protected global::System.Web.UI.WebControls.TextBox tbEmailId;
         
         /// <summary>
+        /// rfvEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvEmail;
+        
+        /// <summary>
+        /// regEmailFormat control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator regEmailFormat;
+        
+        /// <summary>
         /// tbChangeProfPass control.
         /// </summary>
         /// <remarks>
@@ -58,6 +94,15 @@ namespace TimeSheet {
         protected global::System.Web.UI.WebControls.TextBox tbChangeProfPass;
         
         /// <summary>
+        /// rfvPasswordAcc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPasswordAcc;
+        
+        /// <summary>
         /// tbChangeProfConfPass control.
         /// </summary>
         /// <remarks>
@@ -65,6 +110,24 @@ namespace TimeSheet {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbChangeProfConfPass;
+        
+        /// <summary>
+        /// rfvConfPasswordAcc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvConfPasswordAcc;
+        
+        /// <summary>
+        /// compValPassAcc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator compValPassAcc;
         
         /// <summary>
         /// btChangeProfSave control.
@@ -94,6 +157,15 @@ namespace TimeSheet {
         protected global::System.Web.UI.WebControls.TextBox tbChPassCurr;
         
         /// <summary>
+        /// rfvCurrentPassRes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCurrentPassRes;
+        
+        /// <summary>
         /// tbChPassNew control.
         /// </summary>
         /// <remarks>
@@ -101,6 +173,15 @@ namespace TimeSheet {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tbChPassNew;
+        
+        /// <summary>
+        /// rfvNewPassRes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNewPassRes;
         
         /// <summary>
         /// tbChPassConf control.
@@ -112,6 +193,24 @@ namespace TimeSheet {
         protected global::System.Web.UI.WebControls.TextBox tbChPassConf;
         
         /// <summary>
+        /// rfvConfPassRes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvConfPassRes;
+        
+        /// <summary>
+        /// compValPassRes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator compValPassRes;
+        
+        /// <summary>
         /// btChPassSave control.
         /// </summary>
         /// <remarks>
@@ -121,12 +220,12 @@ namespace TimeSheet {
         protected global::System.Web.UI.WebControls.Button btChPassSave;
         
         /// <summary>
-        /// btChPassCan control.
+        /// hfTab control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btChPassCan;
+        protected global::System.Web.UI.WebControls.HiddenField hfTab;
     }
 }

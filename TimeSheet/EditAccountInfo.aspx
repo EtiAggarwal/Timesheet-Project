@@ -13,15 +13,23 @@
             }
 
         .table {
-            width: 40%;
-            
+            width: 50%;
         }
 
             .table td {
                 border-top: none !important;
-                
             }
     </style>
+    <script type="text/javascript">
+ $(document).ready(function () {
+            var selectedTab = $("#<%=hfTab.ClientID%>");
+            var tabId = selectedTab.val() != "" ? selectedTab.val() : "home";
+            $('#Tabs a[href="#' + tabId + '"]').tab('show');
+            $("#Tabs a").click(function () {
+                selectedTab.val($(this).attr("href").substring(1));
+            });
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
 
@@ -31,7 +39,7 @@
             <div class="panel-heading">
                 <h3 class="panel-title">User Profile</h3>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" id="Tabs">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#home" data-toggle="tab">Edit Account</a></li>
                     <li><a href="#profile" data-toggle="tab">Reset Passowrd</a></li>
@@ -53,7 +61,11 @@
                                     <label for="firstname">First Name</label>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tbFirstName" runat="server"  CssClass="form-control input-sm"></asp:TextBox>
+                                    <asp:TextBox ID="tbFirstName" runat="server" CssClass="form-control input-sm"></asp:TextBox>
+                                </td>
+
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvFirtName" runat="server" ErrorMessage="First Name can't be blank" ControlToValidate="tbFirstName" ForeColor="Red" Font-Size="Small" ValidationGroup="Account"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -61,7 +73,10 @@
                                     <label for="lastname">Last Name</label>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tbLastName" runat="server"  CssClass="form-control input-sm"></asp:TextBox>
+                                    <asp:TextBox ID="tbLastName" runat="server" CssClass="form-control input-sm"></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvLastName" runat="server" ErrorMessage="Last Name can't be blank" ControlToValidate="tbLastName" ForeColor="Red" Font-Size="Small" ValidationGroup="Account"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -69,7 +84,11 @@
                                     <label for="email">Email</label>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tbEmailId" runat="server"  CssClass="form-control input-sm"></asp:TextBox>
+                                    <asp:TextBox ID="tbEmailId" runat="server" CssClass="form-control input-sm"></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvEmail" runat="server" ErrorMessage="Email can't be blank" ControlToValidate="tbEmailId" ForeColor="Red" Font-Size="Small" ValidationGroup="Account" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:RegularExpressionValidator ID="regEmailFormat" runat="server" ErrorMessage="Invalid Email Id" ControlToValidate="tbEmailId" ForeColor="Red" Font-Size="Small" ValidationGroup="Account" Display="Dynamic" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
                                 </td>
                             </tr>
                             <tr>
@@ -77,7 +96,11 @@
                                     <label for="email">Password</label>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tbChangeProfPass" runat="server"  CssClass="form-control input-sm" TextMode="Password"></asp:TextBox>
+                                    <asp:TextBox ID="tbChangeProfPass" runat="server" CssClass="form-control input-sm" TextMode="Password"></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvPasswordAcc" runat="server" ErrorMessage="Enter Password" ControlToValidate="tbChangeProfPass" ForeColor="Red" Font-Size="Small" ValidationGroup="Account"></asp:RequiredFieldValidator>
+
                                 </td>
                             </tr>
                             <tr>
@@ -87,13 +110,19 @@
                                 <td>
                                     <asp:TextBox ID="tbChangeProfConfPass" runat="server" CssClass="form-control input-sm" TextMode="Password"></asp:TextBox>
                                 </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvConfPasswordAcc" runat="server" ErrorMessage="Confirm Password" ControlToValidate="tbChangeProfConfPass" ForeColor="Red" Font-Size="Small" ValidationGroup="Account" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:CompareValidator ID="compValPassAcc" runat="server" ErrorMessage="Passwords Don't Match" ControlToValidate="tbChangeProfConfPass" ControlToCompare="tbChangeProfPass" ForeColor="Red" Font-Size="Small" Display="Dynamic" ValidationGroup="Account"></asp:CompareValidator>
+                                </td>
                             </tr>
-                            <tr><td colspan="2"></td></tr>
+                            <tr>
+                                <td colspan="2"></td>
+                            </tr>
                             <tr>
                                 <td colspan="2">
-                                    <asp:Button ID="btChangeProfSave" runat="server" Text="Save" class="btn btn-primary btn-sm"/>
-                                &nbsp; &nbsp;
-                                    <asp:Button ID="btChangeProfCan" runat="server" Text="Reset" class="btn btn-primary btn-sm"/>
+                                    <asp:Button ID="btChangeProfSave" runat="server" Text="Save" class="btn btn-primary btn-sm" ValidationGroup="Account" OnClick="btChangeProfSave_Click" />
+                                    &nbsp; &nbsp;
+                                    <asp:Button ID="btChangeProfCan" runat="server" Text="Reset" class="btn btn-primary btn-sm" CausesValidation="false" OnClick="btChangeProfCan_Click" />
                                 </td>
                             </tr>
                         </table>
@@ -101,49 +130,61 @@
                     </div>
                     <div class="tab-pane fade" id="profile">
                         <br />
-                        <table class="table" id="pwdchange" >
-                    <tr>
-                        <td>
-                            <label for="Oldpwd">Enter Current Password</label>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="tbChPassCurr" runat="server" placeholder="Current Password" CssClass="form-control input-sm"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="Newpwd">Enter New Password</label>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="tbChPassNew" runat="server" placeholder="New Password" CssClass="form-control input-sm"></asp:TextBox>
-                        </td>
-                    </tr>
-                            
-                    <tr>
-                        <td>
-                            <label for="Confirmpwd">Confirm New Password</label>
-                        </td>
-                        <td>
-                            <asp:TextBox ID="tbChPassConf" runat="server" placeholder="Confirm Password" CssClass="form-control input-sm"></asp:TextBox>
-                        </td>
-                    </tr>
-                            <tr><td colspan="2"></td></tr>
-                             <tr>
-                                <td colspan="2">
-                                    <asp:Button ID="btChPassSave" runat="server" Text="Save" class="btn btn-primary btn-sm"/>
-                                &nbsp; &nbsp;
-                                    <asp:Button ID="btChPassCan" runat="server" Text="Reset" class="btn btn-primary btn-sm"/>
+                        <table class="table" id="pwdchange">
+                            <tr>
+                                <td>
+                                    <label for="Oldpwd">Enter Current Password</label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="tbChPassCurr" runat="server" placeholder="Current Password" CssClass="form-control input-sm" TextMode="Password"></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvCurrentPassRes" runat="server" ErrorMessage="Enter Password" ControlToValidate="tbChPassCurr" ForeColor="Red" Font-Size="Small" ValidationGroup="Pass"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
-                </table>
+                            <tr>
+                                <td>
+                                    <label for="Newpwd">Enter New Password</label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="tbChPassNew" runat="server" placeholder="New Password" CssClass="form-control input-sm" TextMode="Password"></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvNewPassRes" runat="server" ErrorMessage="Enter Password" ControlToValidate="tbChPassNew" ForeColor="Red" Font-Size="Small" ValidationGroup="Pass"></asp:RequiredFieldValidator>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <label for="Confirmpwd">Confirm New Password</label>
+                                </td>
+                                <td>
+                                    <asp:TextBox ID="tbChPassConf" runat="server" placeholder="Confirm Password" CssClass="form-control input-sm" TextMode="Password"></asp:TextBox>
+                                </td>
+                                <td>
+                                    <asp:RequiredFieldValidator ID="rfvConfPassRes" runat="server" ErrorMessage="Enter Password" ControlToValidate="tbChPassConf" ForeColor="Red" Font-Size="Small" ValidationGroup="Pass" Display="Dynamic"></asp:RequiredFieldValidator>
+                                    <asp:CompareValidator ID="compValPassRes" runat="server" ErrorMessage="Passwords Don't Match" ControlToValidate="tbChPassConf" ControlToCompare="tbChPassNew" ForeColor="Red" Font-Size="Small" Display="Dynamic" ValidationGroup="Pass"></asp:CompareValidator>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <asp:Button ID="btChPassSave" runat="server" Text="Save" class="btn btn-primary btn-sm" ValidationGroup="Pass" OnClick="btChPassSave_Click" />
+
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-                    
+
                 </div>
 
 
-                
+
             </div>
 
         </div>
+        <asp:HiddenField ID="hfTab" runat="server" />
     </div>
 </asp:Content>

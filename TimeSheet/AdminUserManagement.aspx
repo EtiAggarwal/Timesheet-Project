@@ -38,7 +38,7 @@
                             <asp:TemplateField HeaderText="ROLE">
                                 <ItemTemplate><%# (Boolean.Parse(Eval("IS_ADMIN").ToString())) ? "Admin" : "User" %></ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="ID" HeaderText="ID" Visible="False" />
+                          
                         </Columns>
                     </asp:GridView>
                 </ContentTemplate>

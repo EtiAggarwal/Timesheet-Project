@@ -53,5 +53,14 @@ namespace TimeSheet.APP_CODE.BO
             set { isAdmin = value; }
         }
 
+        private String guid;
+
+        public String GUID
+        {
+            get { return guid; }
+            set { guid = value; }
+        }
+
+
     }
 }

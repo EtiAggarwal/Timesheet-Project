@@ -247,6 +247,7 @@ namespace TimeSheet.APP_CODE.DAL
                     string dbFirstName = Convert.ToString(dr["FIRST_NAME"]);
                     string dbLastName = Convert.ToString(dr["LAST_NAME"]);
                     string dbEmail = Convert.ToString(dr["EMAIL_ID"]);
+                    string guid = Convert.ToString(dr["USER_GUID"]);
                     int isAdmin = Convert.ToInt16(dr["IS_ADMIN"]);
                     // Now we hash the UserGuid from the database with the password we wan't to check
                     // In the same way as when we saved it to the database in the first place. (see AddUser() function)
@@ -261,6 +262,7 @@ namespace TimeSheet.APP_CODE.DAL
                         employee.FirstName = dbFirstName;
                         employee.LastName = dbLastName;
                         employee.Email = dbEmail;
+                        employee.GUID = guid;
                         if (isAdmin == 0)
                         {
                             employee.IsAdmin = false;
@@ -299,6 +301,46 @@ namespace TimeSheet.APP_CODE.DAL
 
 
     }
+        /// <summary>
+        /// method to update user account info by user
+        /// </summary>
+        
+        public int? UpdateAccountInfo(Employee emp,string pass)
+        {
+            int? ret = null;
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SP_UPDATE_ACCOUNT_INFO, con);
+                selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", emp.EmployeeId);
+                selectCommand.Parameters.AddWithValue("@FIRST_NAME",emp.FirstName);
+                selectCommand.Parameters.AddWithValue("@LAST_NAME",emp.LastName);
+                selectCommand.Parameters.AddWithValue("@EMAIL_ID", emp.Email);
+                selectCommand.Parameters.AddWithValue("@PASS", pass);
 
-}
+                SqlParameter retParam = new SqlParameter();
+                retParam.ParameterName = "@RetVal";
+                retParam.Direction = ParameterDirection.ReturnValue;
+                retParam.SqlDbType = SqlDbType.Int;
+                selectCommand.Parameters.Add(retParam);
+                selectCommand.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                selectCommand.ExecuteNonQuery();
+                con.Close();
+                ret = (int)retParam.Value;
+                return ret;
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
+
     }
+}
