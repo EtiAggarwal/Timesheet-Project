@@ -85,30 +85,48 @@ namespace TimeSheet {
         protected global::System.Web.UI.WebControls.Button btChangeProfCan;
         
         /// <summary>
-        /// TextBox4 control.
+        /// tbChPassCurr control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox tbChPassCurr;
         
         /// <summary>
-        /// TextBox5 control.
+        /// tbChPassNew control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox tbChPassNew;
         
         /// <summary>
-        /// TextBox6 control.
+        /// tbChPassConf control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.TextBox tbChPassConf;
+        
+        /// <summary>
+        /// btChPassSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btChPassSave;
+        
+        /// <summary>
+        /// btChPassCan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btChPassCan;
     }
 }

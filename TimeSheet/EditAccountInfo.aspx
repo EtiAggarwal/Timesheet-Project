@@ -3,15 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <title>Edit Account Information</title>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#btchangepwd").click(function () {
-                $("#pwdchange").toggle();
-
-            });
-        });
-
-    </script>
     <style>
         .panel-success {
             height: calc(100vh - 145px);
@@ -42,7 +33,7 @@
             </div>
             <div class="panel-body">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+                    <li class="active"><a href="#home" data-toggle="tab">Edit Account</a></li>
                     <li><a href="#profile" data-toggle="tab">Reset Passowrd</a></li>
                 </ul>
                 <div id="myTabContent" class="tab-content">
@@ -102,7 +93,7 @@
                                 <td colspan="2">
                                     <asp:Button ID="btChangeProfSave" runat="server" Text="Save" class="btn btn-primary btn-sm"/>
                                 &nbsp; &nbsp;
-                                    <asp:Button ID="btChangeProfCan" runat="server" Text="Cancel" class="btn btn-primary btn-sm"/>
+                                    <asp:Button ID="btChangeProfCan" runat="server" Text="Reset" class="btn btn-primary btn-sm"/>
                                 </td>
                             </tr>
                         </table>
@@ -116,7 +107,7 @@
                             <label for="Oldpwd">Enter Current Password</label>
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox4" runat="server" placeholder="Current Password" CssClass="form-control input-sm"></asp:TextBox>
+                            <asp:TextBox ID="tbChPassCurr" runat="server" placeholder="Current Password" CssClass="form-control input-sm"></asp:TextBox>
                         </td>
                     </tr>
                     <tr>
@@ -124,17 +115,26 @@
                             <label for="Newpwd">Enter New Password</label>
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox5" runat="server" placeholder="New Password" CssClass="form-control input-sm"></asp:TextBox>
+                            <asp:TextBox ID="tbChPassNew" runat="server" placeholder="New Password" CssClass="form-control input-sm"></asp:TextBox>
                         </td>
                     </tr>
+                            
                     <tr>
                         <td>
                             <label for="Confirmpwd">Confirm New Password</label>
                         </td>
                         <td>
-                            <asp:TextBox ID="TextBox6" runat="server" placeholder="Confirm Password" CssClass="form-control input-sm"></asp:TextBox>
+                            <asp:TextBox ID="tbChPassConf" runat="server" placeholder="Confirm Password" CssClass="form-control input-sm"></asp:TextBox>
                         </td>
                     </tr>
+                            <tr><td colspan="2"></td></tr>
+                             <tr>
+                                <td colspan="2">
+                                    <asp:Button ID="btChPassSave" runat="server" Text="Save" class="btn btn-primary btn-sm"/>
+                                &nbsp; &nbsp;
+                                    <asp:Button ID="btChPassCan" runat="server" Text="Reset" class="btn btn-primary btn-sm"/>
+                                </td>
+                            </tr>
                 </table>
                     </div>
                     
