@@ -13,6 +13,15 @@ namespace TimeSheet {
     public partial class EditAccountInfo {
         
         /// <summary>
+        /// editAlert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl editAlert;
+        
+        /// <summary>
         /// lbEmployeeId control.
         /// </summary>
         /// <remarks>

@@ -66,6 +66,11 @@ namespace TimeSheet
                         Session["LastName"] = emp.LastName;
                         Session["EMAIL"] = emp.Email;
                         ((Label)Master.FindControl("lbUserName")).Text = emp.FirstName + " " + emp.LastName;
+                        //show success message
+                       
+                        editAlert.Style.Add("display", "inline");
+                        editAlert.Attributes.Add("class", "alert-success");
+                        editAlert.InnerText = "Account Information Successfully Updated";
                     } break;
             }
         }

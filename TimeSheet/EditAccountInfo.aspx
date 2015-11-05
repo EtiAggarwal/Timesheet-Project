@@ -28,7 +28,13 @@
             $("#Tabs a").click(function () {
                 selectedTab.val($(this).attr("href").substring(1));
             });
-        });
+
+ });
+
+        function reset_Alert() {
+            
+            $('#editAlert').hide();
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
@@ -40,9 +46,11 @@
                 <h3 class="panel-title">User Profile</h3>
             </div>
             <div class="panel-body" id="Tabs">
+                   <div style="display: none" id="editAlert" class="alert alert-danger col-sm-12" runat="server" ClientIDMode="static"></div>
+
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#home" data-toggle="tab">Edit Account</a></li>
-                    <li><a href="#profile" data-toggle="tab">Reset Passowrd</a></li>
+                    <li class="active"><a href="#home" data-toggle="tab" onclick="reset_Alert()">Edit Account</a></li>
+                    <li><a href="#profile" data-toggle="tab" onclick="reset_Alert()">Reset Passowrd</a></li>
                 </ul>
                 <div id="myTabContent" class="tab-content">
                     <div class="tab-pane fade active in" id="home">
