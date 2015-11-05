@@ -41,6 +41,43 @@ namespace TimeSheet
         protected void btChPassSave_Click(object sender, EventArgs e)
         {
             hfTab.Value = "profile";
+            string oldPass = tbChPassCurr.Text;
+            string newPass = tbChPassNew.Text;
+            string empId = Session["EmployeeId"].ToString();
+            string oldHashedPassword = AppSecurity.HashSHA1(oldPass + Session["USER_GUID"].ToString());
+            string newHashedPassword = AppSecurity.HashSHA1(newPass + Session["USER_GUID"].ToString());
+            DataAccessLayer dal = new DataAccessLayer();
+            int? ret = dal.UpdatePasswordUser(empId, oldHashedPassword, newHashedPassword);
+            switch (ret)
+            {
+
+                case 1:
+                    {
+                        //show success message
+                        editAlert.Style.Add("display", "inline");
+                        editAlert.Attributes.Add("class", "alert-success");
+                        editAlert.InnerText = "Password Reset Successfully";
+                    }
+                    break;
+                case -1:
+                    {
+                        //invalid password
+                        editAlert.Style.Add("display", "inline");
+                        editAlert.Attributes.Add("class", "alert-danger");
+                        editAlert.InnerText = "Incorrect Old Password";
+
+                    }
+                    break;
+                case 0:
+                    {
+                        //invalid password
+                        editAlert.Style.Add("display", "inline");
+                        editAlert.Attributes.Add("class", "alert-danger");
+                        editAlert.InnerText = "Database Error Occured. Information could not be saved.";
+
+                    }
+                    break;
+            }
         }
 
         protected void btChangeProfSave_Click(object sender, EventArgs e)
@@ -72,6 +109,24 @@ namespace TimeSheet
                         editAlert.Attributes.Add("class", "alert-success");
                         editAlert.InnerText = "Account Information Successfully Updated";
                     } break;
+                case -1:
+                    {
+                        //invalid password
+                        editAlert.Style.Add("display", "inline");
+                        editAlert.Attributes.Add("class", "alert-danger");
+                        editAlert.InnerText = "Incorrect Password";
+                                                
+                    }
+                    break;
+                case 0:
+                    {
+                        //invalid password
+                        editAlert.Style.Add("display", "inline");
+                        editAlert.Attributes.Add("class", "alert-danger");
+                        editAlert.InnerText = "Database Error Occured. Information could not be saved.";
+
+                    }
+                    break;
             }
         }
     }

@@ -341,6 +341,43 @@ namespace TimeSheet.APP_CODE.DAL
 
         }
 
+        /// <summary>
+        /// method to update user password info by user
+        /// </summary>
+
+        public int? UpdatePasswordUser(string empId, string oldPass, string newPass)
+        {
+            int? ret = null;
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SP_RESET_PASS_USER, con);
+                selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", empId);
+                selectCommand.Parameters.AddWithValue("@OLD_PASS", oldPass);
+                selectCommand.Parameters.AddWithValue("@NEW_PASS", newPass);
+               
+                SqlParameter retParam = new SqlParameter();
+                retParam.ParameterName = "@RetVal";
+                retParam.Direction = ParameterDirection.ReturnValue;
+                retParam.SqlDbType = SqlDbType.Int;
+                selectCommand.Parameters.Add(retParam);
+                selectCommand.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                selectCommand.ExecuteNonQuery();
+                con.Close();
+                ret = (int)retParam.Value;
+                return ret;
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
 
     }
 }

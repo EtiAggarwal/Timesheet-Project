@@ -179,7 +179,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <asp:Button ID="btChPassSave" runat="server" Text="Save" class="btn btn-primary btn-sm" ValidationGroup="Pass" OnClick="btChPassSave_Click" />
+                                    <asp:Button ID="btChPassSave" runat="server" Text="Save" class="btn btn-primary btn-sm" ValidationGroup="Pass" OnClick="btChPassSave_Click"  />
 
                                 </td>
                             </tr>
