@@ -18,7 +18,10 @@ namespace TimeSheet
             }
             if (!IsPostBack)
             {
-                
+                lbEmployeeId.Text = Session["EmployeeId"].ToString();
+                tbFirstName.Text = Session["FirstName"].ToString();
+                tbLastName.Text = Session["LastName"].ToString();
+                tbEmailId.Text = Session["EMAIL"].ToString();
             }
         }
 

@@ -35,12 +35,12 @@ namespace TimeSheet.APP_CODE.BO
             set { lastName = value; }
         }
 
-        private String userId;
+        private String email;
 
-        public String UserId
+        public String Email
         {
-            get { return userId; }
-            set { userId = value; }
+            get { return email; }
+            set { email = value; }
         }
 
       

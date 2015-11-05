@@ -1,11 +1,10 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="TimeSheet.Site" %>
 
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-       
+
     <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <script src="Scripts/jquery-1.9.1.js"></script>
@@ -13,16 +12,14 @@
 
 
     <style type="text/css">
-        
         .page-header {
             margin: auto;
             margin-top: -10px;
             margin-bottom: -15px;
-           
         }
+
         .header {
-             background-image: url(Content/images/pattern_4.png);
-             
+            background-image: url(Content/images/pattern_4.png);
         }
 
 
@@ -36,13 +33,21 @@
         }
 
         .panel-body {
-           padding: 7px;
-            margin-bottom:-5px;
+            padding: 7px;
+            margin-bottom: -5px;
         }
+
         .panel-heading {
             padding: 5px;
         }
-        
+
+.dropdown ul.dropdown-menu {
+    border-radius:4px;
+    box-shadow:none;
+    margin-top:5px;
+    width:100px;
+}
+
     </style>
     <script type="text/javascript">
         $(function () {
@@ -67,22 +72,22 @@
 
         <div class="container-fluid header">
             <div class="page-header">
-                 <h1 id="navbar"><strong> Smart Data Strategies Timesheet</strong></h1>
+                <h1 id="navbar"><strong>Smart Data Strategies Timesheet</strong></h1>
             </div>
         </div>
         <asp:SiteMapDataSource ID="SiteMapDataSource" runat="server" SiteMapProvider="UserSiteMap" />
 
-        <nav class="navbar navbar-inverse" >
+        <nav class="navbar navbar-inverse">
             <div class="container-fluid">
-                   <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-            </div>
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
                     <%--<ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
@@ -100,15 +105,26 @@
                         SkipLinkText=""
                         RenderingMode="List" DataSourceID="SiteMapDataSource">
                     </asp:Menu>
-                   
-                     <ul class="nav navbar-nav navbar-right">
-                        <li><a>
-                            Hi, <asp:Label ID="lbUserName" runat="server" Text=""></asp:Label>
-                           </a>  </li>
-                         <li>
-                            <asp:LinkButton ID="lbLogout" runat="server" OnClick="lbLogout_Click">
-                  <span aria-hidden="true" class="glyphicon glyphicon-user" ></span>
-                           logout </asp:LinkButton></li>
+
+                    <ul class="nav navbar-nav navbar-right">
+                       
+                        <li class="dropdown" >
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                  <span aria-hidden="true" class="glyphicon glyphicon-user" ></span> 
+                                <asp:Label ID="lbUserName" runat="server" Text=""></asp:Label><span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu" style="width:auto">
+                               <li><a href="EditAccountInfo.aspx" >Settings<span  class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                                <li class="divider"></li>
+                                 <li>
+                                     
+                                    <asp:LinkButton ID="lbLogout" runat="server" OnClick="lbLogout_Click" >Logout 
+                                           <span aria-hidden="true" class="glyphicon glyphicon-off pull-right"></span></asp:LinkButton>
+
+                                 </li>
+                                
+                            </ul>
+                        </li>
+
                     </ul>
                 </div>
 

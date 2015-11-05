@@ -246,6 +246,7 @@ namespace TimeSheet.APP_CODE.DAL
                     string dbUserGuid = Convert.ToString(dr["USER_GUID"]);
                     string dbFirstName = Convert.ToString(dr["FIRST_NAME"]);
                     string dbLastName = Convert.ToString(dr["LAST_NAME"]);
+                    string dbEmail = Convert.ToString(dr["EMAIL_ID"]);
                     int isAdmin = Convert.ToInt16(dr["IS_ADMIN"]);
                     // Now we hash the UserGuid from the database with the password we wan't to check
                     // In the same way as when we saved it to the database in the first place. (see AddUser() function)
@@ -259,6 +260,7 @@ namespace TimeSheet.APP_CODE.DAL
                         employee.EmployeeId = dbEmpId;
                         employee.FirstName = dbFirstName;
                         employee.LastName = dbLastName;
+                        employee.Email = dbEmail;
                         if (isAdmin == 0)
                         {
                             employee.IsAdmin = false;
