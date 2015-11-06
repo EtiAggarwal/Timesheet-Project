@@ -379,5 +379,35 @@ namespace TimeSheet.APP_CODE.DAL
 
         }
 
+        /// <summary>
+        /// Delete user account
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+
+        public int? DeleteUserAccountByAdmin(String EmployeeId)
+        {
+            int? ret = null;
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SQL_DELETE_USER_ACC, con);
+                selectCommand.Parameters.AddWithValue("@EMP_ID", EmployeeId);
+                con.Open();
+                ret = selectCommand.ExecuteNonQuery();
+                con.Close();
+                return ret;
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
     }
 }

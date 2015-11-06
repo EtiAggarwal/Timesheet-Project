@@ -26,5 +26,6 @@ namespace TimeSheet.APP_CODE.DAL
         public static String SQL_GET_ALL_USERS = "SELECT EMPLOYEE_ID,FIRST_NAME,LAST_NAME,EMAIL_ID,IS_ADMIN FROM USER_LOGIN";
         public static String SP_UPDATE_ACCOUNT_INFO = "SP_UPDATE_ACCOUNT_INFO";
         public static String SP_RESET_PASS_USER = "SP_RESET_PASS_USER";
+        public static String SQL_DELETE_USER_ACC = "DELETE FROM USER_LOGIN WHERE EMPLOYEE_ID = @EMP_ID";
     }
 }

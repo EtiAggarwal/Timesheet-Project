@@ -101,7 +101,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label for="email">Password</label>
+                                    <label >Password</label>
                                 </td>
                                 <td>
                                     <asp:TextBox ID="tbChangeProfPass" runat="server" CssClass="form-control input-sm" TextMode="Password"></asp:TextBox>
@@ -113,7 +113,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <label for="email">Confirm Password</label>
+                                    <label >Confirm Password</label>
                                 </td>
                                 <td>
                                     <asp:TextBox ID="tbChangeProfConfPass" runat="server" CssClass="form-control input-sm" TextMode="Password"></asp:TextBox>

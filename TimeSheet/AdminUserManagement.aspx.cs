@@ -27,5 +27,25 @@ namespace TimeSheet
                 odsUsers.FilterExpression = null;
             }
         }
+
+        protected void grvUsers_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                string val = e.CommandArgument.ToString();
+                odsUsers.DeleteParameters["EmployeeId"].DefaultValue= val;
+                odsUsers.Delete();
+            }
+            else if (e.CommandName == "Edit_Det")
+            {
+                string[] vals = e.CommandArgument.ToString().Split(';');
+                lbUserNameForEdit.Text = vals[0];
+                ddlUserType.SelectedItem.Value = vals[1];
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+                
+            }
+        }
+
+        
     }
 }
