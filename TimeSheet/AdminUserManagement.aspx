@@ -28,7 +28,7 @@
         }
 
         .modal-align {
-            height: calc(100vh - 450px);
+            height: calc(100vh - 430px);
         }
 
         .modal.modal-wide .modal-dialog {
@@ -40,17 +40,18 @@
         }
 
         .al-bt1 {
-            height: calc(100vh - 555px);
+            height: calc(100vh - 530px);
         }
 
         .al-bt2 {
-            height: calc(100vh - 565px);
+            height: calc(100vh - 590px);
         }
     </style>
    <script type="text/javascript">
        function openDetailsModal(empId, isAdmin) {
-           
-               $('#lbUserNameForEdit').text(empId);
+           $('#adminEditUserAlert').hide();
+           $('#lbUserIdForEdit').text(empId);
+           $('#hdEmpUSerId').val(empId);
                $("select[id$='ddlUserType'] option[value='"+isAdmin+"']").attr("selected", "selected");
                $('#GSCCModal').modal('show');
            
@@ -59,16 +60,16 @@
 </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
+    <asp:HiddenField ID="hdEmpUSerId" runat="server" ClientIDMode="Static"/>
     <div class="modal modal-wide" id="GSCCModal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="font-size: small">x</button>
                     <h4 class="modal-title">Edit User Profile For :
-                        <asp:Label ID="lbUserNameForEdit" runat="server" ClientIDMode="Static"></asp:Label></h4>
+                        <asp:Label ID="lbUserIdForEdit" runat="server" ClientIDMode="Static"></asp:Label></h4>
                 </div>
                 <div class="modal-body">
-
                     <div class="alert alert-success col-lg-6  modal-align" style="margin-left: -5px">
                         <table class="table">
                             <tr>
@@ -83,12 +84,17 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="2">&nbsp;</td>
+                                <td>
+                                    <label for="admin Pass">Admin Password</label>
+                                </td>
+                                <td >
+                               <asp:TextBox ID="tbAdminPassUsserType" runat="server" TextMode="Password" CssClass="form-control input-sm" placeholder="Admin Password"></asp:TextBox>
+                                </td>
                             </tr>
 
                             <tr class="al-bt1">
                                 <td colspan="2" style="vertical-align: bottom; text-align: center">
-                                    <asp:Button ID="btUpdateUserType" runat="server" Text="Update User Type" CssClass="btn btn-primary btn-sm" ValidationGroup="UpdateUserType" />
+                                    <asp:Button ID="btUpdateUserType" runat="server" Text="Update User Type" CssClass="btn btn-primary btn-sm" ValidationGroup="UpdateUserType" OnClick="btUpdateUserType_Click" />
 
                                 </td>
                             </tr>
@@ -98,23 +104,34 @@
                     <div class="alert alert-success col-lg-6 pull-right modal-align" style="margin-right: -5px">
                         <table class="table">
                             <tr>
-                                <td>New Password
+                                <td>
+                                    <label>New User Password</label>
+
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tbResetPassNew" runat="server" TextMode="Password" CssClass="form-control input-sm"></asp:TextBox>
+                                    <asp:TextBox ID="tbResetPassNew" runat="server" TextMode="Password" CssClass="form-control input-sm" placeholder="New Password for user"></asp:TextBox>
                                 </td>
                             </tr>
                             <tr>
-                                <td>Confirm Password
+                                <td>
+                                    <label>Confirm User Password</label> 
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="tbResetPassConf" runat="server" TextMode="Password" CssClass="form-control input-sm"></asp:TextBox>
+                                    <asp:TextBox ID="tbResetPassConf" runat="server" TextMode="Password" CssClass="form-control input-sm" placeholder="Confirm New Password"></asp:TextBox>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>
+                                    <label for="admin Pass">Admin Password</label>
+                                </td>
+                                <td >
+                               <asp:TextBox ID="tbAdminPassReset" runat="server" TextMode="Password" CssClass="form-control input-sm" placeholder="Admin Password"></asp:TextBox>
                                 </td>
                             </tr>
 
                             <tr class="al-bt2">
                                 <td colspan="2" style="vertical-align: bottom; text-align: center">
-                                    <asp:Button ID="btResetPass" runat="server" Text="Reset Password" CssClass="btn btn-primary btn-sm" ValidationGroup="ResetPass" />
+                                    <asp:Button ID="btResetPass" runat="server" Text="Reset Password" CssClass="btn btn-primary btn-sm" ValidationGroup="ResetPass"  OnClick="btResetPass_Click"/>
                                 </td>
                             </tr>
                         </table>
@@ -132,6 +149,8 @@
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
+                    <div style="display: none" id="adminEditUserAlert" class="alert alert-danger col-sm-12" runat="server" ClientIDMode="static"></div>
+                    
                     <table style="width: 25%;">
                         <tr>
                             <td><strong>

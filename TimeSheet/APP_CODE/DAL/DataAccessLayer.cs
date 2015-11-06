@@ -409,5 +409,100 @@ namespace TimeSheet.APP_CODE.DAL
 
         }
 
+        /// <summary>
+        /// Reset user pass admin
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+
+        public int? ResetUserPasswordByAdmin(String EmployeeId, String newUSerPass, String adminId, String adminPass, String adminGUID)
+        {
+            int? ret = null;
+            try
+            {
+                // First create a new Guid for the user. This will be unique for each user
+                Guid userGuid = System.Guid.NewGuid();
+
+                // Hash the password together with our unique userGuid
+                string userHashedPassword = AppSecurity.HashSHA1(newUSerPass + userGuid.ToString());
+                string adminHashedPassword = AppSecurity.HashSHA1(adminPass + adminGUID);
+
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SP_RESET_USER_PASS_ADMIN, con);
+                selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", EmployeeId);
+                selectCommand.Parameters.AddWithValue("@ADMIN_ID", adminId);
+                selectCommand.Parameters.AddWithValue("@NEW_USER_PASS", userHashedPassword);
+                selectCommand.Parameters.AddWithValue("@NEW_USER_GUID", userGuid);
+                selectCommand.Parameters.AddWithValue("@ADMIM_PASS", adminHashedPassword);
+
+                SqlParameter retParam = new SqlParameter();
+                retParam.ParameterName = "@RetVal";
+                retParam.Direction = ParameterDirection.ReturnValue;
+                retParam.SqlDbType = SqlDbType.Int;
+                selectCommand.Parameters.Add(retParam);
+                selectCommand.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                selectCommand.ExecuteNonQuery();
+                con.Close();
+                ret = (int)retParam.Value;
+                return ret;
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
+        /// <summary>
+        /// Update User Type admin
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+
+        public int? UpdateUserTypeByAdmin(String EmployeeId, bool isAdmin, String adminId, String adminPass, String adminGUID)
+        {
+            int? ret = null;
+            try
+            {
+
+                string adminHashedPassword = AppSecurity.HashSHA1(adminPass + adminGUID);
+
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SP_UPDATE_USER_TYPE_ADMIN, con);
+                selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", EmployeeId);
+                selectCommand.Parameters.AddWithValue("@ADMIN_ID", adminId);
+                selectCommand.Parameters.AddWithValue("@NEW_IS_ADMIN", isAdmin);
+                selectCommand.Parameters.AddWithValue("@ADMIM_PASS", adminHashedPassword);
+
+                SqlParameter retParam = new SqlParameter();
+                retParam.ParameterName = "@RetVal";
+                retParam.Direction = ParameterDirection.ReturnValue;
+                retParam.SqlDbType = SqlDbType.Int;
+                selectCommand.Parameters.Add(retParam);
+                selectCommand.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                selectCommand.ExecuteNonQuery();
+                con.Close();
+                ret = (int)retParam.Value;
+                return ret;
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
+
+
     }
 }

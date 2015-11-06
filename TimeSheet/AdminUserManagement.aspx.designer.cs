@@ -13,13 +13,22 @@ namespace TimeSheet {
     public partial class AdminUserManagement {
         
         /// <summary>
-        /// lbUserNameForEdit control.
+        /// hdEmpUSerId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbUserNameForEdit;
+        protected global::System.Web.UI.WebControls.HiddenField hdEmpUSerId;
+        
+        /// <summary>
+        /// lbUserIdForEdit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbUserIdForEdit;
         
         /// <summary>
         /// ddlUserType control.
@@ -29,6 +38,15 @@ namespace TimeSheet {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlUserType;
+        
+        /// <summary>
+        /// tbAdminPassUsserType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbAdminPassUsserType;
         
         /// <summary>
         /// btUpdateUserType control.
@@ -58,6 +76,15 @@ namespace TimeSheet {
         protected global::System.Web.UI.WebControls.TextBox tbResetPassConf;
         
         /// <summary>
+        /// tbAdminPassReset control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbAdminPassReset;
+        
+        /// <summary>
         /// btResetPass control.
         /// </summary>
         /// <remarks>
@@ -83,6 +110,15 @@ namespace TimeSheet {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
+        /// adminEditUserAlert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl adminEditUserAlert;
         
         /// <summary>
         /// tbEmpId control.
