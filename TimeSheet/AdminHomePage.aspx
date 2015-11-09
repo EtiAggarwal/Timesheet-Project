@@ -137,10 +137,10 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <asp:DropDownList ID="ddlEmployees" runat="server" CssClass="form-control input-sm"></asp:DropDownList>
-                                           <%-- <asp:TextBox ID="tbEmployees_search" runat="server" OnTextChanged="tbEmployees_search_TextChanged" AutoPostBack="True"></asp:TextBox>
+                                            <%--<asp:DropDownList ID="ddlEmployees" runat="server" CssClass="form-control input-sm"></asp:DropDownList>--%>
+                                            <asp:TextBox ID="tbEmployees_search" runat="server" OnTextChanged="tbEmployees_search_TextChanged" AutoPostBack="True"></asp:TextBox>
                                             <asp:ListBox ID="lbEmployees" runat="server" CssClass="form-control input-sm" DataSourceID="obdsGetAllEmployees" DataTextField="Name" DataValueField="Id"></asp:ListBox>
-                                        --%>
+                                      
                                         </td>
                                     </tr>
                                 </table>
@@ -155,7 +155,7 @@
                         <asp:Button ID="btSubmit" runat="server" Text="Search" OnClick="btSubmit_Click" class="btn btn-primary btn-sm" />
                     </div>
                 </div>
-                <asp:ObjectDataSource ID="obdsGetAllEmployees" runat="server" SelectMethod ="GetEmployees"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="obdsGetAllEmployees" runat="server" SelectMethod ="GetAllUsers" TypeName="TimeSheet.APP_CODE.DAL.DataAccessLayer"></asp:ObjectDataSource>
                 <asp:ObjectDataSource ID="obdsGetAllProjects" runat="server" SelectMethod="GetProjects" TypeName="TimeSheet.APP_CODE.DAL.JiraAccessLayer"></asp:ObjectDataSource>
             </div>
         </div>

@@ -49,13 +49,22 @@ namespace TimeSheet {
         protected global::System.Web.UI.WebControls.ListBox lbProjects;
         
         /// <summary>
-        /// ddlEmployees control.
+        /// tbEmployees_search control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEmployees;
+        protected global::System.Web.UI.WebControls.TextBox tbEmployees_search;
+        
+        /// <summary>
+        /// lbEmployees control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox lbEmployees;
         
         /// <summary>
         /// btSubmit control.
