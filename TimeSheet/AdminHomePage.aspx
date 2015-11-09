@@ -1,18 +1,19 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminHomePage.aspx.cs" Inherits="TimeSheet.AdminHomePage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminHomePage.aspx.cs" Inherits="TimeSheet.AdminHomePage"  %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Admin Home Page</title>
     <style>
         .panel-success {
-            height: calc(100vh - 145px);
+            height: calc(100vh - 100px);
         }
-        .panel-success .panel-body{
-           padding-bottom: 15px;
 
-        }
-        .panel-success .panel-default{
-             margin-bottom:10px;
-        }
+            .panel-success .panel-body {
+                padding-bottom: 15px;
+            }
+
+            .panel-success .panel-default {
+                margin-bottom: 10px;
+            }
     </style>
     <link href="Content/datepicker.css" rel="stylesheet" />
     <script type="text/javascript" src="Scripts/bootstrap-datepicker.js"></script>
@@ -23,6 +24,29 @@
             }).on('hidden.bs.collapse', function () {
                 $(this).parent().find(".glyphicon-chevron-up").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
             });
+
+            $('#tbProjects_search').on('change', function (event) {
+                selectByTextProj($.trim($('#tbProjects_search').val()));
+
+            });
+           
+            function selectByTextProj(txt) {
+                $('#lbProjects option')
+                .filter(function () { return $.trim($(this).text()) == txt; })
+                .attr('selected', true);
+               
+            }
+            $('#tbEmployee_Search').on('change', function (event) {
+                selectByTextEmp($.trim($('#tbEmployee_Search').val()));
+
+            });
+
+            function selectByTextEmp(txt) {
+                $('#lbEmployee option')
+                .filter(function () { return $.trim($(this).text()) == txt; })
+                .attr('selected', true);
+
+            }
         });
 
         $(function () {
@@ -58,7 +82,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="col-md-3">
-        <div class="panel panel-success">
+        <div class="panel panel-success" >
             <div class="panel-heading">
                 <h3 class="panel-title">Search Filters</h3>
             </div>
@@ -71,7 +95,7 @@
                                 <a data-toggle="collapse" href="#collapseOne">Date Filter</a>
                             </h4>
                         </div>
-                        <div id="collapseOne" class="panel-collapse collapse in">
+                       <div id="collapseOne" class="panel-collapse collapse in">
                             <div class="panel-body">
                                 <table width="70%">
                                     <tr>
@@ -97,6 +121,7 @@
                     </div>
 
                     <div class="panel panel-default">
+                       
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <span class="glyphicon glyphicon-chevron-up" style="font-size: .8em"></span>
@@ -105,22 +130,40 @@
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                <table width="70%">
+                                   
+                                <table width="100%">
                                     <tr>
                                         <td><strong>Select a project</strong> </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <%--<asp:DropDownList ID="ddlProjects" runat="server" CssClass="form-control input-sm" DataSourceID="obdsGetAllProjects" DataTextField="Name" DataValueField="Id" OnDataBound="ddlProjects_DataBound"></asp:DropDownList>--%>
-                                            <asp:TextBox ID="tbProjects_search" runat="server" OnTextChanged="tbProjects_search_TextChanged" AutoPostBack="True"></asp:TextBox>
-                                            <asp:ListBox ID="lbProjects" runat="server" CssClass="form-control input-sm" DataSourceID="obdsGetAllProjects" DataTextField="Name" DataValueField="Id"></asp:ListBox>
-                                        
+                                             <table style="width:100%">
+                 
+                                                <tr>
+                                                    <td>
+                                                        <strong>
+                                                            <h6>Search Project :</h6>
+                                                        </strong>
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox ID="tbProjects_search" runat="server" CssClass="form-control input-sm" placeholder="Project Name" ClientIDMode="Static"></asp:TextBox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                               
+                                                            <td colspan="2">
+                                                                <asp:ListBox ID="lbProjects" runat="server" ClientIDMode="Static" CssClass="form-control" DataSourceID="obdsGetAllProjects" DataTextField="Name" DataValueField="Id" SelectionMode="Multiple" ></asp:ListBox>
+                                                            </td>
+                                                       
+                                                </tr>
+                                            </table>
                                         </td>
                                     </tr>
                                 </table>
-
+                                
                             </div>
                         </div>
+                                
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -131,16 +174,32 @@
                         </div>
                         <div id="collapseThree" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                <table width="70%">
+                                <table width="100%">
                                     <tr>
                                         <td><strong>Select an employee</strong></td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <%--<asp:DropDownList ID="ddlEmployees" runat="server" CssClass="form-control input-sm"></asp:DropDownList>--%>
-                                            <asp:TextBox ID="tbEmployees_search" runat="server" OnTextChanged="tbEmployees_search_TextChanged" AutoPostBack="True"></asp:TextBox>
-                                            <asp:ListBox ID="lbEmployees" runat="server" CssClass="form-control input-sm" DataSourceID="obdsGetAllEmployees" DataTextField="Name" DataValueField="Id"></asp:ListBox>
-                                      
+                                          <table style="width:100%">
+                 
+                                                <tr>
+                                                    <td>
+                                                        <strong>
+                                                            <h6>Search Employee :</h6>
+                                                        </strong>
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox ID="tbEmployee_Search" runat="server" CssClass="form-control input-sm" placeholder="Employee Name" ClientIDMode="Static"></asp:TextBox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                               
+                                                            <td colspan="2">
+                                                                <asp:ListBox ID="lbEmployee" runat="server" ClientIDMode="Static" CssClass="form-control" DataSourceID="obdsGetAllEmployees" DataTextField="FIRST_NAME" DataValueField="EMPLOYEE_ID" SelectionMode="Multiple" ></asp:ListBox>
+                                                            </td>
+                                                       
+                                                </tr>
+                                            </table>
                                         </td>
                                     </tr>
                                 </table>
@@ -151,14 +210,14 @@
                     </div>
 
                     <div align="center">
-                        
+
                         <asp:Button ID="btSubmit" runat="server" Text="Search" OnClick="btSubmit_Click" class="btn btn-primary btn-sm" />
                     </div>
                 </div>
-                <asp:ObjectDataSource ID="obdsGetAllEmployees" runat="server" SelectMethod ="GetAllUsers" TypeName="TimeSheet.APP_CODE.DAL.DataAccessLayer"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="obdsGetAllEmployees" runat="server" SelectMethod="GetAllUsers" TypeName="TimeSheet.APP_CODE.DAL.DataAccessLayer"></asp:ObjectDataSource>
                 <asp:ObjectDataSource ID="obdsGetAllProjects" runat="server" SelectMethod="GetProjects" TypeName="TimeSheet.APP_CODE.DAL.JiraAccessLayer"></asp:ObjectDataSource>
             </div>
         </div>
     </div>
-
+    <div class="col-md-9">GRAPH COMES HERE</div>
 </asp:Content>

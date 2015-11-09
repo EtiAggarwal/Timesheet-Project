@@ -246,6 +246,8 @@ namespace TimeSheet.APP_CODE.DAL
                     string dbUserGuid = Convert.ToString(dr["USER_GUID"]);
                     string dbFirstName = Convert.ToString(dr["FIRST_NAME"]);
                     string dbLastName = Convert.ToString(dr["LAST_NAME"]);
+                    string dbEmail = Convert.ToString(dr["EMAIL_ID"]);
+                    string guid = Convert.ToString(dr["USER_GUID"]);
                     int isAdmin = Convert.ToInt16(dr["IS_ADMIN"]);
                     // Now we hash the UserGuid from the database with the password we wan't to check
                     // In the same way as when we saved it to the database in the first place. (see AddUser() function)
@@ -259,6 +261,8 @@ namespace TimeSheet.APP_CODE.DAL
                         employee.EmployeeId = dbEmpId;
                         employee.FirstName = dbFirstName;
                         employee.LastName = dbLastName;
+                        employee.Email = dbEmail;
+                        employee.GUID = guid;
                         if (isAdmin == 0)
                         {
                             employee.IsAdmin = false;
@@ -297,6 +301,208 @@ namespace TimeSheet.APP_CODE.DAL
 
 
     }
+        /// <summary>
+        /// method to update user account info by user
+        /// </summary>
+        
+        public int? UpdateAccountInfo(Employee emp,string pass)
+        {
+            int? ret = null;
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SP_UPDATE_ACCOUNT_INFO, con);
+                selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", emp.EmployeeId);
+                selectCommand.Parameters.AddWithValue("@FIRST_NAME",emp.FirstName);
+                selectCommand.Parameters.AddWithValue("@LAST_NAME",emp.LastName);
+                selectCommand.Parameters.AddWithValue("@EMAIL_ID", emp.Email);
+                selectCommand.Parameters.AddWithValue("@PASS", pass);
 
-}
+                SqlParameter retParam = new SqlParameter();
+                retParam.ParameterName = "@RetVal";
+                retParam.Direction = ParameterDirection.ReturnValue;
+                retParam.SqlDbType = SqlDbType.Int;
+                selectCommand.Parameters.Add(retParam);
+                selectCommand.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                selectCommand.ExecuteNonQuery();
+                con.Close();
+                ret = (int)retParam.Value;
+                return ret;
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
+        /// <summary>
+        /// method to update user password info by user
+        /// </summary>
+
+        public int? UpdatePasswordUser(string empId, string oldPass, string newPass)
+        {
+            int? ret = null;
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SP_RESET_PASS_USER, con);
+                selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", empId);
+                selectCommand.Parameters.AddWithValue("@OLD_PASS", oldPass);
+                selectCommand.Parameters.AddWithValue("@NEW_PASS", newPass);
+               
+                SqlParameter retParam = new SqlParameter();
+                retParam.ParameterName = "@RetVal";
+                retParam.Direction = ParameterDirection.ReturnValue;
+                retParam.SqlDbType = SqlDbType.Int;
+                selectCommand.Parameters.Add(retParam);
+                selectCommand.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                selectCommand.ExecuteNonQuery();
+                con.Close();
+                ret = (int)retParam.Value;
+                return ret;
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
+        /// <summary>
+        /// Delete user account
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+
+        public int? DeleteUserAccountByAdmin(String EmployeeId)
+        {
+            int? ret = null;
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SQL_DELETE_USER_ACC, con);
+                selectCommand.Parameters.AddWithValue("@EMP_ID", EmployeeId);
+                con.Open();
+                ret = selectCommand.ExecuteNonQuery();
+                con.Close();
+                return ret;
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
+        /// <summary>
+        /// Reset user pass admin
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+
+        public int? ResetUserPasswordByAdmin(String EmployeeId, String newUSerPass, String adminId, String adminPass, String adminGUID)
+        {
+            int? ret = null;
+            try
+            {
+                // First create a new Guid for the user. This will be unique for each user
+                Guid userGuid = System.Guid.NewGuid();
+
+                // Hash the password together with our unique userGuid
+                string userHashedPassword = AppSecurity.HashSHA1(newUSerPass + userGuid.ToString());
+                string adminHashedPassword = AppSecurity.HashSHA1(adminPass + adminGUID);
+
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SP_RESET_USER_PASS_ADMIN, con);
+                selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", EmployeeId);
+                selectCommand.Parameters.AddWithValue("@ADMIN_ID", adminId);
+                selectCommand.Parameters.AddWithValue("@NEW_USER_PASS", userHashedPassword);
+                selectCommand.Parameters.AddWithValue("@NEW_USER_GUID", userGuid);
+                selectCommand.Parameters.AddWithValue("@ADMIM_PASS", adminHashedPassword);
+
+                SqlParameter retParam = new SqlParameter();
+                retParam.ParameterName = "@RetVal";
+                retParam.Direction = ParameterDirection.ReturnValue;
+                retParam.SqlDbType = SqlDbType.Int;
+                selectCommand.Parameters.Add(retParam);
+                selectCommand.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                selectCommand.ExecuteNonQuery();
+                con.Close();
+                ret = (int)retParam.Value;
+                return ret;
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
+        /// <summary>
+        /// Update User Type admin
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+
+        public int? UpdateUserTypeByAdmin(String EmployeeId, bool isAdmin, String adminId, String adminPass, String adminGUID)
+        {
+            int? ret = null;
+            try
+            {
+
+                string adminHashedPassword = AppSecurity.HashSHA1(adminPass + adminGUID);
+
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SP_UPDATE_USER_TYPE_ADMIN, con);
+                selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", EmployeeId);
+                selectCommand.Parameters.AddWithValue("@ADMIN_ID", adminId);
+                selectCommand.Parameters.AddWithValue("@NEW_IS_ADMIN", isAdmin);
+                selectCommand.Parameters.AddWithValue("@ADMIM_PASS", adminHashedPassword);
+
+                SqlParameter retParam = new SqlParameter();
+                retParam.ParameterName = "@RetVal";
+                retParam.Direction = ParameterDirection.ReturnValue;
+                retParam.SqlDbType = SqlDbType.Int;
+                selectCommand.Parameters.Add(retParam);
+                selectCommand.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                selectCommand.ExecuteNonQuery();
+                con.Close();
+                ret = (int)retParam.Value;
+                return ret;
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
+
+
     }
+}

@@ -1,162 +1,209 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<head>
 <style>
+    .tooltip {
+        background: #eee;
+        box-shadow: 0 0 5px #999999;
+        color: #333;
+        display: none;
+        font-size: 12px;
+        left: 130px;
+        padding: 10px;
+        position: absolute;
+        text-align: center;
+        top: 95px;
+        width: 80px;
+        z-index: 10;
+      }
 
-body {
-  font: 10px sans-serif;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.x.axis path {
-  display: none;
-}
-
-.line {
-  fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
-}
-
-</style>
+      .legend {
+        font-size: 12px;
+      }
+      rect {
+        cursor: pointer;                                              /* NEW */
+        stroke-width: 2;
+      }
+      rect.disabled {                                                 /* NEW */
+        fill: transparent !important;                                 /* NEW */
+      }                                                               /* NEW */
+      h1 {                                                            /* NEW */
+        font-size: 14px;                                              /* NEW */
+        text-align: center;                                           /* NEW */
+      }                                                               /* NEW */
+    </style>
+    </style>
+</head>
 <body>
+<div id="chart">
+    </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+
 <script>
-
-/*
-var sum = [1, 2, 3].reduce(add, 0);
-
-function add(a, b) {
-    return a + b;
-}
-
-console.log(sum);
-*/
-var jdata;
-function add(a, b) {
-    return a + b;
-}
-var margin = {top: 20, right: 80, bottom: 30, left: 50},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
-
-var parseDate = d3.time.format("%m/%d/%y").parse;
-var format = d3.time.format("%_m/%e/%Y %H:%M");
-var x = d3.time.scale()
-    .range([0, width]);
-
-var y = d3.scale.linear()
-    .range([height, 0]);
-
-var color = d3.scale.category10();
-
-var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom");
-
-var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient("left");
-
-var line = d3.svg.line()
-    .interpolate("basis")
-    .x(function(d) { return x(d.date); })
-    .y(function(d) { return y(d.commits); });
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-/*d3.json("file:///Users/stephenkinser/freq.json", function(error, json) {
-    if (error) throw error;
-    console.log(json);
-    jdata = json;
-});
-*/
 d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/suggestedGraphTypes/freq.json", function(error, json) {
     if (error) throw error;
-    console.log(json);
-    jdata = json;
+    //console.log(json);
+    //json = json;
     json.forEach(function(d){
        d.Freq=parseInt(d.Freq);
-       d.Updated=parseDate(d.Updated);
+       d.Updated=new Date(d.Updated);
+
     });
+json=d3.nest().key(function(d){return d.Assignee;})
+                         .rollup(function(v){return d3.sum(v, function(d){return d.Freq;});})
+                        .entries(json);
+
+    json.forEach(function(d){
+         d.enabled = true;
+              });
+
+
+    var width = 360;
+    var height = 360;
+    var radius = Math.min(width, height) / 2;
+    var legendwidth = width + 400;
+
+    var color = d3.scale.category20b();
+    var legendRectSize = 18;
+    var legendSpacing = 4;
+
+
+    var svg = d3.select('#chart')
+      .append('svg')
+      .attr('width', legendwidth)
+      .attr('height', height)
+      .append('g')
+      .attr('transform', 'translate(' + (width / 2) +  ',' + (height / 2) + ')');
+
+    var arc = d3.svg.arc()
+      .outerRadius(radius);
+    //expecting json object , looking for key and value
+    //look for SINGLE RETURN TYPE
+    //calls anon function with a reference to "d"
+    //d refers to EACH element in array
+    //d.values is then EACH ELEMENT "." the item we want
+    //json[0].values
+   // console.log(json);
+
+
+    var pie = d3.layout.pie()
+      .value(function(d) { return d.values; })
+      .sort(null);
+
+//    console.log(pie(json));
+
+
+    var tooltip = d3.select('#chart')
+          .append('div')
+          .attr('class', 'tooltip');
+
+        tooltip.append('div')
+          .attr('class', 'label');
+
+        tooltip.append('div')
+          .attr('class', 'count');
+
+        tooltip.append('div')
+          .attr('class', 'percent');
+
+
+    var path = svg.selectAll('path')
+      .data(pie(json))
+      .enter()
+      .append('path')
+      .attr('d', arc)
+      .attr('fill', function(d, i) {
+  //        console.log(color(d.data.values));
+        return color(d.data.key);
+      })
+     .each(function(d) { this._current = d; }); // NEW
+    /*
+         path.append("text")
+          .attr("transform", function(d) {  return "translate(" + arc.centroid(d.data.values) + ")"; })
+          .attr("dy", ".35em")
+          .style("text-anchor", "middle")
+          .text(function(d) { return d.data.key; });
+    */
+
+    path.on('mouseover', function(d) {
+      var total = d3.sum(json.map(function(d) {
+        return (d.enabled) ? d.values : 0;        // UPDATED
+      }));
+//            console.log(total);
+            var percent = Math.round(1000 * d.data.values / total) / 10;
+            tooltip.select('.label').html(d.data.key);
+            tooltip.select('.count').html(d.data.values);
+            tooltip.select('.percent').html(percent + '%');
+            tooltip.style('display', 'block');
+    });
+             path.on('mouseout', function() {
+            tooltip.style('display', 'none');
+          });
+
+
+    var legend = svg.selectAll('.legend')
+      .data(color.domain())
+      .enter()
+      .append('g')
+      .attr('class', 'legend')
+      .attr('transform', function(d, i) {
+        var height = legendRectSize + legendSpacing;
+        var offset =  height * color.domain().length / 2;
+        var horz = width;
+        var vert = i * height - offset;
+        return 'translate(' + horz + ',' + vert + ')';
+      });
+    legend.append('rect')
+      .attr('width', legendRectSize)
+      .attr('height', legendRectSize)
+      .style('fill', color)
+      .style('stroke', color)
+      .on('click', function(label) {                            // NEW
+
+              var rect = d3.select(this);                             // NEW
+              var enabled = true;                                     // NEW
+              var totalEnabled = d3.sum(json.map(function(d) {     // NEW
+
+                return (d.enabled) ? 1 : 0;                           // NEW
+              }));                                                    // NEW
+              //console.log(totalEnabled);
+//                        console.log(rect);
+              if (rect.attr('class') === 'disabled') {                // NEW
+                rect.attr('class', '');                               // NEW
+              } else {                                                // NEW
+                  if (totalEnabled < 2){ return;}                         // NEW
+                rect.attr('class', 'disabled');                       // NEW
+                enabled = false;                                      // NEW
+              }                                                       // NEW
+
+              pie.value(function(d) {                                  // NEW
+//                  console.log(d.key);
+                if (d.key === label) d.enabled = enabled;           // NEW
+                return (d.enabled) ? d.values : 0;                     // NEW
+              });                                                     // NEW
+
+              path = path.data(pie(json));                            // NEW
+           //     console.log(path);
+              path.transition()                                       // NEW
+                .duration(750)                                        // NEW
+                .attrTween('d', function(d) {                         // NEW
+                  var interpolate = d3.interpolate(this._current, d); // NEW
+                  this._current = interpolate(0);                     // NEW
+                  return function(t) {                                // NEW
+                    return arc(interpolate(t));                       // NEW
+                  };                                                  // NEW
+                });                                                   // NEW
+            });                                                       // NEW
+
+
+    legend.append('text')
+      .attr('x', legendRectSize + legendSpacing)
+      .attr('y', legendRectSize - legendSpacing)
+      .text(function(d) { return d; });
 
 });
 
-/*d3.csv("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/suggestedGraphTypes/horribleTable.csv", function(error, data) {
-  if (error) throw error;
-   // console.log(parseDate(data[0].Date));
+</script>
 
-  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "Date"; }));
-
-  data.forEach(function(d) {
-    d.date = parseDate(d.Date);
-  });
-data.sort(function(a, b){
- var dateA=a.date, dateB=b.date
- return dateA-dateB //sort by date ascending
-})
-
-//data=data.sort()
-console.log(data[0])
-  var cities = color.domain().map(function(name) {
-    return {
-      name: name,
-      values: data.map(function(d) {
-        return {date: d.date, commits: +d[name]};
-      })
-    };
-  });
-
-  x.domain(d3.extent(data, function(d) {
-//      console.log(d.date);
-      return d.date; }));
-
-  y.domain([
-    d3.min(cities, function(c) { return d3.min(c.values, function(v) { return v.commits; }); }),
-    d3.max(cities, function(c) { return d3.max(c.values, function(v) { return v.commits; }); })
-  ]);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("commits");
-
-  var city = svg.selectAll(".city")
-      .data(cities)
-      .enter().append("g")
-      .attr("class", "city");
-
-  city.append("path")
-      .attr("class", "line")
-      .attr("d", function(d) { return line(d.values); })
-      .style("stroke", function(d) { return color(d.name); });
-
-  city.append("text")
-      .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
-      .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.commits) + ")"; })
-      .attr("x", 3)
-      .attr("dy", ".35em")
-      .text(function(d) { return d.name; });
-});*/
-
-    </script>
 </body>
 </html>
