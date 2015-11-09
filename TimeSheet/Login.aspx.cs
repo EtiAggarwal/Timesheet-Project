@@ -16,12 +16,15 @@ namespace TimeSheet
         protected void Page_Load(object sender, EventArgs e)
         {
             //check for cookies to provide remember me functionality
-            if(Request.Cookies["UserName"]!=null && Request.Cookies["Password"]!=null)
+            if (!IsPostBack)
             {
-                string userName = AppSecurity.Base64Decode(Request.Cookies["UserName"].Value.ToString());
-                tbLoginUserName.Text = userName;
-                string password = AppSecurity.Base64Decode(Request.Cookies["Password"].Value.ToString());
-                tbLoginPassword.Attributes["value"] = password;
+                if (Request.Cookies["UserName"] != null && Request.Cookies["Password"] != null)
+                {
+                    string userName = AppSecurity.Base64Decode(Request.Cookies["UserName"].Value.ToString());
+                    tbLoginUserName.Text = userName;
+                    string password = AppSecurity.Base64Decode(Request.Cookies["Password"].Value.ToString());
+                    tbLoginPassword.Attributes["value"] = password;
+                }
             }
         }
 
