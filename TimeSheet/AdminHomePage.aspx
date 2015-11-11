@@ -17,6 +17,8 @@
             }
     </style>
     <link href="Content/datepicker.css" rel="stylesheet" />
+    <link href="Content/barchart.css" rel="stylesheet" />
+    
     <script type="text/javascript" src="Scripts/bootstrap-datepicker.js"></script>
     <script type="text/javascript" src="Scripts/d3.min.js"></script>
     <script>
@@ -209,6 +211,7 @@
     <div class="col-md-9">
         GRAPH COMES HERE
     <svg id="chart"></svg>
+        <div id="ctooltip"></div>
         <script type="text/javascript" src="Scripts/barchart.js"></script>
         <div id="pichart"></div>
         <script type="text/javascript" src="Scripts/pichart.js"></script>

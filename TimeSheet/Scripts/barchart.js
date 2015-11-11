@@ -46,7 +46,7 @@ var chart = d3.select("#chart")
 
     var legendRectSize = 18;
     var legendSpacing = 4;
-    var tooltip = d3.select('#chart')
+    var tooltip = d3.select('#ctooltip')
           .append('div')
           .attr('class', 'tooltip');
 
@@ -112,10 +112,10 @@ chart.append("g")
             tooltip.style('display', 'block');
 //           d3.select(this).attr('fill', 'grey');
 
-    });
-     /* .on('mouseout', function() {
+    })
+      .on('mouseout', function() {
             tooltip.style('display', 'none');
-          });*/
+          });
 
 
 
