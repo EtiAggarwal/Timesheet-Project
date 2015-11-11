@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminHomePage.aspx.cs" Inherits="TimeSheet.AdminHomePage"  %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminHomePage.aspx.cs" Inherits="TimeSheet.AdminHomePage"  %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Admin Home Page</title>
@@ -29,12 +29,12 @@
                 selectByTextProj($.trim($('#tbProjects_search').val()));
 
             });
-           
+
             function selectByTextProj(txt) {
                 $('#lbProjects option')
                 .filter(function () { return $.trim($(this).text()) == txt; })
                 .attr('selected', true);
-               
+
             }
             $('#tbEmployee_Search').on('change', function (event) {
                 selectByTextEmp($.trim($('#tbEmployee_Search').val()));
@@ -121,7 +121,7 @@
                     </div>
 
                     <div class="panel panel-default">
-                       
+
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <span class="glyphicon glyphicon-chevron-up" style="font-size: .8em"></span>
@@ -130,7 +130,7 @@
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                   
+
                                 <table width="100%">
                                     <tr>
                                         <td><strong>Select a project</strong> </td>
@@ -138,7 +138,7 @@
                                     <tr>
                                         <td>
                                              <table style="width:100%">
-                 
+
                                                 <tr>
                                                     <td>
                                                         <strong>
@@ -150,20 +150,20 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                               
+
                                                             <td colspan="2">
                                                                 <asp:ListBox ID="lbProjects" runat="server" ClientIDMode="Static" CssClass="form-control" DataSourceID="obdsGetAllProjects" DataTextField="Name" DataValueField="Id" SelectionMode="Multiple" ></asp:ListBox>
                                                             </td>
-                                                       
+
                                                 </tr>
                                             </table>
                                         </td>
                                     </tr>
                                 </table>
-                                
+
                             </div>
                         </div>
-                                
+
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -181,7 +181,7 @@
                                     <tr>
                                         <td>
                                           <table style="width:100%">
-                 
+
                                                 <tr>
                                                     <td>
                                                         <strong>
@@ -193,11 +193,11 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                               
+
                                                             <td colspan="2">
                                                                 <asp:ListBox ID="lbEmployee" runat="server" ClientIDMode="Static" CssClass="form-control" DataSourceID="obdsGetAllEmployees" DataTextField="FIRST_NAME" DataValueField="EMPLOYEE_ID" SelectionMode="Multiple" ></asp:ListBox>
                                                             </td>
-                                                       
+
                                                 </tr>
                                             </table>
                                         </td>
@@ -219,5 +219,10 @@
             </div>
         </div>
     </div>
-    <div class="col-md-9">GRAPH COMES HERE</div>
+    <div class="col-md-9">GRAPH COMES HERE
+    <div id="chart"></div>
+    <script type="text/javascript" src="Scripts/barchart.js"></script>
+    <div id="pichart"></div>
+    <script type="text/javascript" src="Scripts/pi.js"></script>
+    </div>
 </asp:Content>

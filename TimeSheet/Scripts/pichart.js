@@ -1,44 +1,3 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<head>
-<style>
-    .tooltip {
-        background: #eee;
-        box-shadow: 0 0 5px #999999;
-        color: #333;
-        display: none;
-        font-size: 12px;
-        left: 130px;
-        padding: 10px;
-        position: absolute;
-        text-align: center;
-        top: 95px;
-        width: 80px;
-        z-index: 10;
-      }
-
-      .legend {
-        font-size: 12px;
-      }
-      rect {
-        cursor: pointer;                                              /* NEW */
-        stroke-width: 2;
-      }
-      rect.disabled {                                                 /* NEW */
-        fill: transparent !important;                                 /* NEW */
-      }                                                               /* NEW */
-      h1 {                                                            /* NEW */
-        font-size: 14px;                                              /* NEW */
-        text-align: center;                                           /* NEW */
-      }                                                               /* NEW */
-    </style>
-    </style>
-</head>
-<body>
-<div id="chart"></div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-
-<script>
 d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/suggestedGraphTypes/freq.json", function(error, json) {
     if (error) throw error;
     //console.log(json);
@@ -67,7 +26,7 @@ json=d3.nest().key(function(d){return d.Assignee;})
     var legendSpacing = 4;
 
 
-    var svg = d3.select('#chart')
+    var svg = d3.select('#pichart')
       .append('svg')
       .attr('width', legendwidth)
       .attr('height', height)
@@ -92,7 +51,7 @@ json=d3.nest().key(function(d){return d.Assignee;})
 //    console.log(pie(json));
 
 
-    var tooltip = d3.select('#chart')
+    var tooltip = d3.select('#pichart')
           .append('div')
           .attr('class', 'tooltip');
 
@@ -200,8 +159,3 @@ json=d3.nest().key(function(d){return d.Assignee;})
       .text(function(d) { return d; });
 
 });
-
-</script>
-
-</body>
-</html>
