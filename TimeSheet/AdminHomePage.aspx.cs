@@ -46,9 +46,8 @@ namespace TimeSheet
                         Projects.Add(item.Value);
                     }
                 }
-
-                //DataTable dt = DAL.GetReportData(startDate, enddate, Employees, Projects);
-                //string json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                DataTable dt = DAL.GetReportData(startDate, enddate, Employees, Projects);
+                string json = JsonConvert.SerializeObject(dt, Formatting.Indented);
             }
             catch
             {
@@ -59,9 +58,6 @@ namespace TimeSheet
         //protected void ddlProjects_DataBound(object sender, EventArgs e)
         //{
         //    ddlProjects.Items.Insert(0, "--Select--");
-        //}
-
-        
-        
+        //}       
     }
 }

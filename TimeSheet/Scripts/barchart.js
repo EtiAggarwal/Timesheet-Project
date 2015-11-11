@@ -16,9 +16,9 @@ json.forEach(function(d){
     json.forEach(function(d){
          d.enabled = true;
               });
-var margin = {top: 20, right: 100, bottom: 30, left: 40},
-    width = 760 - margin.left - margin.right,
-    height = 800 - margin.top - margin.bottom;
+var margin = {top: 50, right: 80, bottom: 130, left: 40},
+    width = 800 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 
 var y = d3.scale.linear()
     .range([height, 0]);
@@ -68,7 +68,12 @@ var chart = d3.select("#chart")
 chart.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
+      .call(xAxis)
+        .selectAll("text")
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em")
+            .attr("transform", "rotate(-65)");
 
   chart.append("g")
       .attr("class", "y axis")

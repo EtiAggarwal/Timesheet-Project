@@ -91,6 +91,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Admin.sitemap" />
+    <Content Include="Scripts\barchart.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\highstock.json" />
@@ -99,6 +100,7 @@
     <Content Include="Content\variables.less" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="Scripts\metisMenu.js" />
+    <Content Include="Scripts\pichart.js" />
     <Content Include="Scripts\readremotecsv.js" />
     <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="adminTest.aspx" />
