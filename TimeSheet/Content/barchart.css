@@ -36,7 +36,3 @@ rect.disabled {                                                 /* NEW */
 .x.axis path {
   display: none;
 }
-h1 {                                                            /* NEW */
-        font-size: 14px;                                              /* NEW */
-        text-align: center;                                           /* NEW */
-      }

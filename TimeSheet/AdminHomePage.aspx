@@ -5,7 +5,7 @@
     <title>Admin Home Page</title>
     <style>
         .panel-success {
-            height: calc(100vh - 100px);
+            height: calc(100vh);
         }
 
             .panel-success .panel-body {
@@ -15,6 +15,9 @@
             .panel-success .panel-default {
                 margin-bottom: 10px;
             }
+          h1, .h1 {
+    font-size: 36px;
+}
     </style>
     <link href="Content/datepicker.css" rel="stylesheet" />
     <link href="Content/barchart.css" rel="stylesheet" />
@@ -209,7 +212,7 @@
     </div>
     <%--Graph section--%>
     <div class="col-md-9">
-        GRAPH COMES HERE
+      
     <svg id="chart"></svg>
         <div id="ctooltip"></div>
         <script type="text/javascript" src="Scripts/barchart.js"></script>

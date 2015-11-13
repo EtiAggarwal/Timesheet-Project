@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text;
 using TimeSheet.APP_CODE.AppSec;
 using TimeSheet.APP_CODE.BO;
 
@@ -46,18 +47,6 @@ namespace TimeSheet.APP_CODE.DAL
             }
         }
 
-        public DataTable GetReportData(string startDate, string enddate, ArrayList project_name, ArrayList employee)
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                return dt;
-            }
-            catch
-            {
-                throw new NotImplementedException();
-            }
-        }
 
         public DataTable GetEmployee()
         {
@@ -518,29 +507,61 @@ namespace TimeSheet.APP_CODE.DAL
         /// <param name="ID"></param>
         /// <returns></returns>
 
-        /*public DataTable GetReportData(String startDate, String endDate, String[] Projects, String[] Employees)
+        public DataTable GetReportData(String startDate, String endDate, List<string> Projects, List<string> Employees)
         {
-            int? ret = null;
+            
             try
             {
+              
+                StringBuilder SQL_GET_REPORT_DATA = new StringBuilder (SQL_STRINGS.SQL_GET_REPORT_DATA);
 
-                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SP_UPDATE_USER_TYPE_ADMIN, con);
-                //selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", EmployeeId);
-                //selectCommand.Parameters.AddWithValue("@ADMIN_ID", adminId);
-                //selectCommand.Parameters.AddWithValue("@NEW_IS_ADMIN", isAdmin);
-                //selectCommand.Parameters.AddWithValue("@ADMIM_PASS", adminHashedPassword);
+                SqlCommand selectCommand = new SqlCommand(SQL_GET_REPORT_DATA.ToString(),con);
+                // date filter selected
+                if (!(String.IsNullOrEmpty(startDate) && String.IsNullOrEmpty(endDate)))
+                {
+                    SQL_GET_REPORT_DATA.Append(" WHERE ");
+                    SQL_GET_REPORT_DATA.Append(SQL_STRINGS.SQL_GET_REPORT_DATA_DATE_FILTER);
+                    selectCommand.Parameters.AddWithValue("@STARTDATE", startDate);
+                    selectCommand.Parameters.AddWithValue("@ENDDATE", endDate);
 
-                SqlParameter retParam = new SqlParameter();
-                retParam.ParameterName = "@RetVal";
-                retParam.Direction = ParameterDirection.ReturnValue;
-                retParam.SqlDbType = SqlDbType.Int;
-                selectCommand.Parameters.Add(retParam);
-                selectCommand.CommandType = CommandType.StoredProcedure;
-                con.Open();
-                selectCommand.ExecuteNonQuery();
-                con.Close();
-                ret = (int)retParam.Value;
-                return ret;
+                }
+                //project filter selected
+                if (Projects.Count > 0)
+                {
+                    if (!SQL_GET_REPORT_DATA.ToString().Contains("WHERE"))
+                        SQL_GET_REPORT_DATA.Append(" WHERE ");
+                    else
+                        SQL_GET_REPORT_DATA.Append(" AND ");
+                    SQL_GET_REPORT_DATA.Append(SQL_STRINGS.SQL_GET_REPORT_DATA_PROJECT_FILTER);
+                    for(int i=0;i<Projects.Count;++i)
+                    {
+                        SQL_GET_REPORT_DATA.Append("P" + i);
+                        selectCommand.Parameters.AddWithValue("@P" + i, Projects[i]);
+                    }
+                    SQL_GET_REPORT_DATA.Append(" ) ");
+
+                }
+                //employee filter selected
+                if (Employees.Count > 0)
+                {
+                    if (!SQL_GET_REPORT_DATA.ToString().Contains("WHERE"))
+                        SQL_GET_REPORT_DATA.Append(" WHERE ");
+                    else
+                        SQL_GET_REPORT_DATA.Append(" AND ");
+                    SQL_GET_REPORT_DATA.Append(SQL_STRINGS.SQL_GET_REPORT_DATA_EMPLOYEE_FILTER);
+                    for (int i = 0; i < Employees.Count; ++i)
+                    {
+                        SQL_GET_REPORT_DATA.Append("E" + i);
+                        selectCommand.Parameters.AddWithValue("@E" + i, Employees[i]);
+                    }
+                    SQL_GET_REPORT_DATA.Append(" ) ");
+
+                }
+
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter(selectCommand);
+                sda.Fill(dt);
+                return dt;
 
             }
             catch
@@ -552,7 +573,7 @@ namespace TimeSheet.APP_CODE.DAL
                 con.Close();
             }
 
-        }*/
+        }
 
 
 
