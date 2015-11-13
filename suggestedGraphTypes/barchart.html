@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+<style>
+
+.chart div {
+  font: 10px sans-serif;
+  background-color: steelblue;
+  text-align: right;
+  padding: 3px;
+  margin: 1px;
+  color: white;
+}
+
+</style>
+</head>
+<div class="chart"></div>
+<body><div id="chart"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script>
+
+d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/suggestedGraphTypes/freq.json", function(error, json) {
+    if (error) throw error;
+    //console.log(json);
+    //json = json;
+    json.forEach(function(d){
+       d.Freq=parseInt(d.Freq);
+       d.Updated=new Date(d.Updated);
+
+    });
+json=d3.nest().key(function(d){return d.Assignee;})
+                         .rollup(function(v){return d3.sum(v, function(d){return d.Freq;});})
+                        .entries(json);
+
+    json.forEach(function(d){
+         d.enabled = true;
+              });
+    //console.log(d3.max(json,function(d){ return d.values; }));
+    var x = d3.scale.linear()
+    .domain([0, d3.max(json, function(d){ return d.values; })])
+    .range([0, 420]);
+
+
+d3.select("#chart")
+  .selectAll("div")
+    .data(json)
+  .enter().append("div")
+    .style("width", function(d) { console.log (Math.round(x(d.values))); return Math.round(x(d.values)) + "px"; })
+    .text(function(d) { return d.values; });
+
+});
+
+</script>
+</body></html>

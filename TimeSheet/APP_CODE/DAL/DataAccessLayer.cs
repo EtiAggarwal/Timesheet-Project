@@ -3,6 +3,7 @@
 /// Created On : 10.5.2015
 ///
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -45,9 +46,17 @@ namespace TimeSheet.APP_CODE.DAL
             }
         }
 
-        public DataSet GetReportData(string startDate, string enddate, string project_name, string project_id, string employee)
+        public DataTable GetReportData(string startDate, string enddate, ArrayList project_name, ArrayList employee)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DataTable dt = new DataTable();
+                return dt;
+            }
+            catch
+            {
+                throw new NotImplementedException();
+            }
         }
 
         public DataTable GetEmployee()

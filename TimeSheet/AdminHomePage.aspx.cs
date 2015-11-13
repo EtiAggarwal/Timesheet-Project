@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -26,14 +28,26 @@ namespace TimeSheet
             try
             {
                 DataAccessLayer DAL = new DataAccessLayer();
-
+                ArrayList Employees = new ArrayList();
+                ArrayList Projects = new ArrayList();
                 String startDate = tbStartDate.Text;
                 String enddate = tbEndDate.Text;
-                //String project_name = ddlProjects.SelectedItem.Text;
-                //String project_id = ddlProjects.SelectedItem.Value;
-                String employee = ddlEmployees.SelectedItem.Value;
-
-                //DataSet ds = DAL.GetReportData(startDate, enddate, project_name, project_id, employee);
+                foreach (ListItem item in lbEmployee.Items)
+                {
+                    if (item.Selected)
+                    {
+                        Employees.Add(item.Value);
+                    }
+                }
+                foreach (ListItem item in lbProjects.Items)
+                {
+                    if (item.Selected)
+                    {
+                        Projects.Add(item.Value);
+                    }
+                }
+                DataTable dt = DAL.GetReportData(startDate, enddate, Employees, Projects);
+                string json = JsonConvert.SerializeObject(dt, Formatting.Indented);
             }
             catch
             {
@@ -44,9 +58,6 @@ namespace TimeSheet
         //protected void ddlProjects_DataBound(object sender, EventArgs e)
         //{
         //    ddlProjects.Items.Insert(0, "--Select--");
-        //}
-
-        
-        
+        //}       
     }
 }

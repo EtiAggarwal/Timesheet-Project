@@ -1,6 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminHomePage.aspx.cs" Inherits="TimeSheet.AdminHomePage"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminHomePage.aspx.cs" Inherits="TimeSheet.AdminHomePage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <%--Admin Home Page--%>
     <title>Admin Home Page</title>
     <style>
         .panel-success {
@@ -16,28 +17,40 @@
             }
     </style>
     <link href="Content/datepicker.css" rel="stylesheet" />
+    <link href="Content/barchart.css" rel="stylesheet" />
+    
     <script type="text/javascript" src="Scripts/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="Scripts/d3.min.js"></script>
     <script>
         $(document).ready(function () {
+            //According function
             $('.collapse').on('shown.bs.collapse', function () {
                 $(this).parent().find(".glyphicon-chevron-down").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
             }).on('hidden.bs.collapse', function () {
                 $(this).parent().find(".glyphicon-chevron-up").removeClass("glyphicon-chevron-up").addClass("glyphicon-chevron-down");
             });
-
+            //Project search textbox
             $('#tbProjects_search').on('change', function (event) {
-                selectByText($.trim($('#tbProjects_search').val()));
-
+                selectByTextProj($.trim($('#tbProjects_search').val()));
             });
-           
-            function selectByText(txt) {
+            //Project search filter
+            function selectByTextProj(txt) {
                 $('#lbProjects option')
                 .filter(function () { return $.trim($(this).text()) == txt; })
                 .attr('selected', true);
-               
+            }
+            //Employee search textbox
+            $('#tbEmployee_Search').on('change', function (event) {
+                selectByTextEmp($.trim($('#tbEmployee_Search').val()));
+            });
+            //Employee search filter
+            function selectByTextEmp(txt) {
+                $('#lbEmployee option')
+                .filter(function () { return $.trim($(this).text()) == txt; })
+                .attr('selected', true);
             }
         });
-
+        //Date picker function
         $(function () {
             var nowTemp = new Date();
             var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
@@ -47,7 +60,6 @@
                     var newDate = new Date(ev.date)
                     newDate.setDate(newDate.getDate());
                     checkout.setValue(newDate);
-
                 }
                 checkin.hide();
                 checkout.update();
@@ -62,16 +74,13 @@
                 }
             }).on('changeDate', function (ev) {
                 checkout.hide();
-
-
             }).data('datepicker');
-
         });
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="col-md-3">
-        <div class="panel panel-success" >
+        <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">Search Filters</h3>
             </div>
@@ -84,8 +93,9 @@
                                 <a data-toggle="collapse" href="#collapseOne">Date Filter</a>
                             </h4>
                         </div>
-                       <div id="collapseOne" class="panel-collapse collapse in">
+                        <div id="collapseOne" class="panel-collapse collapse in">
                             <div class="panel-body">
+                                <%--Table for datepicker--%>
                                 <table width="70%">
                                     <tr>
                                         <td><strong>Start Date</strong></td>
@@ -103,14 +113,12 @@
                                         </td>
                                     </tr>
                                 </table>
-
                             </div>
-
                         </div>
                     </div>
 
                     <div class="panel panel-default">
-                       
+
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <span class="glyphicon glyphicon-chevron-up" style="font-size: .8em"></span>
@@ -119,16 +127,14 @@
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                   
+                                <%--Table for Project select--%>
                                 <table width="100%">
                                     <tr>
                                         <td><strong>Select a project</strong> </td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <%--<asp:DropDownList ID="ddlProjects" runat="server" CssClass="form-control input-sm" DataSourceID="obdsGetAllProjects" DataTextField="Name" DataValueField="Id" OnDataBound="ddlProjects_DataBound"></asp:DropDownList>--%>
-                                              <table style="width:100%">
-                 
+                                            <table style="width: 100%">
                                                 <tr>
                                                     <td>
                                                         <strong>
@@ -140,20 +146,16 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                               
-                                                            <td colspan="2">
-                                                                <asp:ListBox ID="lbProjects" runat="server" ClientIDMode="Static" CssClass="form-control" DataSourceID="obdsGetAllProjects" DataTextField="Name" DataValueField="Id" SelectionMode="Multiple" ></asp:ListBox>
-                                                            </td>
-                                                       
+                                                    <td colspan="2">
+                                                        <asp:ListBox ID="lbProjects" runat="server" ClientIDMode="Static" CssClass="form-control" DataSourceID="obdsGetAllProjects" DataTextField="Name" DataValueField="Id" SelectionMode="Multiple"></asp:ListBox>
+                                                    </td>
                                                 </tr>
                                             </table>
                                         </td>
                                     </tr>
                                 </table>
-                                
                             </div>
                         </div>
-                                
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -164,22 +166,34 @@
                         </div>
                         <div id="collapseThree" class="panel-collapse collapse in">
                             <div class="panel-body">
-                                <table width="70%">
+                                <%--Table for Emplyee select--%>
+                                <table width="100%">
                                     <tr>
                                         <td><strong>Select an employee</strong></td>
                                     </tr>
                                     <tr>
                                         <td>
-                                            <asp:DropDownList ID="ddlEmployees" runat="server" CssClass="form-control input-sm"></asp:DropDownList>
-                                           <%-- <asp:TextBox ID="tbEmployees_search" runat="server" OnTextChanged="tbEmployees_search_TextChanged" AutoPostBack="True"></asp:TextBox>
-                                            <asp:ListBox ID="lbEmployees" runat="server" CssClass="form-control input-sm" DataSourceID="obdsGetAllEmployees" DataTextField="Name" DataValueField="Id"></asp:ListBox>
-                                        --%>
+                                            <table style="width: 100%">
+                                                <tr>
+                                                    <td>
+                                                        <strong>
+                                                            <h6>Search Employee :</h6>
+                                                        </strong>
+                                                    </td>
+                                                    <td>
+                                                        <asp:TextBox ID="tbEmployee_Search" runat="server" CssClass="form-control input-sm" placeholder="Employee Name" ClientIDMode="Static"></asp:TextBox>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2">
+                                                        <asp:ListBox ID="lbEmployee" runat="server" ClientIDMode="Static" CssClass="form-control" DataSourceID="obdsGetAllEmployees" DataTextField="FIRST_NAME" DataValueField="EMPLOYEE_ID" SelectionMode="Multiple"></asp:ListBox>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </td>
                                     </tr>
                                 </table>
-
                             </div>
-
                         </div>
                     </div>
 
@@ -188,10 +202,18 @@
                         <asp:Button ID="btSubmit" runat="server" Text="Search" OnClick="btSubmit_Click" class="btn btn-primary btn-sm" />
                     </div>
                 </div>
-                <asp:ObjectDataSource ID="obdsGetAllEmployees" runat="server" SelectMethod="GetEmployees"></asp:ObjectDataSource>
+                <asp:ObjectDataSource ID="obdsGetAllEmployees" runat="server" SelectMethod="GetAllUsers" TypeName="TimeSheet.APP_CODE.DAL.DataAccessLayer"></asp:ObjectDataSource>
                 <asp:ObjectDataSource ID="obdsGetAllProjects" runat="server" SelectMethod="GetProjects" TypeName="TimeSheet.APP_CODE.DAL.JiraAccessLayer"></asp:ObjectDataSource>
             </div>
         </div>
     </div>
-    <div class="col-md-9">GRAPH COMES HERE</div>
+    <%--Graph section--%>
+    <div class="col-md-9">
+        GRAPH COMES HERE
+    <svg id="chart"></svg>
+        <div id="ctooltip"></div>
+        <script type="text/javascript" src="Scripts/barchart.js"></script>
+        <div id="pichart"></div>
+        <script type="text/javascript" src="Scripts/pichart.js"></script>
+    </div>
 </asp:Content>
