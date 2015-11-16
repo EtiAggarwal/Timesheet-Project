@@ -28,27 +28,27 @@ namespace TimeSheet
             try
             {
                 DataAccessLayer DAL = new DataAccessLayer();
-                ArrayList Employees = new ArrayList();
-                ArrayList Projects = new ArrayList();
+                List<string> Employees = new List<string>();
+                List<string> Projects = new List<string>();
                 String startDate = tbStartDate.Text;
                 String enddate = tbEndDate.Text;
+
                 foreach (ListItem item in lbEmployee.Items)
                 {
                     if (item.Selected)
                     {
-                        Employees.Add(item.Value);
+                        Employees.Add(item.Value.ToString());
                     }
                 }
                 foreach (ListItem item in lbProjects.Items)
                 {
                     if (item.Selected)
                     {
-                        Projects.Add(item.Value);
+                        Projects.Add(item.Value.ToString());
                     }
                 }
-
-                //DataTable dt = DAL.GetReportData(startDate, enddate, Employees, Projects);
-                //string json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+                DataTable dt = DAL.GetReportData(startDate, enddate, Projects, Employees);
+                string json = JsonConvert.SerializeObject(dt, Formatting.Indented);
             }
             catch
             {
@@ -59,9 +59,6 @@ namespace TimeSheet
         //protected void ddlProjects_DataBound(object sender, EventArgs e)
         //{
         //    ddlProjects.Items.Insert(0, "--Select--");
-        //}
-
-        
-        
+        //}       
     }
 }

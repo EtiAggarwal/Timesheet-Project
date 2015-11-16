@@ -3,10 +3,12 @@
 /// Created On : 10.5.2015
 ///
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Text;
 using TimeSheet.APP_CODE.AppSec;
 using TimeSheet.APP_CODE.BO;
 
@@ -45,10 +47,6 @@ namespace TimeSheet.APP_CODE.DAL
             }
         }
 
-        public DataSet GetReportData(string startDate, string enddate, string project_name, string project_id, string employee)
-        {
-            throw new NotImplementedException();
-        }
 
         public DataTable GetEmployee()
         {
@@ -501,6 +499,82 @@ namespace TimeSheet.APP_CODE.DAL
             }
 
         }
+
+
+        /// <summary>
+        /// Get Data For Report
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+
+        public DataTable GetReportData(String startDate, String endDate, List<string> Projects, List<string> Employees)
+        {
+            
+            try
+            {
+              
+                StringBuilder SQL_GET_REPORT_DATA = new StringBuilder (SQL_STRINGS.SQL_GET_REPORT_DATA);
+
+                SqlCommand selectCommand = new SqlCommand(SQL_GET_REPORT_DATA.ToString(),con);
+                // date filter selected
+                if (!(String.IsNullOrEmpty(startDate) && String.IsNullOrEmpty(endDate)))
+                {
+                    SQL_GET_REPORT_DATA.Append(" WHERE ");
+                    SQL_GET_REPORT_DATA.Append(SQL_STRINGS.SQL_GET_REPORT_DATA_DATE_FILTER);
+                    selectCommand.Parameters.AddWithValue("@STARTDATE", startDate);
+                    selectCommand.Parameters.AddWithValue("@ENDDATE", endDate);
+
+                }
+                //project filter selected
+                if (Projects.Count > 0)
+                {
+                    if (!SQL_GET_REPORT_DATA.ToString().Contains("WHERE"))
+                        SQL_GET_REPORT_DATA.Append(" WHERE ");
+                    else
+                        SQL_GET_REPORT_DATA.Append(" AND ");
+                    SQL_GET_REPORT_DATA.Append(SQL_STRINGS.SQL_GET_REPORT_DATA_PROJECT_FILTER);
+                    for(int i=0;i<Projects.Count;++i)
+                    {
+                        SQL_GET_REPORT_DATA.Append("P" + i);
+                        selectCommand.Parameters.AddWithValue("@P" + i, Projects[i]);
+                    }
+                    SQL_GET_REPORT_DATA.Append(" ) ");
+
+                }
+                //employee filter selected
+                if (Employees.Count > 0)
+                {
+                    if (!SQL_GET_REPORT_DATA.ToString().Contains("WHERE"))
+                        SQL_GET_REPORT_DATA.Append(" WHERE ");
+                    else
+                        SQL_GET_REPORT_DATA.Append(" AND ");
+                    SQL_GET_REPORT_DATA.Append(SQL_STRINGS.SQL_GET_REPORT_DATA_EMPLOYEE_FILTER);
+                    for (int i = 0; i < Employees.Count; ++i)
+                    {
+                        SQL_GET_REPORT_DATA.Append("E" + i);
+                        selectCommand.Parameters.AddWithValue("@E" + i, Employees[i]);
+                    }
+                    SQL_GET_REPORT_DATA.Append(" ) ");
+
+                }
+
+                DataTable dt = new DataTable();
+                SqlDataAdapter sda = new SqlDataAdapter(selectCommand);
+                sda.Fill(dt);
+                return dt;
+
+            }
+            catch
+            {
+                throw;
+            }
+            finally
+            {
+                con.Close();
+            }
+
+        }
+
 
 
 

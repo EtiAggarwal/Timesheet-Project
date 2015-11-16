@@ -1,5 +1,5 @@
 .tooltip {
-        background: #fff;
+        background: #eee;
         box-shadow: 0 0 5px #999999;
         color: #333;
         display: none;
@@ -36,7 +36,3 @@ rect.disabled {                                                 /* NEW */
 .x.axis path {
   display: none;
 }
-h1 {                                                            /* NEW */
-        font-size: 14px;                                              /* NEW */
-        text-align: center;                                           /* NEW */
-      }
