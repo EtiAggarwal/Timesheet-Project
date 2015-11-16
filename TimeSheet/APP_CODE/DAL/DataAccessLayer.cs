@@ -515,7 +515,7 @@ namespace TimeSheet.APP_CODE.DAL
               
                 StringBuilder SQL_GET_REPORT_DATA = new StringBuilder (SQL_STRINGS.SQL_GET_REPORT_DATA);
 
-                SqlCommand selectCommand = new SqlCommand(SQL_GET_REPORT_DATA.ToString(),con);
+                SqlCommand selectCommand = new SqlCommand();
                 // date filter selected
                 if (!(String.IsNullOrEmpty(startDate) && String.IsNullOrEmpty(endDate)))
                 {
@@ -535,7 +535,7 @@ namespace TimeSheet.APP_CODE.DAL
                     SQL_GET_REPORT_DATA.Append(SQL_STRINGS.SQL_GET_REPORT_DATA_PROJECT_FILTER);
                     for(int i=0;i<Projects.Count;++i)
                     {
-                        SQL_GET_REPORT_DATA.Append("P" + i);
+                        SQL_GET_REPORT_DATA.Append("@P" + i);
                         selectCommand.Parameters.AddWithValue("@P" + i, Projects[i]);
                     }
                     SQL_GET_REPORT_DATA.Append(" ) ");
@@ -551,13 +551,14 @@ namespace TimeSheet.APP_CODE.DAL
                     SQL_GET_REPORT_DATA.Append(SQL_STRINGS.SQL_GET_REPORT_DATA_EMPLOYEE_FILTER);
                     for (int i = 0; i < Employees.Count; ++i)
                     {
-                        SQL_GET_REPORT_DATA.Append("E" + i);
+                        SQL_GET_REPORT_DATA.Append("@E" + i);
                         selectCommand.Parameters.AddWithValue("@E" + i, Employees[i]);
                     }
                     SQL_GET_REPORT_DATA.Append(" ) ");
 
                 }
-
+                selectCommand.CommandText = SQL_GET_REPORT_DATA.ToString();
+                selectCommand.Connection = con;
                 DataTable dt = new DataTable();
                 SqlDataAdapter sda = new SqlDataAdapter(selectCommand);
                 sda.Fill(dt);

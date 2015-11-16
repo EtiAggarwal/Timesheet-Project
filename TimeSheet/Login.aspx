@@ -9,6 +9,9 @@
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <script src="Scripts/jquery-1.9.1.js"></script>
     <script src="Scripts/bootstrap.js"></script>
+    <script type="text/javascript">
+        
+    </script>
     <style>
         body{
     background-color: #525252;
@@ -124,7 +127,7 @@
                             <div class="form-group">
                                 <label for="firstname" class="col-md-3 control-label">First Name</label>
                                 <div class="col-md-9">
-                                    <asp:TextBox ID="tbFirstName" runat="server" placeholder="First Name" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="tbFirstName" runat="server" placeholder="First Name" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -155,7 +158,7 @@
                             <div class="form-group">
                                 <!-- Button -->
                                 <div class="col-md-offset-3 col-md-9">
-                                    <asp:Button ID="btSignUp" runat="server" Text="Sign Up" CssClass="btn btn-primary btn-sm" OnClick="btSignUp_Click" />
+                                    <asp:Button ID="btSignUp" runat="server" Text="Sign Up" CssClass="btn btn-primary btn-sm" OnClick="btSignUp_Click" OnClientClick="return checkName()" />
                                 </div>
                             </div>
 

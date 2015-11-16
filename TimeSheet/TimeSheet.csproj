@@ -100,6 +100,7 @@
     <Content Include="Content\sb-admin-2.less" />
     <Content Include="Content\variables.less" />
     <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="Scripts\login.js" />
     <Content Include="Scripts\metisMenu.js" />
     <Content Include="Scripts\pichart.js" />
     <Content Include="Scripts\readremotecsv.js" />

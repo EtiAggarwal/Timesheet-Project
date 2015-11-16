@@ -49,6 +49,9 @@ namespace TimeSheet
                 }
                 DataTable dt = DAL.GetReportData(startDate, enddate, Projects, Employees);
                 string json = JsonConvert.SerializeObject(dt, Formatting.Indented);
+               
+                hdnData.Value = json;
+                
             }
             catch
             {

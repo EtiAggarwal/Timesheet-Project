@@ -28,7 +28,7 @@
         }
 
         .modal-align {
-            height: calc(100vh - 430px);
+            height: calc(100vh - 400px);
         }
 
         .modal.modal-wide .modal-dialog {
@@ -40,7 +40,7 @@
         }
 
         .al-bt1 {
-            height: calc(100vh - 530px);
+            height: calc(100vh - 498px);
         }
 
         .al-bt2 {
