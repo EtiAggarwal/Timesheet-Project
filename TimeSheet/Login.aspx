@@ -9,6 +9,7 @@
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <script src="Scripts/jquery-1.9.1.js"></script>
     <script src="Scripts/bootstrap.js"></script>
+     <script src="Scripts/login.js"></script>
     <script type="text/javascript">
         
     </script>
