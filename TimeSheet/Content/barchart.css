@@ -1,4 +1,4 @@
-.tooltip {
+/*.tooltip {
         background: #eee;
         box-shadow: 0 0 5px #999999;
         color: #333;
@@ -12,10 +12,7 @@
         width: 80px;
         z-index: 10;
       }
-
-    .legend {
-        font-size: 12px;
-      }
+    */
 rect {
         cursor: pointer;                                              /* NEW */
         stroke-width: 2;
@@ -36,3 +33,22 @@ rect.disabled {                                                 /* NEW */
 .x.axis path {
   display: none;
 }
+.tooltip {
+				font-family: simsun;
+				font-size: 12px;
+				width: 80px;
+				height: auto;
+				position: absolute;
+				text-align:center;
+				border-style: solid;
+				background-color: white;
+				border-radius: 5px;
+			}
+
+			.legend {
+				font-size: 12px;
+			}
+			h1 { /* NEW */
+				font-size: 14px; /* NEW */
+				text-align: center; /* NEW */
+			}

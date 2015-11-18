@@ -52,6 +52,8 @@
                 .filter(function () { return $.trim($(this).text()) == txt; })
                 .attr('selected', true);
             }
+
+            $('#lbData').html($('#hdnData').val());
         });
         //Date picker function
         $(function () {
@@ -79,10 +81,14 @@
                 checkout.hide();
             }).data('datepicker');
         });
+        
+        
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="col-md-3">
+        <asp:Label ID="lbData" runat="server" ClientIDMode="Static" ViewStateMode="Disabled"></asp:Label>
+        <asp:HiddenField ID="hdnData" runat="server" ClientIDMode="Static"/>
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">Search Filters</h3>
@@ -215,7 +221,10 @@
       
     <svg id="chart"></svg>
         <div id="ctooltip"></div>
-        <script type="text/javascript" src="Scripts/barchart.js"></script>
+        <script type="text/javascript" src="Scripts/barchart.js">
+
+            
+        </script>
         <div id="pichart"></div>
         <script type="text/javascript" src="Scripts/pichart.js"></script>
     </div>
