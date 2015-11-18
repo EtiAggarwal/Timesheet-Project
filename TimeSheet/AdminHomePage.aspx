@@ -16,7 +16,8 @@
                 margin-bottom: 10px;
             }
           h1, .h1 {
-    font-size: 36px;
+    font-size: 36px !important;
+    text-align: left !important;
 }
     </style>
     <link href="Content/datepicker.css" rel="stylesheet" />

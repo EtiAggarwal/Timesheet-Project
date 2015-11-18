@@ -9,7 +9,7 @@
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <script src="Scripts/jquery-1.9.1.js"></script>
     <script src="Scripts/bootstrap.js"></script>
-     <script src="Scripts/login.js"></script>
+     <%--<script src="Scripts/login.js"></script>--%>
     <script type="text/javascript">
         
     </script>
@@ -159,7 +159,7 @@
                             <div class="form-group">
                                 <!-- Button -->
                                 <div class="col-md-offset-3 col-md-9">
-                                    <asp:Button ID="btSignUp" runat="server" Text="Sign Up" CssClass="btn btn-primary btn-sm" OnClick="btSignUp_Click" OnClientClick="return checkName()" />
+                                    <asp:Button ID="btSignUp" runat="server" Text="Sign Up" CssClass="btn btn-primary btn-sm" OnClick="btSignUp_Click" />
                                 </div>
                             </div>
 
