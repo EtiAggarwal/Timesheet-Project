@@ -37,8 +37,8 @@
     });
     /*svg region*/
     var margin = { top: 20, right: 100, bottom: 100, left: 40 },
-    width = 760 - margin.left - margin.right,
-    height = 300 - margin.top - margin.bottom;
+    width = 760 - ((margin.left + margin.right) / (json.length * json.length) + (20 * json.length + 1));
+    height = 400 - margin.top - margin.bottom;
     /*y axis range*/
     var y = d3.scale.linear()
     .range([height, 0]);
@@ -71,7 +71,7 @@
     .append('div')
     .attr('class', 'tooltip')
     .style("opacity", 0.0);
-    
+
     /*x domain contains all the names of collected empolyees*/
     x.domain(json.map(function (d) { return d.key; }));
     /*y domain contains all the correspoind working-hours*/
