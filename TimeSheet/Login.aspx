@@ -9,7 +9,7 @@
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <script src="Scripts/jquery-1.9.1.js"></script>
     <script src="Scripts/bootstrap.js"></script>
-     <%--<script src="Scripts/login.js"></script>--%>
+    <script src="Scripts/login.js"></script>
     <script type="text/javascript">
         
     </script>
@@ -57,13 +57,13 @@
                    
                             <div style="margin-bottom: 25px" class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <asp:TextBox ID="tbLoginUserName" runat="server" CssClass="form-control"  placeholder="Employee ID"></asp:TextBox>
+                                <asp:TextBox ID="tbLoginUserName" runat="server" CssClass="form-control"  placeholder="Employee ID" ClientIDMode="Static"></asp:TextBox>
         
                             </div>
 
                             <div style="margin-bottom: 25px" class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                <asp:TextBox ID="tbLoginPassword" runat="server" CssClass="form-control"  placeholder="password" TextMode="Password"></asp:TextBox>
+                                <asp:TextBox ID="tbLoginPassword" runat="server" CssClass="form-control"  placeholder="password" TextMode="Password" ClientIDMode="Static"></asp:TextBox>
 
                             </div>
 
@@ -83,7 +83,7 @@
                                 <!-- Button -->
 
                                 <div class="col-sm-12 controls">
-                                    <asp:Button ID="btLogin" runat="server" Text="Login" CssClass="btn btn-primary btn-sm" OnClick="btLogin_Click" />
+                                    <asp:Button ID="btLogin" runat="server" Text="Login" CssClass="btn btn-primary btn-sm" OnClick="btLogin_Click" OnClientClick="return valLogin()" />
                                  </div>
                             </div>
 
@@ -121,7 +121,7 @@
                             <div class="form-group">
                                 <label for="empid" class="col-md-3 control-label">Employee ID</label>
                                 <div class="col-md-9">
-                                    <asp:TextBox ID="tbEmployeeId" runat="server" placeholder="Employee ID" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="tbEmployeeId" runat="server" placeholder="Employee ID" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                                 </div>
                             </div>
 
@@ -134,32 +134,32 @@
                             <div class="form-group">
                                 <label for="lastname" class="col-md-3 control-label">Last Name</label>
                                 <div class="col-md-9">
-                                    <asp:TextBox ID="tbLastName" runat="server" placeholder="Last Name" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="tbLastName" runat="server" placeholder="Last Name" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="col-md-3 control-label">Password</label>
                                 <div class="col-md-9">
-                                    <asp:TextBox ID="tbPassword" runat="server" placeholder="Password" TextMode="Password" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="tbPassword" runat="server" placeholder="Password" TextMode="Password" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                                 </div>
                             </div>
                          <div class="form-group">
                                 <label for="confirmPassword" class="col-md-3 control-label">Confirm Password</label>
                                 <div class="col-md-9">
-                                    <asp:TextBox ID="tbConfPassword" runat="server" placeholder="Confirm Password" TextMode="Password" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="tbConfPassword" runat="server" placeholder="Confirm Password" TextMode="Password" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="col-md-3 control-label">Email</label>
                                 <div class="col-md-9">
-                                    <asp:TextBox ID="tbEmailId" runat="server" placeholder="Email" CssClass="form-control"></asp:TextBox>
+                                    <asp:TextBox ID="tbEmailId" runat="server" placeholder="Email" CssClass="form-control" ClientIDMode="Static"></asp:TextBox>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <!-- Button -->
                                 <div class="col-md-offset-3 col-md-9">
-                                    <asp:Button ID="btSignUp" runat="server" Text="Sign Up" CssClass="btn btn-primary btn-sm" OnClick="btSignUp_Click" />
+                                    <asp:Button ID="btSignUp" runat="server" Text="Sign Up" CssClass="btn btn-primary btn-sm" OnClick="btSignUp_Click"  OnClientClick="return valSignUp()"/>
                                 </div>
                             </div>
 
