@@ -19,6 +19,8 @@
     font-size: 36px !important;
     text-align: left !important;
 }
+                                                                      /* NEW */
+     
     </style>
     <link href="Content/datepicker.css" rel="stylesheet" />
     <link href="Content/barchart.css" rel="stylesheet" />
@@ -218,8 +220,9 @@
         </div>
     </div>
     <%--Graph section--%>
-    <div class="col-md-9" style="text-align:center">
+    <div class="col-md-9" >
       <span class="h1" id="NoDataLb"></span>
+
     <svg id="chart"></svg>
         <div id="ctooltip" ></div>
         <script type="text/javascript" src="Scripts/barchart.js">
@@ -227,6 +230,7 @@
             
         </script>
         <div id="pichart" ></div>
+        
         <script type="text/javascript" src="Scripts/pichart.js"></script>
     </div>
 </asp:Content>

@@ -32,8 +32,8 @@ json=d3.nest().key(function(d){return d.EMPLOYEE_ID;})
     });
 
   //these are static variables that define the frame size of the svg
-    var width = 360;
-    var height = 360;
+    var width = 250;
+    var height = 250;
     var radius = Math.min(width, height) / 2;
     var legendwidth = width + 400;
 
@@ -70,18 +70,11 @@ json=d3.nest().key(function(d){return d.EMPLOYEE_ID;})
 //    console.log(pie(json)); //making sure it gets initialized
 
 //the tooltip is just a pop up for when you are hovering over the item, note that you will need some css for it to show up
-    var tooltip = d3.select('#pichart')
-          .append('div')
-          .attr('class', 'tooltip');
+    var tooltip = d3.select("body")
+    .append('div')
+    .attr('class', 'tooltip')
+    .style("opacity", 0.0);
 
-        tooltip.append('div')
-          .attr('class', 'label');
-
-        tooltip.append('div')
-          .attr('class', 'count');
-
-        tooltip.append('div')
-          .attr('class', 'percent');
 
 //this is the one that actually creates the pi chart
     var path = svg.selectAll('path')
@@ -102,13 +95,20 @@ json=d3.nest().key(function(d){return d.EMPLOYEE_ID;})
       }));
 //            console.log(total);
             var percent = Math.round(1000 * d.data.values / total) / 10;
-            tooltip.select('.label').html(d.data.key);
+            /*tooltip.select('.label').html(d.data.key);
             tooltip.select('.count').html(d.data.values);
             tooltip.select('.percent').html(percent + '%');
-            tooltip.style('display', 'block');
+            tooltip.style('display', 'block');*/
+            tooltip.html("User : " +d.data.key + "<br />" +"Hours : "+ d.data.values + "<br />" + percent + "%")
+            .style("left", (d3.event.pageX) + "px")
+        .style("top", (d3.event.pageY) + "px")
+        .style("opacity", 1.0);
+
     });
              path.on('mouseout', function() {
-            tooltip.style('display', 'none');
+                 //            tooltip.style('display', 'none');
+                 tooltip.style("opacity", 0.0);
+
           });
 
 //this creates the key at to the right of the chart
