@@ -1,18 +1,22 @@
 //for now d3.json does a get request to get the contents of the file and stores it in a local javascript file called json
-d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/suggestedGraphTypes/freq.json", function(error, json) {
-
-  if (error) throw error;
+//d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/suggestedGraphTypes/Hours.json", function(error, json) {
+(function (d3) {
+  //if (error) throw error;
     //console.log(json);
     //json = json;
-  //need to clean/ conver the data so it is recognized in js
+    //need to clean/ conver the data so it is recognized in js
+    json = JSON.parse($('#hdnData').val());
     json.forEach(function(d){
-       d.Freq=parseInt(d.Freq);
-       d.Updated=new Date(d.Updated);
+        d.Hours = d["HOURS_PER_DAY"];
+        //console.log(d["HOURS_PER_DAY"]); 
+        d.Begin = new Date(d.ENTRY_ADD_DATE);
+        //console.log(d.EMPLOYEE_ID);
+        d.End = new Date(d.Begin);
 
     });
 //this function converts the large table to something we are looking for, project vs time
-json=d3.nest().key(function(d){return d.Assignee;})
-                         .rollup(function(v){return d3.sum(v, function(d){return d.Freq;});})
+json=d3.nest().key(function(d){return d.EMPLOYEE_ID;})
+                         .rollup(function(v){return d3.sum(v, function(d){return d.Hours;});})
                         .entries(json);
 
 
@@ -88,7 +92,7 @@ json=d3.nest().key(function(d){return d.Assignee;})
 //this one this one displays the tooltip based on the enabled items
     path.on('mouseover', function(d) {
       var total = d3.sum(json.map(function(d) {
-        return (d.enabled) ? d.values : 0;        // UPDATED
+        return (d.enabled) ? d.values : 0;        // Begin
       }));
 //            console.log(total);
             var percent = Math.round(1000 * d.data.values / total) / 10;
@@ -163,4 +167,4 @@ json=d3.nest().key(function(d){return d.Assignee;})
       .attr('y', legendRectSize - legendSpacing)
       .text(function(d) { return d; });
 
-});
+})(window.d3);
