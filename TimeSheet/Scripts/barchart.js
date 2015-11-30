@@ -1,14 +1,30 @@
 /*fetch json text from server*/
-d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/suggestedGraphTypes/freq.json", function (error, json) {
+
+(function (d3) {
+  
+//d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/suggestedGraphTypes/Hours.json", function (error, json) {
+//d3.json( $('#hdnData').val() , function (error, json) {
     /*convert json text to javascript objects*/
+    json = JSON.parse($('#hdnData').val());
+    //if (error) { console.log(error); }
+    
+    //json = $('#hdnData').val();
+    //console.log(json.forEach());
     json.forEach(function (d) {
-        d.Freq = parseInt(d.Freq);
-        d.Updated = new Date(d.Updated);
+        d.Hours = d["HOURS_PER_DAY"];
+        //console.log(d["HOURS_PER_DAY"]); 
+        d.Begin = new Date(d.ENTRY_ADD_DATE);
+        console.log(d.EMPLOYEE_ID);
+        d.End = new Date(d.Begin);
 
     });
-    json = d3.nest().key(function (d) { return d.Assignee; })
-    .rollup(function (v) { return d3.sum(v, function (d) { return d.Freq; }); })
-    .entries(json);
+    //console.log(json);
+    //console.log(d3.nest().key(function (d) { return d.EMPLOYEE_ID; }).entries(json));
+    json=d3.nest()
+        .key(function (d) { return d.EMPLOYEE_ID; })
+        .rollup(function (v) { return d3.sum(v, function (d) { return d.Hours; }); })
+        .entries(json);
+    console.log(json);
     /*add enable tag to json objects*/
     json.forEach(function (d) {
         d.enabled = true;
@@ -73,7 +89,7 @@ d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/
     .attr("y", 6)
     .attr("dy", ".71em")
     .style("text-anchor", "end")
-    .text("Frequency");
+    .text("Hoursuency");
     /*display all the bars*/
     chart.selectAll("bar")
     .data(json)
@@ -153,7 +169,7 @@ d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/
     .duration(500)
     .attr("fill", "red");
             var total = d3.sum(json.map(function (d) {
-                return (d.enabled) ? d.values : 0; // UPDATED
+                return (d.enabled) ? d.values : 0; // Begin
             }));
             var percent = Math.round(1000 * d.values / total) / 10;
             tooltip.html(d.key + "<br />" + d.values + "<br />" + percent + "%")
@@ -264,4 +280,4 @@ d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/
     .attr('y', legendRectSize - legendSpacing)
     .text(function (d) { return d.key; });
 
-});
+})(window.d3);

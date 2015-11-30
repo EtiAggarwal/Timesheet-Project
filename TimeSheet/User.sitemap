@@ -2,6 +2,6 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
     <siteMapNode >
        <siteMapNode title="Home" url="~/UserHomePage.aspx" description="User Home Page" />
-      <siteMapNode title="Timesheet Report" url="#" description="User Timesheet Report" />
+      <siteMapNode title="Timesheet Report" url="~/UserReportPage.aspx" description="User Timesheet Report" />
     </siteMapNode>
 </siteMap>

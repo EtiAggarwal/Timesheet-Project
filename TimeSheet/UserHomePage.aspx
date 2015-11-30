@@ -24,7 +24,7 @@
                         <asp:LinkButton ID="lbtQuickPrevDay" runat="server" CssClass="btn btn-info btn-xs" CausesValidation="false" OnClick="lbtQuickPrevDay_Click">
                   <span aria-hidden="true" class="glyphicon glyphicon-chevron-left" ></span>
                         </asp:LinkButton></td>
-                    <td align="center"><b>Qiuck View</b></td>
+                    <td align="center"><b>Quick View</b></td>
                     <td align="center">
                         <asp:LinkButton ID="lbtQuickNextDay" runat="server" CssClass="btn btn-info btn-xs" CausesValidation="false" OnClick="lbtQuickNextDay_Click">
                   <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>

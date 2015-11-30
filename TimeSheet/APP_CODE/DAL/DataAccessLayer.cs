@@ -48,6 +48,24 @@ namespace TimeSheet.APP_CODE.DAL
         }
 
 
+        public DataTable GetReportDataForUser(String empId)
+        {
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SQL_GET_REPORT_DATA_FOR_USER, con);
+                selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", empId);
+                SqlDataAdapter sqlAdapter = new SqlDataAdapter(selectCommand);
+                DataTable dt = new DataTable();
+                sqlAdapter.Fill(dt);
+                return dt;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
         public DataTable GetEmployee()
         {
             try
