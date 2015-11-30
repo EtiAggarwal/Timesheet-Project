@@ -29,7 +29,7 @@
     <script type="text/javascript" src="Scripts/d3.min.js"></script>
     <script>
         $(document).ready(function () {
-            //According function
+            //Accordian function
             $('.collapse').on('shown.bs.collapse', function () {
                 $(this).parent().find(".glyphicon-chevron-down").removeClass("glyphicon-chevron-down").addClass("glyphicon-chevron-up");
             }).on('hidden.bs.collapse', function () {

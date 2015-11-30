@@ -23,6 +23,8 @@ namespace TimeSheet
             }
 
         }
+        //When user clicks search, pull selected dates, project, and employee
+        //from SQL and pass data to the graph via json object
         protected void btSubmit_Click(object sender, EventArgs e)
         {
             try
@@ -57,11 +59,6 @@ namespace TimeSheet
             {
                 throw;
             }
-        }
-
-        //protected void ddlProjects_DataBound(object sender, EventArgs e)
-        //{
-        //    ddlProjects.Items.Insert(0, "--Select--");
-        //}       
+        }      
     }
 }
