@@ -286,5 +286,5 @@ END
 
 select * from USER_LOGIN
 select * from timesheet
-
+update USER_LOGIN set IS_ADMIN=1 
 
