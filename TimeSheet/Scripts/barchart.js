@@ -9,7 +9,7 @@
     //if (error) { console.log(error); }
     
     //json = $('#hdnData').val();
-    //console.log(json.forEach());
+    console.log(json);
     json.forEach(function (d) {
         d.Hours = d["HOURS_PER_DAY"];
         //console.log(d["HOURS_PER_DAY"]); 

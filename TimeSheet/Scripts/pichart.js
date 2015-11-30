@@ -1,6 +1,7 @@
 //for now d3.json does a get request to get the contents of the file and stores it in a local javascript file called json
-//d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/suggestedGraphTypes/Hours.json", function(error, json) {
+
 (function (d3) {
+   
   //if (error) throw error;
     //console.log(json);
     //json = json;
@@ -14,6 +15,7 @@
         d.End = new Date(d.Begin);
 
     });
+    console.log(json);
 //this function converts the large table to something we are looking for, project vs time
 json=d3.nest().key(function(d){return d.EMPLOYEE_ID;})
                          .rollup(function(v){return d3.sum(v, function(d){return d.Hours;});})
