@@ -27,7 +27,7 @@
     //console.log(json);
     //console.log(d3.nest().key(function (d) { return d.EMPLOYEE_ID; }).entries(json));
     json=d3.nest()
-        .key(function (d) { return d.EMPLOYEE_ID; })
+        .key(function (d) { return d.PROJECT_NAME; })
         .rollup(function (v) { return d3.sum(v, function (d) { return d.Hours; }); })
         .entries(json);
     console.log(json);
@@ -85,17 +85,17 @@
     .style("text-anchor", "end")
     .attr("dx", "-.8em")
     .attr("dy", ".15em")
-    .attr("transform", "rotate(-65)");
+    .attr("transform", "rotate(-45)");
     /*append y axis*/
     chart.append("g")
     .attr("class", "y axis")
     .call(yAxis)
     .append("text")
-    .attr("transform", "rotate(-45)")
+    .attr("transform", "rotate(-90)")
     .attr("y", 6)
-    .attr("dy", ".71em")
-    .style("text-anchor", "end")
-    .text("Frequency");
+    .attr("dy", "-3em")
+   .style("text-anchor", "end")
+    .text("total hours");
     /*display all the bars*/
     chart.selectAll("bar")
     .data(json)
