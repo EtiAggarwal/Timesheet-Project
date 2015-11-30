@@ -48,6 +48,24 @@ namespace TimeSheet.APP_CODE.DAL
         }
 
 
+        public DataTable GetReportDataForUser(String empId)
+        {
+            try
+            {
+                SqlCommand selectCommand = new SqlCommand(SQL_STRINGS.SQL_GET_REPORT_DATA_FOR_USER, con);
+                selectCommand.Parameters.AddWithValue("@EMPLOYEE_ID", empId);
+                SqlDataAdapter sqlAdapter = new SqlDataAdapter(selectCommand);
+                DataTable dt = new DataTable();
+                sqlAdapter.Fill(dt);
+                return dt;
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+
         public DataTable GetEmployee()
         {
             try
@@ -535,8 +553,10 @@ namespace TimeSheet.APP_CODE.DAL
                     SQL_GET_REPORT_DATA.Append(SQL_STRINGS.SQL_GET_REPORT_DATA_PROJECT_FILTER);
                     for(int i=0;i<Projects.Count;++i)
                     {
-                        SQL_GET_REPORT_DATA.Append("@P" + i);
+                        SQL_GET_REPORT_DATA.Append("@P" + i+ " ");
                         selectCommand.Parameters.AddWithValue("@P" + i, Projects[i]);
+                        if(i<Projects.Count-1)
+                         SQL_GET_REPORT_DATA.Append(", ");
                     }
                     SQL_GET_REPORT_DATA.Append(" ) ");
 
@@ -551,8 +571,10 @@ namespace TimeSheet.APP_CODE.DAL
                     SQL_GET_REPORT_DATA.Append(SQL_STRINGS.SQL_GET_REPORT_DATA_EMPLOYEE_FILTER);
                     for (int i = 0; i < Employees.Count; ++i)
                     {
-                        SQL_GET_REPORT_DATA.Append("@E" + i);
+                        SQL_GET_REPORT_DATA.Append("@E" + i+" ");
                         selectCommand.Parameters.AddWithValue("@E" + i, Employees[i]);
+                        if (i < Employees.Count-1)
+                            SQL_GET_REPORT_DATA.Append(", ");
                     }
                     SQL_GET_REPORT_DATA.Append(" ) ");
 

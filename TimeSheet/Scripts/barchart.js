@@ -1,14 +1,30 @@
 /*fetch json text from server*/
-d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/suggestedGraphTypes/freq.json", function (error, json) {
+
+(function (d3) {
+  
+//d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/suggestedGraphTypes/Hours.json", function (error, json) {
+//d3.json( $('#hdnData').val() , function (error, json) {
     /*convert json text to javascript objects*/
+    json = JSON.parse($('#hdnData').val());
+    //if (error) { console.log(error); }
+    
+    //json = $('#hdnData').val();
+    console.log(json);
     json.forEach(function (d) {
-        d.Freq = parseInt(d.Freq);
-        d.Updated = new Date(d.Updated);
+        d.Hours = d["HOURS_PER_DAY"];
+        //console.log(d["HOURS_PER_DAY"]); 
+        d.Begin = new Date(d.ENTRY_ADD_DATE);
+        //console.log(d.EMPLOYEE_ID);
+        d.End = new Date(d.Begin);
 
     });
-    json = d3.nest().key(function (d) { return d.Assignee; })
-    .rollup(function (v) { return d3.sum(v, function (d) { return d.Freq; }); })
-    .entries(json);
+    //console.log(json);
+    //console.log(d3.nest().key(function (d) { return d.EMPLOYEE_ID; }).entries(json));
+    json=d3.nest()
+        .key(function (d) { return d.EMPLOYEE_ID; })
+        .rollup(function (v) { return d3.sum(v, function (d) { return d.Hours; }); })
+        .entries(json);
+    console.log(json);
     /*add enable tag to json objects*/
     json.forEach(function (d) {
         d.enabled = true;
@@ -202,6 +218,7 @@ d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/
                 json[i].enabled = label.enabled;
             }
         }
+        delRow(1);
         var rect = d3.select(this);
         var enabled = true;
         var totalEnabled1 = d3.sum(json.map(function (d) {
@@ -224,6 +241,10 @@ d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/
                 j = j + 1;
             }
         }
+        /*update table NingZhang 11.23.2015*/
+        var tbl = document.getElementById("table");
+        if (tbl) { tbl.parentNode.removeChild(tbl); }
+        createTable(newjson);
         /*new domains for x axis and y axis*/
         x.domain(newjson.map(function (d) { return d.key; }));
         y.domain([0, d3.max(newjson, function (d) { return d.values; })]);
@@ -263,5 +284,81 @@ d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/
     .attr('x', legendRectSize + legendSpacing)
     .attr('y', legendRectSize - legendSpacing)
     .text(function (d) { return d.key; });
+    /*NingZhang 11.23.2015*/
+    /*find row and column numbers*/
+    var row = 2;
+    var cols = json.length;
+    /*create table*/
+    createTable(json);
+    /*functions for table operations*/
+    var tableNode;
+    function createTable(newjson) {
+        /*get table element*/
+        tableNode = document.createElement("table");
+        tableNode.setAttribute("id", "table");
+        var row = 2;
+        var cols = newjson.length;;
 
-});
+        if (row <= 0 || isNaN(row)) {
+            alert("wrong row number!");
+            return;
+        }
+        if (isNaN(cols) || cols <= 0) {
+            alert("wrong column number!");
+            return;
+        }
+        /*based on right column and row numbers, start creating table*/
+        for (var x = 0; x < row; x++) {
+            var trNode = tableNode.insertRow();
+            for (var y = 0; y < cols; y++) {
+                var tdNode = trNode.insertCell();
+                if (x == 0) { tdNode.innerHTML = newjson[y].key; }
+                if (x == 1) { tdNode.innerHTML = newjson[y].values; }
+            }
+        }
+        /*add table*/
+        document.getElementById("div1").appendChild(tableNode);
+    }
+    function delRow(rows) {
+        /*delete a row by row number and table id*/
+        /*get table element*/
+        var tab = document.getElementById("table");
+        if (tab == null) {
+            alert("Table doesn't exist!")
+            return;
+        }
+        if (isNaN(rows)) {
+            alert("wrong row to delete!");
+            return;
+        }
+        if (rows >= 1 && rows <= tab.rows.length) {
+            tab.deleteRow(rows - 1);
+        } else {
+            alert("row doesn't exist!");
+            return;
+        }
+    }
+    //not easy to delete a column, need to delete it by rows 
+    // the length of cells in a row is the number of columns 
+    //tab.rows[x].deleteCell(cols-1) 
+    function delCols() {
+        //get table element 
+        var tab = document.getElementById("table");
+        if (tab == null) {
+            alert("Table doesn't exist!");
+            return;
+        }
+        //check column number 
+        if (isNaN(cols)) {
+            alert("wrong column number!");
+            return;
+        }
+        if (!(cols >= 1 && cols < tab.rows[0].cells.length)) {
+            alert("column doesn't exist!");
+            return;
+        }
+        for (var x = 0; x < tab.rows.length; x++) {//all the rows 
+            tab.rows[x].deleteCell(cols - 1);
+        }
+    }
+})(window.d3);

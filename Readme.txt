@@ -1,11 +1,15 @@
-When first starting project, make sure your NuGet package manager is working, mine wasn't and required a clean install.
+##User manual
+#Written by Stephen Kinser (change this line as you explain what is going on)
+#Starting
+When first starting project, make sure your NuGet package manager is working->go under tools in Visual Studio(2014+), it should be there
+in NuGet package manager make sure you get Newtonsoft, you need it for the JSON object handeling
+also you (probalby won't) need jquery and bootstrap, all other libraries are included in the project
 
-other errors upon a clean run, just telling VS to run in chrome:
+you need set up a Sql server, to change the path to this, change the web.config file in the main directory
 
-An exception of type 'System.Data.SqlClient.SqlException' occurred in System.Data.dll but was not handled in user code
--(This is probably because of the database hasn't been given information because we haven't recieved apppropriate credentials)
-an error that seems to be related to (maybe just my local visual studio) not recognizing packages newtonsoft when trying to load web page
+#Chart Editing
+In the case you want to make new charts all the charts are written for D3.js, 
+http://zeroviscosity.com/d3-js-step-by-step/step-1-a-basic-pie-chart
+this is what the Pi chart are based on, there are some resources to make changes to the graph, but it is verbose
 
-I have loaded an example of a dynamic Graph, we can switch to aspx, just did an html because it was quick, I'm using a Library called Highgraph, there's a lot of js if you were to fork the repo into here, just manually added it, since I'm unfamiliar with the NuGet manager.
 
-If people like this graph, it handles everything as JSON objects, but it also has a way for it to be handled with PHP to our SQL server when that is set up (assuming it isn't already)

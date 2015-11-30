@@ -54,7 +54,7 @@
                 .attr('selected', true);
             }
 
-            $('#lbData').html($('#hdnData').val());
+           // $('#lbData').html($('#hdnData').val());
         });
         //Date picker function
         $(function () {
@@ -88,7 +88,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="col-md-3">
-        <asp:Label ID="lbData" runat="server" ClientIDMode="Static" ViewStateMode="Disabled"></asp:Label>
+       
         <asp:HiddenField ID="hdnData" runat="server" ClientIDMode="Static"/>
         <div class="panel panel-success">
             <div class="panel-heading">
