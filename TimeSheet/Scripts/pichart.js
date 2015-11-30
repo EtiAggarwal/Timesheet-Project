@@ -7,6 +7,10 @@
     //json = json;
     //need to clean/ conver the data so it is recognized in js
     json = JSON.parse($('#hdnData').val());
+    if (json.length == 0) {
+       
+        return;
+    }
     json.forEach(function(d){
         d.Hours = d["HOURS_PER_DAY"];
         //console.log(d["HOURS_PER_DAY"]); 

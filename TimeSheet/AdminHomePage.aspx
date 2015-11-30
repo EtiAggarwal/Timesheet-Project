@@ -218,15 +218,15 @@
         </div>
     </div>
     <%--Graph section--%>
-    <div class="col-md-9">
-      
+    <div class="col-md-9" style="text-align:center">
+      <span class="h1" id="NoDataLb"></span>
     <svg id="chart"></svg>
-        <div id="ctooltip"></div>
+        <div id="ctooltip" ></div>
         <script type="text/javascript" src="Scripts/barchart.js">
 
             
         </script>
-        <div id="pichart"></div>
+        <div id="pichart" ></div>
         <script type="text/javascript" src="Scripts/pichart.js"></script>
     </div>
 </asp:Content>

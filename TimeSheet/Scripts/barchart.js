@@ -5,8 +5,14 @@
 //d3.json("https://raw.githubusercontent.com/EtiAggarwal/Timesheet-Project/master/suggestedGraphTypes/Hours.json", function (error, json) {
 //d3.json( $('#hdnData').val() , function (error, json) {
     /*convert json text to javascript objects*/
+    
     json = JSON.parse($('#hdnData').val());
-    //if (error) { console.log(error); }
+   
+    if (json.length == 0) {
+        $("#NoDataLb").html("No Timesheet Records to display");
+        
+        return;
+    }
     
     //json = $('#hdnData').val();
     console.log(json);
