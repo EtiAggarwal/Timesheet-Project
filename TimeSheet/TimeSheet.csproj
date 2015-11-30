@@ -75,13 +75,9 @@
     <Content Include="Content\images\pattern_4.png" />
     <Content Include="Content\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\images\ui-bg_glass_75_dadada_1x400.png" />
-    <Content Include="Content\metisMenu.min.css" />
     <Content Include="Content\morris.css" />
-    <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\timeline.css" />
     <Content Include="EditAccountInfo.aspx" />
-    <Content Include="HtmlPage1.html" />
-    <Content Include="Content\ref.css" />
     <Content Include="Content\source-sans-pro.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Login.aspx" />
@@ -96,28 +92,18 @@
     <Content Include="Scripts\barchart.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\d3.min.js" />
-    <Content Include="Scripts\highstock.json" />
-    <Content Include="Content\mixins.less" />
-    <Content Include="Content\sb-admin-2.less" />
-    <Content Include="Content\variables.less" />
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="Scripts\login.js" />
-    <Content Include="Scripts\metisMenu.js" />
     <Content Include="Scripts\pichart.js" />
-    <Content Include="Scripts\readremotecsv.js" />
-    <Content Include="Scripts\sb-admin-2.js" />
-    <Content Include="adminTest.aspx" />
     <Content Include="Scripts\Timer.js" />
     <Content Include="Content\images\Thumbs.db" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\exporting.js" />
-    <Content Include="Scripts\highstock.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
-    <Content Include="Scripts\ref.js" />
     <Content Include="Scripts\SQL.sql" />
     <Content Include="UserHomePage.aspx" />
     <Content Include="UserReportPage.aspx" />
@@ -182,13 +168,6 @@
     </Compile>
     <Compile Include="UserHomePage.aspx.designer.cs">
       <DependentUpon>UserHomePage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="adminTest.aspx.cs">
-      <DependentUpon>adminTest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="adminTest.aspx.designer.cs">
-      <DependentUpon>adminTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="APP_CODE\BO\Timelog.cs" />
     <Compile Include="APP_CODE\BO\Employee.cs" />
